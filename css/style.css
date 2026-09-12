@@ -497,6 +497,8 @@ body {
 .hero-match-badge {
   display: flex;
   align-items: center;
+  flex-wrap: nowrap;
+  white-space: nowrap;
   gap: 10px;
 }
 
