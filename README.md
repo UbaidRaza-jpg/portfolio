@@ -1,4 +1,4 @@
-# 👑 Muhammad Ubaid Raza — Official Portfolio
+# Muhammad Ubaid Raza — Official Portfolio
 
 > **AI Applications & Software Developer · Football Team Captain · Bahria University Karachi**
 
@@ -8,7 +8,7 @@
 
 ---
 
-## ⚽ About This Portfolio
+## About This Portfolio
 
 A **UEFA Champions League + Real Madrid** broadcast-themed personal portfolio built entirely with vanilla **HTML, CSS, and JavaScript** — no frameworks, no libraries, just pure craft.
 
@@ -21,7 +21,7 @@ The concept mirrors a live football broadcast matchday experience:
 
 ---
 
-## 🏗️ Tech Stack
+## Tech Stack
 
 | Layer | Technology |
 |---|---|
@@ -33,50 +33,50 @@ The concept mirrors a live football broadcast matchday experience:
 
 ---
 
-## 🚀 Sections
+## Sections
 
-1. **🎙️ Broadcast HUD** — Live matchday ticker + synthesized sound FX toggle
-2. **👑 Star Player Reveal** — 3D FUT Player Card (Real Madrid / UCL Edition)
-3. **⚽ Tactical Starting Lineup** — Projects on a 3D football pitch with staggered pop-in
-4. **🔍 VAR Match Report** — Interactive project deep-dive modals
-5. **🏆 Trophy Cabinet** — Real honors, certifications, and hackathon achievements
-6. **📊 Tactical Radar** — SVG attribute hexagon + categorized skill arsenal
-7. **📜 Transfer History** — Education & career timeline
-8. **🎙️ Press Room** — Contact channels + Transfer inquiry form
-9. **📄 Scout Dossier** — Printable software engineering CV (saves as clean A4 PDF)
+1. **Broadcast HUD** — Live matchday ticker + synthesized sound FX toggle
+2. **Star Player Reveal** — 3D FUT Player Card (Real Madrid / UCL Edition)
+3. **Tactical Starting Lineup** — Projects on a 3D football pitch with staggered pop-in
+4. **VAR Match Report** — Interactive project deep-dive modals
+5. **Trophy Cabinet** — Real honors, certifications, and hackathon achievements
+6. **Tactical Radar** — SVG attribute hexagon + categorized skill arsenal
+7. **Transfer History** — Education & career timeline
+8. **Press Room** — Contact channels + Transfer inquiry form
+9. **Scout Dossier** — Printable software engineering CV (saves as clean A4 PDF)
 
 ---
 
-## ⚡ Featured Projects (Starting XI)
+## Featured Projects (Starting XI)
 
 | Position | Project | Stack |
 |---|---|---|
-| **ST · Forward** | Multilingual Video Subtitle Generator | Python, Whisper AI, Streamlit, FFmpeg |
-| **CAM · Playmaker** | THERAC-25 Recovery System | C++, Graphs, Stacks, Linked Lists |
-| **RW · Wing** | Effective Garden Management | C++, OOP, Resource Scheduling |
-| **CB · Defender** | Hotel/Hostel Management System | Java, Swing GUI, OOP |
+| **ST - Forward** | Multilingual Video Subtitle Generator | Python, Whisper AI, Streamlit, FFmpeg |
+| **CAM - Playmaker** | THERAC-25 Recovery System | C++, Graphs, Stacks, Linked Lists |
+| **RW - Wing** | Effective Garden Management | C++, OOP, Resource Scheduling |
+| **CB - Defender** | Hotel/Hostel Management System | Java, Swing GUI, OOP |
 
 ---
 
-## 🏆 Honors & Achievements
+## Honors & Achievements
 
-- 🏆 **Sports Fest Football Champion (2024)**
-- ⚽ **Football Team Captain** — Inter-House Championship Winner
-- 🥈 **Runner-Up, Techathon 2.0 "Code in the Dark"** — Bahria University (May 2026)
-- 📜 **One Million Prompters Certified** — Dubai Future Foundation / H.H. Sheikh Hamdan
+- **Sports Fest Football Champion (2024)**
+- **Football Team Captain** — Inter-House Championship Winner
+- **Runner-Up, Techathon 2.0 "Code in the Dark"** — Bahria University (May 2026)
+- **One Million Prompters Certified** — Dubai Future Foundation / H.H. Sheikh Hamdan
 
 ---
 
-## 📬 Contact
+## Contact
 
 | Channel | Details |
 |---|---|
-| 📧 Email | ubaid183d9@gmail.com |
-| 📞 Phone / WhatsApp | 0327-2731053 |
-| 💼 LinkedIn | [muhammad-ubaid-raza-9b2912297](https://linkedin.com/in/muhammad-ubaid-raza-9b2912297) |
-| 🐙 GitHub | [UbaidRaza-jpg](https://github.com/UbaidRaza-jpg) |
-| 📍 Location | Malir 15, Karachi · Open to Worldwide Remote (UTC+5 / PKT) |
+| Email | ubaid183d9@gmail.com |
+| Phone / WhatsApp | 0327-2731053 |
+| LinkedIn | [muhammad-ubaid-raza-9b2912297](https://linkedin.com/in/muhammad-ubaid-raza-9b2912297) |
+| GitHub | [UbaidRaza-jpg](https://github.com/UbaidRaza-jpg) |
+| Location | Malir 15, Karachi - Open to Worldwide Remote (UTC+5 / PKT) |
 
 ---
 
-*Built with ❤️ and football passion by Muhammad Ubaid Raza*
+*Built with passion by Muhammad Ubaid Raza*
