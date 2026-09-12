@@ -294,21 +294,28 @@ function initActiveNav() {
 
   if (!sections.length || !navAnchors.length) return;
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const id = entry.target.getAttribute('id');
-        navAnchors.forEach((a) => {
-          a.classList.remove('active');
-          if (a.getAttribute('href') === `#${id}`) {
-            a.classList.add('active');
-          }
-        });
+  window.addEventListener('scroll', () => {
+    let current = 'hero';
+    
+    sections.forEach((section) => {
+      const sectionTop = section.offsetTop;
+      if (window.scrollY >= (sectionTop - 150)) {
+        current = section.getAttribute('id');
       }
     });
-  }, { threshold: 0.3, rootMargin: '-80px 0px -50% 0px' });
 
-  sections.forEach((section) => observer.observe(section));
+    // Force highlight "Contact" if user is at the absolute bottom of the page
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
+      current = 'contact';
+    }
+
+    navAnchors.forEach((a) => {
+      a.classList.remove('active');
+      if (a.getAttribute('href') === `#${current}`) {
+        a.classList.add('active');
+      }
+    });
+  });
 }
 
 
