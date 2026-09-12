@@ -1665,6 +1665,251 @@ body {
 }
 
 /* ==========================================================================
+   3D ORBITING TECH STACK — Persistent Infinite Rotation
+   Three concentric rings orbiting around a central glowing core.
+   Uses flat-plane rotation with counter-spin to keep icons upright.
+   ========================================================================== */
+.orbit-section {
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(circle at 50% 50%, rgba(0, 240, 255, 0.06) 0%, transparent 60%);
+}
+
+.orbit-stage {
+  position: relative;
+  width: 580px;
+  height: 580px;
+  margin: 0 auto;
+}
+
+/* Central Glowing Core */
+.orbit-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90px;
+  height: 90px;
+  background: linear-gradient(135deg, #1d72fe, #070d24);
+  border: 3px solid var(--gold-primary);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  box-shadow:
+    0 0 30px var(--gold-glow),
+    0 0 60px rgba(0, 240, 255, 0.2),
+    inset 0 0 20px rgba(0, 0, 0, 0.4);
+  animation: core-pulse 3s ease-in-out infinite;
+}
+
+@keyframes core-pulse {
+  0%, 100% { box-shadow: 0 0 30px var(--gold-glow), 0 0 60px rgba(0, 240, 255, 0.2); }
+  50% { box-shadow: 0 0 45px var(--gold-glow), 0 0 90px rgba(0, 240, 255, 0.35); }
+}
+
+.orbit-core-label {
+  font-family: var(--font-hud);
+  font-size: 1.6rem;
+  font-weight: 900;
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height: 1;
+}
+
+.orbit-core-sub {
+  font-family: var(--font-hud);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--ucl-cyan);
+}
+
+/* Decorative Orbit Track Rings (elliptical paths) */
+.orbit-track {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.orbit-track-1 {
+  width: 220px;
+  height: 220px;
+  margin-left: -110px;
+  margin-top: -110px;
+  border-color: rgba(230, 202, 101, 0.18);
+}
+
+.orbit-track-2 {
+  width: 370px;
+  height: 370px;
+  margin-left: -185px;
+  margin-top: -185px;
+  border-color: rgba(0, 240, 255, 0.14);
+}
+
+.orbit-track-3 {
+  width: 520px;
+  height: 520px;
+  margin-left: -260px;
+  margin-top: -260px;
+  border-color: rgba(230, 202, 101, 0.10);
+}
+
+/* Orbit Ring Containers — rotate infinitely */
+.orbit-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+}
+
+.orbit-ring-1 {
+  width: 220px;
+  height: 220px;
+  margin-left: -110px;
+  margin-top: -110px;
+  animation: orbit-spin 14s linear infinite;
+}
+
+.orbit-ring-2 {
+  width: 370px;
+  height: 370px;
+  margin-left: -185px;
+  margin-top: -185px;
+  animation: orbit-spin-reverse 22s linear infinite;
+}
+
+.orbit-ring-3 {
+  width: 520px;
+  height: 520px;
+  margin-left: -260px;
+  margin-top: -260px;
+  animation: orbit-spin 32s linear infinite;
+}
+
+@keyframes orbit-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes orbit-spin-reverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+/* Items — positioned via percentage top/left around a circle.
+   Counter-rotate to stay upright while parent ring spins. */
+.orbit-item {
+  position: absolute;
+  width: 62px;
+  height: 62px;
+  margin-left: -31px;
+  margin-top: -31px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Counter-spin keeps each item's face locked upright */
+.orbit-ring-1 .orbit-item { animation: counter-spin 14s linear infinite; }
+.orbit-ring-2 .orbit-item { animation: counter-spin-reverse 22s linear infinite; }
+.orbit-ring-3 .orbit-item { animation: counter-spin 32s linear infinite; }
+
+@keyframes counter-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+
+@keyframes counter-spin-reverse {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ---- Ring 1: 4 items on a 110px radius circle ----
+   Using 50% ± sin/cos * 50% for equal distribution
+   0°  → top:0%   left:50%
+   90° → top:50%  left:100%
+   180°→ top:100% left:50%
+   270°→ top:50%  left:0%  */
+.orbit-ring-1 .orbit-item:nth-child(1) { top: 0%;   left: 50%; }
+.orbit-ring-1 .orbit-item:nth-child(2) { top: 50%;  left: 100%; }
+.orbit-ring-1 .orbit-item:nth-child(3) { top: 100%; left: 50%; }
+.orbit-ring-1 .orbit-item:nth-child(4) { top: 50%;  left: 0%; }
+
+/* ---- Ring 2: 5 items evenly at 72° apart ---- */
+.orbit-ring-2 .orbit-item:nth-child(1) { top: 0%;    left: 50%; }
+.orbit-ring-2 .orbit-item:nth-child(2) { top: 20.6%; left: 97.6%; }
+.orbit-ring-2 .orbit-item:nth-child(3) { top: 79.4%; left: 79.4%; }
+.orbit-ring-2 .orbit-item:nth-child(4) { top: 79.4%; left: 20.6%; }
+.orbit-ring-2 .orbit-item:nth-child(5) { top: 20.6%; left: 2.4%; }
+
+/* ---- Ring 3: 6 items evenly at 60° apart ---- */
+.orbit-ring-3 .orbit-item:nth-child(1) { top: 0%;    left: 50%; }
+.orbit-ring-3 .orbit-item:nth-child(2) { top: 25%;   left: 93.3%; }
+.orbit-ring-3 .orbit-item:nth-child(3) { top: 75%;   left: 93.3%; }
+.orbit-ring-3 .orbit-item:nth-child(4) { top: 100%;  left: 50%; }
+.orbit-ring-3 .orbit-item:nth-child(5) { top: 75%;   left: 6.7%; }
+.orbit-ring-3 .orbit-item:nth-child(6) { top: 25%;   left: 6.7%; }
+
+/* Orbit Icon Bubble */
+.orbit-icon {
+  width: 44px;
+  height: 44px;
+  background: rgba(12, 21, 56, 0.9);
+  border: 1.5px solid var(--border-gold);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), 0 0 10px var(--gold-glow);
+  backdrop-filter: blur(8px);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.orbit-item:hover .orbit-icon {
+  transform: scale(1.3);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.7), 0 0 25px var(--ucl-glow);
+  border-color: var(--ucl-cyan);
+}
+
+.orbit-name {
+  font-family: var(--font-hud);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--text-dim);
+  margin-top: 4px;
+  white-space: nowrap;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+}
+
+/* Responsive Orbit */
+@media (max-width: 640px) {
+  .orbit-stage { width: 340px; height: 340px; }
+  .orbit-core { width: 60px; height: 60px; }
+  .orbit-core-label { font-size: 1.1rem; }
+  .orbit-ring-1 { width: 130px; height: 130px; margin-left: -65px; margin-top: -65px; }
+  .orbit-ring-2 { width: 220px; height: 220px; margin-left: -110px; margin-top: -110px; }
+  .orbit-ring-3 { width: 310px; height: 310px; margin-left: -155px; margin-top: -155px; }
+  .orbit-track-1 { width: 130px; height: 130px; margin-left: -65px; margin-top: -65px; }
+  .orbit-track-2 { width: 220px; height: 220px; margin-left: -110px; margin-top: -110px; }
+  .orbit-track-3 { width: 310px; height: 310px; margin-left: -155px; margin-top: -155px; }
+  .orbit-icon { width: 30px; height: 30px; font-size: 0.9rem; border-radius: 8px; }
+  .orbit-name { font-size: 0.5rem; }
+  .orbit-item { width: 50px; height: 50px; margin-left: -25px; margin-top: -25px; }
+}
+
+/* ==========================================================================
    SCROLL REVEAL ANIMATION SYSTEM
    ========================================================================== */
 .scroll-reveal {
