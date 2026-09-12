@@ -150,6 +150,7 @@ body {
 
 /* ==========================================================================
    TOP BROADCAST HUD & TICKER
+   — UCL Matchday Live Status Bar
    ========================================================================== */
 .broadcast-ticker {
   position: sticky;
@@ -244,6 +245,7 @@ body {
 
 /* ==========================================================================
    NAVIGATION BAR
+   — Sticky UCL broadcast-style nav with gold accent and brand crest
    ========================================================================== */
 .site-nav {
   position: sticky;
