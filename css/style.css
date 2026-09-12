@@ -784,6 +784,7 @@ body {
   object-fit: cover;
   object-position: top center;
   border-radius: 16px;
+  transform: scale(1.25);
   mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
   -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
   filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.8));
