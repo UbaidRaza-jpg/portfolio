@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileMenu();
   initActiveNav();
   initScrollReveal();
+  initCustomCursor();
 });
 
 /* ==========================================================================
@@ -337,4 +338,58 @@ function initScrollReveal() {
   }, { threshold: 0.15 });
 
   revealTargets.forEach((el) => observer.observe(el));
+}
+
+
+/* ==========================================================================
+   10. CUSTOM MOUSE CURSOR ENGINE
+   ========================================================================== */
+function initCustomCursor() {
+  const dot = document.getElementById('cursorDot');
+  const trail = document.getElementById('cursorTrail');
+  if (!dot || !trail) return;
+
+  // Only run on non-touch devices
+  if (window.matchMedia('(pointer: coarse)').matches) return;
+
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+  let trailX = window.innerWidth / 2;
+  let trailY = window.innerHeight / 2;
+
+  window.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    
+    // Dot moves instantly
+    dot.style.transform = `translate(calc(${mouseX}px - 50%), calc(${mouseY}px - 50%))`;
+  });
+
+  function animateTrail() {
+    trailX += (mouseX - trailX) * 0.15;
+    trailY += (mouseY - trailY) * 0.15;
+    
+    trail.style.transform = `translate(calc(${trailX}px - 50%), calc(${trailY}px - 50%))`;
+    requestAnimationFrame(animateTrail);
+  }
+  animateTrail();
+
+  // Add hover effect for all clickable elements
+  const clickables = document.querySelectorAll('a, button, input, textarea, .card-project, .fut-card');
+  clickables.forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      trail.style.width = '48px';
+      trail.style.height = '48px';
+      trail.style.backgroundColor = 'rgba(0, 240, 255, 0.15)';
+      trail.style.borderColor = 'rgba(0, 240, 255, 0.8)';
+      dot.style.backgroundColor = 'var(--gold-primary)';
+    });
+    el.addEventListener('mouseleave', () => {
+      trail.style.width = '32px';
+      trail.style.height = '32px';
+      trail.style.backgroundColor = 'rgba(0, 240, 255, 0.05)';
+      trail.style.borderColor = 'rgba(0, 240, 255, 0.5)';
+      dot.style.backgroundColor = 'var(--ucl-cyan)';
+    });
+  });
 }
