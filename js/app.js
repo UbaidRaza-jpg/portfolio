@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initFutCardTilt();
   initLineupObserver();
   initProjectModals();
-  initResumeModal();
   initMobileMenu();
   initContactForm();
   initActiveNav();
