@@ -212,13 +212,13 @@ function initLineupObserver() {
 }
 
 /* ==========================================================================
-   4. PROJECT DATA & "VAR / MATCH REPORT" MODAL ENGINE
+   4. PROJECT DATA & "TECHNICAL REPORT" MODAL ENGINE
    ========================================================================== */
 const projectsData = {
   'subtitle-gen': {
     title: 'Multilingual Video Subtitle Generator',
     role: 'AI / Speech-to-Text Flagship Project',
-    tag: 'STAR FORWARD (ST)',
+    tag: 'FULL-STACK AI',
     stack: ['Python', 'Streamlit', 'OpenAI Whisper', 'FFmpeg', 'PyTorch'],
     desc: 'An AI-powered web application that automates subtitle generation for multi-language video content. It extracts audio with FFmpeg, processes speech through OpenAI Whisper models, generates synchronized timestamps, and provides translated subtitles across English, Urdu, Spanish, Chinese, and Turkish.',
     features: [
@@ -233,7 +233,7 @@ const projectsData = {
   'therac-recovery': {
     title: 'THERAC-25 Recovery System',
     role: 'Mission-Critical Simulator & Safety Verifier',
-    tag: 'MIDFIELD GENERAL (CAM)',
+    tag: 'SYSTEMS PROGRAMMING',
     stack: ['C++', 'Graph Data Structures', 'Stacks', 'Linked Lists', 'File Handling'],
     desc: 'A robust risk-validated workflow simulator inspired by the historic Therac-25 radiation machine case study. Designed to eliminate race conditions and software faults through state validation graphs, operation rollback stacks, and strict state machine transitions.',
     features: [
@@ -248,7 +248,7 @@ const projectsData = {
   'hostel-mgmt': {
     title: 'Hotel / Hostel Management System',
     role: 'Enterprise Operations & Booking Engine',
-    tag: 'CENTER-BACK (CB)',
+    tag: 'ENTERPRISE SOFTWARE',
     stack: ['Java', 'OOP Architecture', 'Swing GUI', 'Relational DB / File IO'],
     desc: 'A comprehensive management system built in Java to streamline facility operations. Handles real-time room availability, guest check-in/check-out workflows, automatic billing, and record persistence using rigorous Object-Oriented principles.',
     features: [
@@ -263,7 +263,7 @@ const projectsData = {
   'garden-mgmt': {
     title: 'Effective Garden Management',
     role: 'Algorithmic Resource & Schedule Engine',
-    tag: 'WING ENGINE (RW)',
+    tag: 'ALGORITHM DESIGN',
     stack: ['C++', 'Data Structures', 'OOP', 'Resource Scheduling'],
     desc: 'An algorithmic management tool developed in C++ to optimize agricultural resources. Calculates hydration requirements, soil care schedules, and growth tracking metrics through computational routines and data structures.',
     features: [
