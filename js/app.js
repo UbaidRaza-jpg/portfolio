@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initLineupObserver();
   initProjectModals();
   initMobileMenu();
-  initContactForm();
   initActiveNav();
   initScrollReveal();
 });
@@ -311,27 +310,7 @@ function initActiveNav() {
   sections.forEach((section) => observer.observe(section));
 }
 
-/* ==========================================================================
-   7. PRESS ROOM / CONTACT FORM HANDLER
-   ========================================================================== */
-function initContactForm() {
-  const form = document.getElementById('transferInquiryForm');
-  if (!form) return;
 
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-  
-    const name = document.getElementById('senderName').value;
-    const organization = document.getElementById('senderOrg').value;
-    const subject = document.getElementById('senderSubject').value;
-    const message = document.getElementById('senderMessage').value;
-
-    const emailBody = `Sender Name: ${name}\nOrganization/Club: ${organization}\n\nMessage:\n${message}`;
-    const mailtoUrl = `mailto:ubaid183d9@gmail.com?subject=${encodeURIComponent(`[Transfer Inquiry] ${subject}`)}&body=${encodeURIComponent(emailBody)}`;
-
-    window.location.href = mailtoUrl;
-  });
-}
 
 /* ==========================================================================
    9. SCROLL REVEAL ANIMATION ENGINE

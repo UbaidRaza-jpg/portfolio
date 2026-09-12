@@ -708,29 +708,34 @@
             Send an interview invite, project opportunity, or freelance inquiry directly to Muhammad Ubaid Raza.
           </p>
 
-          <form id="transferInquiryForm">
+          <form id="transferInquiryForm" action="https://formsubmit.co/ubaid183d9@gmail.com" method="POST">
+            <!-- Formsubmit Configurations -->
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_subject" value="New Portfolio Contact Submission">
+            <input type="hidden" name="_template" value="table">
+
             <div class="form-group">
               <label class="form-label" for="senderName">Your Name / Scout</label>
-              <input type="text" id="senderName" class="form-input" placeholder="e.g. Hiring Manager / Recruiter" required>
+              <input type="text" name="Name" id="senderName" class="form-input" placeholder="e.g. Hiring Manager / Recruiter" required>
             </div>
 
             <div class="form-group">
               <label class="form-label" for="senderOrg">Club / Company Name</label>
-              <input type="text" id="senderOrg" class="form-input" placeholder="e.g. AI Innovations Corp / Software Studio" required>
+              <input type="text" name="Organization" id="senderOrg" class="form-input" placeholder="e.g. AI Innovations Corp / Software Studio" required>
             </div>
 
             <div class="form-group">
               <label class="form-label" for="senderSubject">Subject / Opportunity</label>
-              <input type="text" id="senderSubject" class="form-input" placeholder="e.g. AI Developer Internship / Full-Stack Project" required>
+              <input type="text" name="Subject" id="senderSubject" class="form-input" placeholder="e.g. AI Developer Internship / Full-Stack Project" required>
             </div>
 
             <div class="form-group">
               <label class="form-label" for="senderMessage">Contract Proposal / Message</label>
-              <textarea id="senderMessage" class="form-textarea" placeholder="Describe the role, timeline, or engineering challenge..." required></textarea>
+              <textarea name="Message" id="senderMessage" class="form-textarea" placeholder="Describe the role, timeline, or engineering challenge..." required></textarea>
             </div>
 
             <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">
-              ⚽ Submit Contact Me
+              SEND MESSAGE
             </button>
           </form>
         </div>
