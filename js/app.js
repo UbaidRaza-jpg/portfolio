@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initResumeModal();
   initMobileMenu();
   initContactForm();
+  initActiveNav();
 });
 
 /* ==========================================================================
@@ -420,6 +421,32 @@ function initMobileMenu() {
       navLinks.classList.remove('mobile-open');
     });
   });
+}
+
+/* ==========================================================================
+   8. ACTIVE NAV LINK HIGHLIGHT ON SCROLL
+   ========================================================================== */
+function initActiveNav() {
+  const sections = document.querySelectorAll('section[id]');
+  const navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
+
+  if (!sections.length || !navAnchors.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const id = entry.target.getAttribute('id');
+        navAnchors.forEach((a) => {
+          a.classList.remove('active');
+          if (a.getAttribute('href') === `#${id}`) {
+            a.classList.add('active');
+          }
+        });
+      }
+    });
+  }, { threshold: 0.3, rootMargin: '-80px 0px -50% 0px' });
+
+  sections.forEach((section) => observer.observe(section));
 }
 
 /* ==========================================================================
