@@ -215,33 +215,9 @@ body {
   gap: 12px;
 }
 
-.sound-toggle-btn {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid var(--border-subtle);
-  color: var(--text-dim);
-  padding: 4px 12px;
-  border-radius: 6px;
-  font-family: var(--font-hud);
-  font-size: 0.8rem;
-  letter-spacing: 1px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  transition: var(--transition-fast);
-}
 
-.sound-toggle-btn:hover {
-  background: rgba(230, 202, 101, 0.15);
-  color: var(--gold-primary);
-  border-color: var(--border-gold);
-}
 
-.sound-toggle-btn.active {
-  color: var(--ucl-cyan);
-  border-color: var(--border-ucl);
-  background: rgba(0, 240, 255, 0.12);
-}
+
 
 
 /* ==========================================================================

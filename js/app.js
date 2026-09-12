@@ -6,7 +6,6 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  initSoundEngine();
   initFutCardTilt();
   initLineupObserver();
   initProjectModals();
@@ -16,138 +15,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initActiveNav();
   initScrollReveal();
 });
-
-/* ==========================================================================
-   1. SYNTHESIZED WEB AUDIO ENGINE (Zero External Audio Dependencies)
-   ========================================================================== */
-let audioCtx = null;
-let isSoundEnabled = false;
-let ambientGain = null;
-let ambientSource = null;
-
-function initSoundEngine() {
-  const soundBtn = document.getElementById('soundToggleBtn');
-  if (!soundBtn) return;
-
-  soundBtn.addEventListener('click', () => {
-    if (!audioCtx) {
-      const AudioContext = window.AudioContext || window.webkitAudioContext;
-      audioCtx = new AudioContext();
-    }
-    if (audioCtx.state === 'suspended') {
-      audioCtx.resume();
-    }
-
-    isSoundEnabled = !isSoundEnabled;
-    soundBtn.classList.toggle('active', isSoundEnabled);
-
-    if (isSoundEnabled) {
-      soundBtn.innerHTML = '🔊 SOUND ON';
-      playRefereeWhistle();
-      startStadiumAmbient();
-    } else {
-      soundBtn.innerHTML = '🔈 SOUND OFF';
-      stopStadiumAmbient();
-    }
-  });
-}
-
-// Play a crisp synthetic referee whistle
-function playRefereeWhistle() {
-  if (!isSoundEnabled || !audioCtx) return;
-  try {
-    const osc = audioCtx.createOscillator();
-    const gain = audioCtx.createGain();
-    const now = audioCtx.currentTime;
-
-    osc.type = 'triangle';
-    osc.frequency.setValueAtTime(2400, now);
-    osc.frequency.exponentialRampToValueAtTime(2900, now + 0.08);
-    osc.frequency.exponentialRampToValueAtTime(2500, now + 0.2);
-
-    gain.gain.setValueAtTime(0, now);
-    gain.gain.linearRampToValueAtTime(0.18, now + 0.03);
-    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.28);
-
-    osc.connect(gain);
-    gain.connect(audioCtx.destination);
-
-    osc.start(now);
-    osc.stop(now + 0.3);
-  } catch (e) {
-    console.error(e);
-  }
-}
-
-// Subtle UI click / pop sound
-function playUIClick() {
-  if (!isSoundEnabled || !audioCtx) return;
-  try {
-    const osc = audioCtx.createOscillator();
-    const gain = audioCtx.createGain();
-    const now = audioCtx.currentTime;
-
-    osc.type = 'sine';
-    osc.frequency.setValueAtTime(800, now);
-    osc.frequency.exponentialRampToValueAtTime(1400, now + 0.05);
-
-    gain.gain.setValueAtTime(0.12, now);
-    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
-
-    osc.connect(gain);
-    gain.connect(audioCtx.destination);
-
-    osc.start(now);
-    osc.stop(now + 0.09);
-  } catch (e) {
-    console.error(e);
-  }
-}
-
-// Start warm stadium crowd ambiance
-function startStadiumAmbient() {
-  if (!audioCtx) return;
-  try {
-    const bufferSize = audioCtx.sampleRate * 2;
-    const noiseBuffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
-    const output = noiseBuffer.getChannelData(0);
-    for (let i = 0; i < bufferSize; i++) {
-      output[i] = Math.random() * 2 - 1;
-    }
-
-    ambientSource = audioCtx.createBufferSource();
-    ambientSource.buffer = noiseBuffer;
-    ambientSource.loop = true;
-
-    const filter = audioCtx.createBiquadFilter();
-    filter.type = 'bandpass';
-    filter.frequency.value = 320;
-    filter.Q.value = 1.2;
-
-    ambientGain = audioCtx.createGain();
-    ambientGain.gain.setValueAtTime(0.025, audioCtx.currentTime);
-
-    ambientSource.connect(filter);
-    filter.connect(ambientGain);
-    ambientGain.connect(audioCtx.destination);
-
-    ambientSource.start();
-  } catch (e) {
-    console.error(e);
-  }
-}
-
-function stopStadiumAmbient() {
-  if (ambientSource) {
-    try {
-      ambientSource.stop();
-      ambientSource.disconnect();
-      ambientSource = null;
-    } catch (e) {
-      console.error(e);
-    }
-  }
-}
 
 /* ==========================================================================
    2. 3D INTERACTIVE FUT CARD TILT EFFECT
@@ -187,12 +54,10 @@ function initLineupObserver() {
   function triggerLineup() {
     if (hasPopped) return;
     hasPopped = true;
-    playRefereeWhistle();
 
     pitchSlots.forEach((slot, index) => {
       setTimeout(() => {
         slot.classList.add('popped-in');
-        playUIClick();
       }, index * 200);
     });
   }
@@ -290,8 +155,7 @@ function initProjectModals() {
       const project = projectsData[projectId];
       if (!project) return;
 
-      playUIClick();
-      populateProjectModal(project);
+          populateProjectModal(project);
       modalOverlay.classList.add('active');
       document.body.style.overflow = 'hidden';
     });
@@ -368,8 +232,7 @@ function initResumeModal() {
   openBtns.forEach((btn) => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      playUIClick();
-      resumeModal.classList.add('active');
+          resumeModal.classList.add('active');
       document.body.style.overflow = 'hidden';
     });
   });
@@ -390,8 +253,7 @@ function initResumeModal() {
 
   if (printBtn) {
     printBtn.addEventListener('click', () => {
-      playUIClick();
-      // Ensure modal stays visible and body scroll is restored before printing
+          // Ensure modal stays visible and body scroll is restored before printing
       resumeModal.classList.add('active');
       document.body.style.overflow = '';
       // Small delay to let the browser settle before opening print dialog
@@ -459,8 +321,7 @@ function initContactForm() {
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    playUIClick();
-
+  
     const name = document.getElementById('senderName').value;
     const organization = document.getElementById('senderOrg').value;
     const subject = document.getElementById('senderSubject').value;
