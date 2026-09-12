@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileMenu();
   initContactForm();
   initActiveNav();
+  initScrollReveal();
 });
 
 /* ==========================================================================
@@ -470,4 +471,31 @@ function initContactForm() {
 
     window.location.href = mailtoUrl;
   });
+}
+
+/* ==========================================================================
+   9. SCROLL REVEAL ANIMATION ENGINE
+   ========================================================================== */
+function initScrollReveal() {
+  // Auto-apply scroll-reveal class to trophy cards and timeline items
+  const revealTargets = [
+    ...document.querySelectorAll('.trophy-card'),
+    ...document.querySelectorAll('.timeline-item'),
+    ...document.querySelectorAll('.skill-category-card'),
+    ...document.querySelectorAll('.contact-dossier-card'),
+    ...document.querySelectorAll('.contact-form-box')
+  ];
+
+  revealTargets.forEach((el) => el.classList.add('scroll-reveal'));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  revealTargets.forEach((el) => observer.observe(el));
 }
