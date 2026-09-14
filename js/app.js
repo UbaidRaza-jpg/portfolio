@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initActiveNav();
   initScrollReveal();
   initCustomCursor();
+  initContactForm();
 });
 
 /* ==========================================================================
@@ -398,5 +399,68 @@ function initCustomCursor() {
       trail.style.borderColor = 'rgba(0, 240, 255, 0.5)';
       dot.style.backgroundColor = 'var(--ucl-cyan)';
     });
+  });
+}
+
+/* ==========================================================================
+   9. ASYNC CONTACT INQUIRY ENGINE (SEAMLESS IN-PAGE DISPATCH)
+   ========================================================================== */
+function initContactForm() {
+  const form = document.getElementById('transferInquiryForm');
+  const statusMsg = document.getElementById('formStatusMessage');
+  const submitBtn = document.getElementById('contactSubmitBtn');
+
+  if (!form || !submitBtn) return;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = 'DISPATCHING INQUIRY... ⚡';
+    submitBtn.disabled = true;
+
+    try {
+      const formData = new FormData(form);
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+
+      if (response.ok) {
+        if (statusMsg) {
+          statusMsg.style.display = 'block';
+          statusMsg.style.background = 'rgba(0, 240, 255, 0.1)';
+          statusMsg.style.border = '1px solid var(--border-ucl)';
+          statusMsg.style.color = 'var(--ucl-cyan)';
+          statusMsg.innerHTML = '⚽ <strong>Inquiry Dispatched Successfully!</strong> Muhammad Ubaid Raza will review and respond directly to your email.';
+        }
+        form.reset();
+      } else {
+        throw new Error('Server response was not ok');
+      }
+    } catch (err) {
+      if (statusMsg) {
+        statusMsg.style.display = 'block';
+        statusMsg.style.background = 'rgba(239, 68, 68, 0.15)';
+        statusMsg.style.border = '1px solid #ef4444';
+        statusMsg.style.color = '#fca5a5';
+        statusMsg.innerHTML = '⚠️ Transmission failed. Please email directly at <strong>ubaid183d9@gmail.com</strong>';
+      }
+    } finally {
+      submitBtn.innerHTML = originalText;
+      submitBtn.disabled = false;
+      setTimeout(() => {
+        if (statusMsg) {
+          statusMsg.style.transition = 'opacity 0.5s ease';
+          statusMsg.style.opacity = '0';
+          setTimeout(() => {
+            statusMsg.style.display = 'none';
+            statusMsg.style.opacity = '1';
+          }, 500);
+        }
+      }, 7000);
+    }
   });
 }
