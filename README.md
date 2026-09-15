@@ -53,8 +53,8 @@ The concept mirrors a live football broadcast matchday experience:
 |---|---|---|
 | **ST - Forward** | Multilingual Video Subtitle Generator | Python, Whisper AI, Streamlit, FFmpeg |
 | **CAM - Playmaker** | THERAC-25 Recovery System | C++, Graphs, Stacks, Linked Lists |
-| **RW - Wing** | Effective Garden Management | C++, OOP, Resource Scheduling |
-| **CB - Defender** | Hotel/Hostel Management System | Java, Swing GUI, OOP |
+| **RW - Wing** | Garden Management Engine | C++, AVL Trees, Self-Balancing BST, Recursion |
+| **CB - Defender** | Hostel Management System | Java, Swing GUI, Database |
 
 ---
 

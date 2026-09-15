@@ -2130,6 +2130,37 @@ body {
   }
 }
 
+@media (max-width: 480px) {
+  .container {
+    padding: 0 14px;
+  }
+  .fut-card {
+    width: 100%;
+    max-width: 300px;
+    height: 460px;
+    padding: 14px;
+    border-radius: 18px;
+  }
+  .card-photo-frame {
+    width: 210px;
+    height: 210px;
+    margin: -10px auto 6px;
+  }
+  .radar-chart-container {
+    padding: 14px 6px;
+    width: 100%;
+    overflow: hidden;
+  }
+  .radar-chart-container svg {
+    max-width: 100%;
+    height: auto;
+  }
+  .project-tactical-card {
+    max-width: 100%;
+    padding: 14px;
+  }
+}
+
 /* ==========================================================================
    PRINT STYLES — Clean, ATS-Friendly PDF / CV Output
    Isolates only #printableResumeArea when window.print() is triggered

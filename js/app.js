@@ -114,28 +114,28 @@ const projectsData = {
     title: 'Hostel Management System',
     role: 'Enterprise Operations & Booking Engine',
     tag: 'ENTERPRISE SOFTWARE',
-    stack: ['Java', 'OOP Architecture', 'Swing GUI', 'Relational DB / File IO'],
-    desc: 'A comprehensive management system built in Java to streamline facility operations. Handles real-time room availability, resident check-in/check-out workflows, automatic billing, and record persistence using rigorous Object-Oriented principles.',
+    stack: ['Java', 'Swing GUI', 'Relational DB / File IO', 'OOP Architecture'],
+    desc: 'Java, GUI, database-backed system for room check-in, check-out, and booking. Engineered with modular Object-Oriented principles, persistent record storage, dynamic availability checking, and automated expense calculations.',
     features: [
       'Modular OOP design with full encapsulation, inheritance, and clean polymorphism',
       'Room reservation engine with dynamic status updates and conflict avoidance',
       'Automated invoice and expense calculation with itemized billing receipts',
-      'Search and filter functionality for rapid resident verification'
+      'Search and filter functionality for rapid resident verification and record persistence'
     ],
     liveUrl: null,
     githubUrl: 'https://github.com/UbaidRaza-jpg/Hostel-Management-System'
   },
   'garden-mgmt': {
-    title: 'Effective Garden Management',
-    role: 'Algorithmic Resource & Schedule Engine',
-    tag: 'ALGORITHM DESIGN',
-    stack: ['C++', 'Data Structures', 'OOP', 'Resource Scheduling'],
-    desc: 'An algorithmic management tool developed in C++ to optimize agricultural resources. Calculates hydration requirements, soil care schedules, and growth tracking metrics through computational routines and data structures.',
+    title: 'Garden Management Engine (AVL Tree Architecture)',
+    role: 'Self-Balancing BST & Plant Systems Engine',
+    tag: 'ADVANCED DATA STRUCTURES',
+    stack: ['C++', 'AVL Trees', 'Self-Balancing BST', 'Recursive Traversal', 'Tree Rebalancing'],
+    desc: 'A high-performance C++ plant and garden management engine built around an AVL (Adelson-Velsky and Landis) self-balancing binary search tree. Guarantees strict O(log n) search, insertion, and deletion complexity via dynamic single and double tree rotations (LL, RR, LR, RL). Features recursive depth-first tree traversal for batch growth updates, robust deletion with full rebalancing, and zero memory leaks.',
     features: [
-      'Optimized watering algorithms based on environmental factors and plant profiles',
-      'Categorized registry using linked data structures for fast lookup',
-      'Predictive diagnostic warnings for nutrient replenishment and harvest timing',
-      'Minimal memory footprint and fast execution speed in pure C++'
+      'Self-balancing AVL tree architecture maintaining strict balance factors (-1, 0, +1) across all node insertions and modifications',
+      'Robust delete function with full rebalancing via LL, RR, LR, and RL rotations and in-order successor substitution',
+      'Recursive tree traversal engine executing scheduled batch plant growth updates and hydration calculations',
+      'Guaranteed O(log n) worst-case search and retrieval velocity with custom C++ pointer management and zero memory leaks'
     ],
     liveUrl: null,
     githubUrl: 'https://github.com/UbaidRaza-jpg/Effective-Garden-Management'
@@ -216,8 +216,10 @@ function populateProjectModal(project) {
   const liveBtn = document.getElementById('modalLiveLink');
 
   if (project.liveUrl) {
-    if (liveCallout && calloutBtn) {
+    if (liveCallout) {
       liveCallout.style.display = 'flex';
+    }
+    if (calloutBtn) {
       calloutBtn.href = project.liveUrl;
     }
     if (liveBtn) {
@@ -228,17 +230,24 @@ function populateProjectModal(project) {
     if (liveCallout) {
       liveCallout.style.display = 'none';
     }
+    if (calloutBtn) {
+      calloutBtn.removeAttribute('href');
+    }
     if (liveBtn) {
       liveBtn.style.display = 'none';
+      liveBtn.removeAttribute('href');
     }
   }
 
   const githubBtn = document.getElementById('modalGithubLink');
-  if (project.githubUrl) {
-    githubBtn.href = project.githubUrl;
-    githubBtn.style.display = 'inline-flex';
-  } else {
-    githubBtn.style.display = 'none';
+  if (githubBtn) {
+    if (project.githubUrl) {
+      githubBtn.href = project.githubUrl;
+      githubBtn.style.display = 'inline-flex';
+    } else {
+      githubBtn.style.display = 'none';
+      githubBtn.removeAttribute('href');
+    }
   }
 }
 
