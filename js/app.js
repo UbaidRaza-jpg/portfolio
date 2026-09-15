@@ -111,16 +111,16 @@ const projectsData = {
     githubUrl: 'https://github.com/UbaidRaza-jpg/Therac-Recovery-System'
   },
   'hostel-mgmt': {
-    title: 'Hotel / Hostel Management System',
+    title: 'Hostel Management System',
     role: 'Enterprise Operations & Booking Engine',
     tag: 'ENTERPRISE SOFTWARE',
     stack: ['Java', 'OOP Architecture', 'Swing GUI', 'Relational DB / File IO'],
-    desc: 'A comprehensive management system built in Java to streamline facility operations. Handles real-time room availability, guest check-in/check-out workflows, automatic billing, and record persistence using rigorous Object-Oriented principles.',
+    desc: 'A comprehensive management system built in Java to streamline facility operations. Handles real-time room availability, resident check-in/check-out workflows, automatic billing, and record persistence using rigorous Object-Oriented principles.',
     features: [
       'Modular OOP design with full encapsulation, inheritance, and clean polymorphism',
       'Room reservation engine with dynamic status updates and conflict avoidance',
       'Automated invoice and expense calculation with itemized billing receipts',
-      'Search and filter functionality for rapid guest verification'
+      'Search and filter functionality for rapid resident verification'
     ],
     liveUrl: null,
     githubUrl: 'https://github.com/UbaidRaza-jpg/Hostel-Management-System'
@@ -145,17 +145,26 @@ const projectsData = {
 function initProjectModals() {
   const modalOverlay = document.getElementById('projectModalOverlay');
   const closeBtn = document.getElementById('projectModalClose');
-  const projectSlots = document.querySelectorAll('.pitch-player-slot');
+  const tacticalCards = document.querySelectorAll('.pitch-player-slot');
 
   if (!modalOverlay || !closeBtn) return;
 
-  projectSlots.forEach((slot) => {
-    slot.addEventListener('click', () => {
-      const projectId = slot.getAttribute('data-project');
+  tacticalCards.forEach((slot) => {
+    const projectId = slot.getAttribute('data-project');
+    if (!projectId) return;
+
+    // Attach click directly to the entire slot and card
+    slot.style.cursor = 'pointer';
+    slot.addEventListener('click', (e) => {
+      // If user specifically clicked an external anchor inside, let it open
+      if (e.target.tagName === 'A' && e.target.getAttribute('href') && !e.target.getAttribute('href').startsWith('#')) {
+        return;
+      }
+      e.preventDefault();
       const project = projectsData[projectId];
       if (!project) return;
 
-          populateProjectModal(project);
+      populateProjectModal(project);
       modalOverlay.classList.add('active');
       document.body.style.overflow = 'hidden';
     });
@@ -200,13 +209,27 @@ function populateProjectModal(project) {
     .map(feat => `<li>${feat}</li>`)
     .join('');
 
-  // CTAs
+  // Prominent Live Streamlit Banner & CTAs
+  const liveCallout = document.getElementById('modalLiveCallout');
+  const calloutBtn = document.getElementById('modalCalloutBtn');
   const liveBtn = document.getElementById('modalLiveLink');
+
   if (project.liveUrl) {
-    liveBtn.href = project.liveUrl;
-    liveBtn.style.display = 'inline-flex';
+    if (liveCallout && calloutBtn) {
+      liveCallout.style.display = 'flex';
+      calloutBtn.href = project.liveUrl;
+    }
+    if (liveBtn) {
+      liveBtn.href = project.liveUrl;
+      liveBtn.style.display = 'inline-flex';
+    }
   } else {
-    liveBtn.style.display = 'none';
+    if (liveCallout) {
+      liveCallout.style.display = 'none';
+    }
+    if (liveBtn) {
+      liveBtn.style.display = 'none';
+    }
   }
 
   const githubBtn = document.getElementById('modalGithubLink');
@@ -383,7 +406,7 @@ function initCustomCursor() {
   animateTrail();
 
   // Add hover effect for all clickable elements
-  const clickables = document.querySelectorAll('a, button, input, textarea, .card-project, .fut-card');
+  const clickables = document.querySelectorAll('a, button, input, textarea, .card-project, .fut-card, .project-tactical-card, .pitch-player-slot');
   clickables.forEach(el => {
     el.addEventListener('mouseenter', () => {
       trail.style.width = '48px';

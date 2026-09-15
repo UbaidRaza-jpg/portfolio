@@ -32,7 +32,7 @@
     href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M45 5 L10 55 L45 55 L35 95 L90 40 L55 40 Z' fill='%238b5cf6'/></svg>">
 
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=2.0">
 </head>
 
 <body>
@@ -275,11 +275,7 @@
                 <div class="project-tactical-card">
                   <span class="card-position-badge fw">FULL-STACK AI</span>
                   <div class="card-project-header">
-                    <a href="https://built-by-ubaid-multilingual-video-subtitle-generator.streamlit.app/"
-                      target="_blank" style="text-decoration:none; color:inherit;">
-                      <h3 class="card-project-title" style="text-decoration:underline; text-underline-offset:4px;">
-                        Multilingual Subtitle Generator ↗</h3>
-                    </a>
+                    <h3 class="card-project-title">Multilingual Subtitle Generator</h3>
                     <span class="card-live-dot" title="Live Application Online"></span>
                   </div>
                   <p class="card-project-desc">
@@ -307,11 +303,7 @@
                 <div class="project-tactical-card">
                   <span class="card-position-badge">SYSTEMS PROGRAMMING</span>
                   <div class="card-project-header">
-                    <a href="https://github.com/UbaidRaza-jpg/Therac-Recovery-System" target="_blank"
-                      style="text-decoration:none; color:inherit;">
-                      <h3 class="card-project-title" style="text-decoration:underline; text-underline-offset:4px;">
-                        THERAC-25 Recovery System ↗</h3>
-                    </a>
+                    <h3 class="card-project-title">THERAC-25 Recovery System</h3>
                   </div>
                   <p class="card-project-desc">
                     Risk-validated workflow simulator inspired by Therac-25. Implements graphs, rollback stacks, and
@@ -361,7 +353,7 @@
                 <div class="project-tactical-card">
                   <span class="card-position-badge">ENTERPRISE SOFTWARE</span>
                   <div class="card-project-header">
-                    <h3 class="card-project-title">Hotel / Hostel Management</h3>
+                    <h3 class="card-project-title">Hostel Management System</h3>
                   </div>
                   <p class="card-project-desc">
                     Object-oriented Java management system for reservations, room inventory, billing operations, and
@@ -840,6 +832,23 @@
       </div>
 
       <div class="modal-body">
+        <!-- Prominent Live Streamlit Callout Banner -->
+        <div id="modalLiveCallout"
+          style="display:none; margin-bottom: 22px; padding: 14px 18px; border-radius: 12px; background: linear-gradient(135deg, rgba(0, 240, 255, 0.16), rgba(29, 114, 254, 0.22)); border: 2px solid #00f0ff; box-shadow: 0 0 25px rgba(0, 240, 255, 0.35); align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px;">
+          <div>
+            <div style="color: #00f0ff; font-family: var(--font-hud); font-weight: 800; font-size: 0.95rem; letter-spacing: 1px; display: flex; align-items: center; gap: 8px;">
+              <span style="display:inline-block; width:10px; height:10px; border-radius:50%; background:#00f0ff; box-shadow: 0 0 10px #00f0ff;"></span>
+              LIVE STREAMLIT APPLICATION READY
+            </div>
+            <div style="color: #e2e8f0; font-size: 0.85rem; margin-top: 4px;">
+              Interactive web app deployed live in the cloud. Upload or transcribe in real-time.
+            </div>
+          </div>
+          <a href="#" id="modalCalloutBtn" target="_blank" rel="noopener" class="btn-live-stream" style="padding: 10px 18px; font-size: 0.88rem;">
+            🚀 OPEN STREAMLIT APP ↗
+          </a>
+        </div>
+
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
           <div style="color: var(--gold-primary); font-family: var(--font-hud); font-size: 1.1rem; font-weight: 700;"
             id="modalProjectRole">
@@ -869,9 +878,9 @@
         </ul>
 
         <div
-          style="display: flex; flex-wrap: wrap; gap: 14px; border-top: 1px solid var(--border-subtle); padding-top: 20px;">
-          <a href="#" target="_blank" rel="noopener" class="btn-primary" id="modalLiveLink">
-            🚀 Launch Live Application
+          style="display: flex; flex-wrap: wrap; gap: 14px; border-top: 1px solid var(--border-subtle); padding-top: 20px; align-items: center;">
+          <a href="#" target="_blank" rel="noopener" class="btn-live-stream" id="modalLiveLink">
+            🚀 Launch Live Application (Streamlit) ↗
           </a>
           <a href="#" target="_blank" rel="noopener" class="btn-secondary" id="modalGithubLink">
             🐙 Inspect Source Code
@@ -884,7 +893,7 @@
 
 
   <!-- JavaScript Application -->
-  <script src="js/app.js"></script>
+  <script src="js/app.js?v=2.0"></script>
 </body>
 
 </html>
