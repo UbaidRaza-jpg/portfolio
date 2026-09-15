@@ -897,7 +897,6 @@ body {
 }
 
 .tactical-pitch-stage {
-  perspective: 1400px;
   margin-top: 30px;
 }
 
@@ -922,14 +921,13 @@ body {
     0 0 50px var(--pitch-glow),
     inset 0 0 80px rgba(0, 0, 0, 0.6);
   padding: 40px 20px;
-  transform: rotateX(20deg);
-  transform-style: preserve-3d;
+  transform: perspective(1200px) rotateX(12deg);
   transform-origin: center top;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.4s ease;
 }
 
 .football-pitch:hover {
-  transform: rotateX(12deg);
+  transform: perspective(1200px) rotateX(6deg);
 }
 
 /* Pitch Field Markings (SVG overlay / CSS) */
@@ -1001,7 +999,6 @@ body {
   justify-content: space-between;
   min-height: 680px;
   padding: 10px 30px;
-  transform-style: preserve-3d;
 }
 
 .tactical-row {
@@ -1020,7 +1017,7 @@ body {
   opacity: 0;
   transform: translateY(20px) scale(0.95);
   transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-  cursor: pointer;
+  cursor: pointer !important;
   z-index: 15;
 }
 
@@ -1056,16 +1053,20 @@ body {
   backdrop-filter: blur(12px);
   position: relative;
   z-index: 25;
-  cursor: pointer;
+  cursor: pointer !important;
   transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-  pointer-events: auto;
+  pointer-events: auto !important;
+}
+
+.project-tactical-card * {
+  pointer-events: none;
 }
 
 .pitch-player-slot:hover .project-tactical-card,
 .project-tactical-card:hover {
-  transform: translateY(-10px) scale(1.04);
-  border-color: var(--ucl-cyan);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 30px var(--ucl-glow);
+  transform: translateY(-10px) scale(1.05) !important;
+  border-color: var(--ucl-cyan) !important;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 35px var(--ucl-glow) !important;
 }
 
 .card-position-badge {

@@ -142,31 +142,32 @@ const projectsData = {
   }
 };
 
+window.openProjectModal = function(projectId) {
+  const modalOverlay = document.getElementById('projectModalOverlay');
+  const project = projectsData[projectId];
+  if (!project || !modalOverlay) return;
+
+  populateProjectModal(project);
+  modalOverlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+};
+
 function initProjectModals() {
   const modalOverlay = document.getElementById('projectModalOverlay');
   const closeBtn = document.getElementById('projectModalClose');
-  const tacticalCards = document.querySelectorAll('.pitch-player-slot');
+  const tacticalCards = document.querySelectorAll('.pitch-player-slot, .project-tactical-card');
 
   if (!modalOverlay || !closeBtn) return;
 
-  tacticalCards.forEach((slot) => {
+  tacticalCards.forEach((el) => {
+    const slot = el.closest('.pitch-player-slot') || el;
     const projectId = slot.getAttribute('data-project');
     if (!projectId) return;
 
-    // Attach click directly to the entire slot and card
-    slot.style.cursor = 'pointer';
-    slot.addEventListener('click', (e) => {
-      // If user specifically clicked an external anchor inside, let it open
-      if (e.target.tagName === 'A' && e.target.getAttribute('href') && !e.target.getAttribute('href').startsWith('#')) {
-        return;
-      }
-      e.preventDefault();
-      const project = projectsData[projectId];
-      if (!project) return;
-
-      populateProjectModal(project);
-      modalOverlay.classList.add('active');
-      document.body.style.overflow = 'hidden';
+    el.style.cursor = 'pointer';
+    el.addEventListener('click', (e) => {
+      e.stopPropagation();
+      window.openProjectModal(projectId);
     });
   });
 

@@ -32,7 +32,7 @@
     href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M45 5 L10 55 L45 55 L35 95 L90 40 L55 40 Z' fill='%238b5cf6'/></svg>">
 
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="css/style.css?v=2.0">
+  <link rel="stylesheet" href="css/style.css?v=3.0">
 </head>
 
 <body>
@@ -270,9 +270,9 @@
 
             <!-- ATTACK ROW: Flagship AI Project -->
             <div class="tactical-row">
-              <div class="pitch-player-slot" data-project="subtitle-gen">
+              <div class="pitch-player-slot" data-project="subtitle-gen" onclick="openProjectModal('subtitle-gen')">
                 <div class="pitch-marker-radar"></div>
-                <div class="project-tactical-card">
+                <div class="project-tactical-card" onclick="openProjectModal('subtitle-gen')">
                   <span class="card-position-badge fw">FULL-STACK AI</span>
                   <div class="card-project-header">
                     <h3 class="card-project-title">Multilingual Subtitle Generator</h3>
@@ -298,9 +298,9 @@
 
             <!-- MIDFIELD ROW: Algorithmic Systems -->
             <div class="tactical-row" style="justify-content: space-around;">
-              <div class="pitch-player-slot" data-project="therac-recovery">
+              <div class="pitch-player-slot" data-project="therac-recovery" onclick="openProjectModal('therac-recovery')">
                 <div class="pitch-marker-radar"></div>
-                <div class="project-tactical-card">
+                <div class="project-tactical-card" onclick="openProjectModal('therac-recovery')">
                   <span class="card-position-badge">SYSTEMS PROGRAMMING</span>
                   <div class="card-project-header">
                     <h3 class="card-project-title">THERAC-25 Recovery System</h3>
@@ -322,9 +322,9 @@
                 </div>
               </div>
 
-              <div class="pitch-player-slot" data-project="garden-mgmt">
+              <div class="pitch-player-slot" data-project="garden-mgmt" onclick="openProjectModal('garden-mgmt')">
                 <div class="pitch-marker-radar"></div>
-                <div class="project-tactical-card">
+                <div class="project-tactical-card" onclick="openProjectModal('garden-mgmt')">
                   <span class="card-position-badge">ALGORITHM DESIGN</span>
                   <div class="card-project-header">
                     <h3 class="card-project-title">Garden Management Engine</h3>
@@ -348,9 +348,9 @@
 
             <!-- DEFENSE ROW: Enterprise Structure -->
             <div class="tactical-row">
-              <div class="pitch-player-slot" data-project="hostel-mgmt">
+              <div class="pitch-player-slot" data-project="hostel-mgmt" onclick="openProjectModal('hostel-mgmt')">
                 <div class="pitch-marker-radar"></div>
-                <div class="project-tactical-card">
+                <div class="project-tactical-card" onclick="openProjectModal('hostel-mgmt')">
                   <span class="card-position-badge">ENTERPRISE SOFTWARE</span>
                   <div class="card-project-header">
                     <h3 class="card-project-title">Hostel Management System</h3>
@@ -893,7 +893,7 @@
 
 
   <!-- JavaScript Application -->
-  <script src="js/app.js?v=2.0"></script>
+  <script src="js/app.js?v=3.0"></script>
 </body>
 
 </html>
