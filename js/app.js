@@ -6,6 +6,7 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+  initCleanTopNav();
   initFutCardTilt();
   initLineupObserver();
   initProjectModals();
@@ -324,7 +325,7 @@ function initMobileMenu() {
    ========================================================================== */
 function initActiveNav() {
   const sections = document.querySelectorAll('section[id]');
-  const navAnchors = document.querySelectorAll('.nav-links a[href^="#"]');
+  const navAnchors = document.querySelectorAll('.nav-links a');
 
   if (!sections.length || !navAnchors.length) return;
 
@@ -345,9 +346,38 @@ function initActiveNav() {
 
     navAnchors.forEach((a) => {
       a.classList.remove('active');
-      if (a.getAttribute('href') === `#${current}`) {
+      const href = a.getAttribute('href');
+      if (current === 'hero' && (href === '#' || a.id === 'navAboutMe' || href === '#hero')) {
+        a.classList.add('active');
+      } else if (href === `#${current}`) {
         a.classList.add('active');
       }
+    });
+  });
+}
+
+function initCleanTopNav() {
+  function stripHeroHash() {
+    if (window.location.hash === '#hero') {
+      history.replaceState(null, '', window.location.pathname + window.location.search);
+    }
+  }
+
+  // If page loads with #hero in hash, strip it from address bar immediately
+  stripHeroHash();
+  window.addEventListener('hashchange', stripHeroHash);
+
+  const topLinks = document.querySelectorAll('.brand-logo, #navAboutMe, a[href="#hero"], .back-to-top-btn');
+  topLinks.forEach((link) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      history.replaceState(null, '', window.location.pathname + window.location.search);
+
+      const navAnchors = document.querySelectorAll('.nav-links a');
+      navAnchors.forEach(a => a.classList.remove('active'));
+      const aboutMe = document.getElementById('navAboutMe');
+      if (aboutMe) aboutMe.classList.add('active');
     });
   });
 }
