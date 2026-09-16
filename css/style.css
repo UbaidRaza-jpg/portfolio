@@ -1596,7 +1596,7 @@ body {
 }
 
 /* ==========================================================================
-   MODAL DIALOGS (MATCH REPORT / VAR & SCOUT DOSSIER RESUME)
+   MODAL DIALOG (VAR MATCH REPORT)
    ========================================================================== */
 .modal-overlay {
   position: fixed;
@@ -1725,36 +1725,6 @@ body {
   padding: 28px 24px;
 }
 
-/* Scout Dossier / Resume Modal Custom Styling */
-.scout-dossier-body {
-  background: #ffffff;
-  color: #1a202c;
-  border-radius: 12px;
-  padding: 32px;
-  font-family: 'Outfit', sans-serif;
-}
-
-.dossier-actions-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.print-resume-btn {
-  background: var(--bg-surface);
-  color: var(--gold-primary);
-  border: 1px solid var(--border-gold);
-  padding: 8px 16px;
-  border-radius: 6px;
-  font-family: var(--font-hud);
-  font-weight: 700;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
 /* ==========================================================================
    FOOTER
    ========================================================================== */
@@ -1776,32 +1746,6 @@ body {
 
 .footer-credits strong {
   color: var(--gold-primary);
-}
-
-/* ==========================================================================
-   PRINT STYLES (Clean, ATS-Friendly CV when user clicks Print)
-   ========================================================================== */
-@media print {
-  body * {
-    visibility: hidden;
-  }
-  .scout-dossier-body, .scout-dossier-body * {
-    visibility: visible;
-  }
-  .scout-dossier-body {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    margin: 0;
-    padding: 20px !important;
-    background: white !important;
-    color: black !important;
-    box-shadow: none !important;
-  }
-  .dossier-actions-bar, .modal-header, .broadcast-ticker, .site-nav {
-    display: none !important;
-  }
 }
 
 /* ==========================================================================
@@ -2351,109 +2295,6 @@ body {
     border-width: 2px;
     border-radius: 14px;
     box-sizing: border-box;
-  }
-}
-
-/* ==========================================================================
-   PRINT STYLES — Clean, ATS-Friendly PDF / CV Output
-   Isolates only #printableResumeArea when window.print() is triggered
-   ========================================================================== */
-@media print {
-  /* Hide absolutely everything on the page */
-  body > * {
-    display: none !important;
-  }
-
-  /* Show only the resume modal overlay (needed as parent) */
-  #resumeModalOverlay {
-    display: block !important;
-    position: static !important;
-    background: white !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    opacity: 1 !important;
-    pointer-events: auto !important;
-    backdrop-filter: none !important;
-    width: 100% !important;
-    height: auto !important;
-  }
-
-  /* Hide everything inside the modal EXCEPT the printable area */
-  #resumeModalOverlay > * {
-    display: none !important;
-  }
-
-  /* Show and expand the modal container */
-  #resumeModalOverlay .modal-container {
-    display: block !important;
-    position: static !important;
-    max-width: 100% !important;
-    max-height: none !important;
-    overflow: visible !important;
-    border: none !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    background: white !important;
-    transform: none !important;
-    width: 100% !important;
-    padding: 0 !important;
-  }
-
-  /* Show the modal body */
-  #resumeModalOverlay .modal-container .modal-body {
-    display: block !important;
-    background: white !important;
-    padding: 0 !important;
-  }
-
-  /* Show the printable resume area */
-  #resumeModalOverlay .modal-container .modal-body .scout-dossier-body {
-    display: block !important;
-    background: white !important;
-    color: black !important;
-    padding: 24px 28px !important;
-    box-shadow: none !important;
-    border-radius: 0 !important;
-    font-family: 'Outfit', Arial, sans-serif !important;
-    font-size: 12pt !important;
-    line-height: 1.5 !important;
-    width: 100% !important;
-  }
-
-  /* Hide the actions bar (print button etc) */
-  .dossier-actions-bar {
-    display: none !important;
-  }
-
-  /* Hide modal header */
-  .modal-header {
-    display: none !important;
-  }
-
-  /* Ensure all text in resume is black */
-  .scout-dossier-body * {
-    color: black !important;
-    background: white !important;
-    border-color: #cbd5e1 !important;
-    box-shadow: none !important;
-    text-shadow: none !important;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
-
-  /* Keep section divider lines */
-  .scout-dossier-body h2 {
-    border-bottom: 1.5px solid #334155 !important;
-    padding-bottom: 4px !important;
-    margin-bottom: 8px !important;
-    color: #0f172a !important;
-    font-size: 11pt !important;
-  }
-
-  /* Page settings */
-  @page {
-    margin: 14mm 16mm;
-    size: A4 portrait;
   }
 }
 

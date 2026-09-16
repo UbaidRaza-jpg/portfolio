@@ -308,55 +308,7 @@ function populateProjectModal(project) {
 }
 
 /* ==========================================================================
-   5. SCOUT DOSSIER (UPDATED SOFTWARE ENGINEER RESUME MODAL)
-   ========================================================================== */
-function initResumeModal() {
-  const resumeModal = document.getElementById('resumeModalOverlay');
-  const openBtns = document.querySelectorAll('.open-resume-btn');
-  const closeBtn = document.getElementById('resumeModalClose');
-  const printBtn = document.getElementById('printResumeBtn');
-
-  if (!resumeModal) return;
-
-  openBtns.forEach((btn) => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-          resumeModal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    });
-  });
-
-  if (closeBtn) {
-    closeBtn.addEventListener('click', () => {
-      resumeModal.classList.remove('active');
-      document.body.style.overflow = '';
-    });
-  }
-
-  resumeModal.addEventListener('click', (e) => {
-    if (e.target === resumeModal) {
-      resumeModal.classList.remove('active');
-      document.body.style.overflow = '';
-    }
-  });
-
-  if (printBtn) {
-    printBtn.addEventListener('click', () => {
-          // Ensure modal stays visible and body scroll is restored before printing
-      resumeModal.classList.add('active');
-      document.body.style.overflow = '';
-      // Small delay to let the browser settle before opening print dialog
-      setTimeout(() => {
-        window.print();
-        // Restore scroll lock after print dialog closes
-        document.body.style.overflow = 'hidden';
-      }, 120);
-    });
-  }
-}
-
-/* ==========================================================================
-   6. MOBILE NAVIGATION MENU
+   5. MOBILE NAVIGATION MENU
    ========================================================================== */
 function initMobileMenu() {
   const toggleBtn = document.getElementById('mobileMenuToggle');
@@ -376,7 +328,7 @@ function initMobileMenu() {
 }
 
 /* ==========================================================================
-   8. ACTIVE NAV LINK HIGHLIGHT ON SCROLL
+   6. ACTIVE NAV LINK HIGHLIGHT ON SCROLL
    ========================================================================== */
 function initActiveNav() {
   const sections = document.querySelectorAll('section[id]');
@@ -411,6 +363,9 @@ function initActiveNav() {
   });
 }
 
+/* ==========================================================================
+   7. CLEAN TOP-LEVEL NAVIGATION
+   ========================================================================== */
 function initCleanTopNav() {
   function stripHeroHash() {
     if (window.location.hash === '#hero') {
@@ -440,7 +395,7 @@ function initCleanTopNav() {
 
 
 /* ==========================================================================
-   9. SCROLL REVEAL ANIMATION ENGINE
+   8. SCROLL REVEAL ANIMATION ENGINE
    ========================================================================== */
 function initScrollReveal() {
   // Auto-apply scroll-reveal class to trophy cards and timeline items
@@ -468,7 +423,7 @@ function initScrollReveal() {
 
 
 /* ==========================================================================
-   10. CUSTOM MOUSE CURSOR ENGINE
+   9. CUSTOM MOUSE CURSOR ENGINE
    ========================================================================== */
 function initCustomCursor() {
   const dot = document.getElementById('cursorDot');
@@ -522,7 +477,7 @@ function initCustomCursor() {
 }
 
 /* ==========================================================================
-   9. ASYNC CONTACT INQUIRY ENGINE (SEAMLESS IN-PAGE DISPATCH)
+   10. ASYNC CONTACT INQUIRY ENGINE (SEAMLESS IN-PAGE DISPATCH)
    ========================================================================== */
 function initContactForm() {
   const form = document.getElementById('transferInquiryForm');
@@ -534,7 +489,7 @@ function initContactForm() {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const originalText = submitBtn.innerHTML;
-    submitBtn.innerHTML = 'DISPATCHING INQUIRY... ⚡';
+    submitBtn.innerHTML = 'DISPATCHING INQUIRY...';
     submitBtn.disabled = true;
 
     try {
@@ -553,7 +508,7 @@ function initContactForm() {
           statusMsg.style.background = 'rgba(0, 240, 255, 0.1)';
           statusMsg.style.border = '1px solid var(--border-ucl)';
           statusMsg.style.color = 'var(--ucl-cyan)';
-          statusMsg.innerHTML = '⚽ <strong>Inquiry Dispatched Successfully!</strong> Muhammad Ubaid Raza will review and respond directly to your email.';
+          statusMsg.innerHTML = '<strong>Inquiry Dispatched Successfully!</strong> Muhammad Ubaid Raza will review and respond directly to your email.';
         }
         form.reset();
       } else {
@@ -565,7 +520,7 @@ function initContactForm() {
         statusMsg.style.background = 'rgba(239, 68, 68, 0.15)';
         statusMsg.style.border = '1px solid #ef4444';
         statusMsg.style.color = '#fca5a5';
-        statusMsg.innerHTML = '⚠️ Transmission failed. Please email directly at <strong>ubaid183d9@gmail.com</strong>';
+        statusMsg.innerHTML = 'Transmission failed. Please email directly at <strong>ubaid183d9@gmail.com</strong>';
       }
     } finally {
       submitBtn.innerHTML = originalText;
