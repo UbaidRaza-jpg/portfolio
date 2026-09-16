@@ -24,6 +24,41 @@
   <meta name="twitter:description"
     content="UCL & Real Madrid themed portfolio — AI Developer, Football Captain, Bahria University Karachi">
 
+  <!-- Canonical & Search Engine Directives -->
+  <link rel="canonical" href="https://ubaidraza-jpg.github.io/portfolio/">
+  <meta name="robots" content="index, follow">
+
+  <!-- Structured Data / JSON-LD (Person Schema) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Muhammad Ubaid Raza",
+    "jobTitle": "AI Applications & Software Developer",
+    "url": "https://ubaidraza-jpg.github.io/portfolio/",
+    "image": "https://ubaidraza-jpg.github.io/portfolio/assets/ubaid-headshot.jpg",
+    "email": "ubaid183d9@gmail.com",
+    "alumniOf": {
+      "@type": "EducationalOrganization",
+      "name": "Bahria University Karachi"
+    },
+    "sameAs": [
+      "https://github.com/UbaidRaza-jpg",
+      "https://linkedin.com/in/muhammad-ubaid-raza-9b2912297"
+    ],
+    "knowsAbout": [
+      "Python",
+      "C++",
+      "Java",
+      "Artificial Intelligence",
+      "Whisper AI",
+      "Streamlit",
+      "Data Structures & Algorithms",
+      "Systems Programming"
+    ]
+  }
+  </script>
+
   <!-- Mobile Browser Theme Color -->
   <meta name="theme-color" content="#040814">
 
@@ -88,7 +123,7 @@
           <li><a href="#stats">Skills</a></li>
           <li><a href="#career">Timeline</a></li>
           <li><a href="#contact">Contact</a></li>
-          <li><a href="assets/resume.pdf?v=3.2" target="_blank" class="nav-cta-btn">Resume</a></li>
+          <li><a href="assets/resume.pdf?v=3.3" target="_blank" class="nav-cta-btn">Resume</a></li>
         </ul>
       </nav>
 
@@ -163,7 +198,7 @@
 
         <!-- Call to Actions -->
         <div class="hero-cta-group">
-          <a href="assets/resume.pdf?v=3.2" target="_blank" class="btn-primary" style="display:inline-block; text-decoration:none;">
+          <a href="assets/resume.pdf?v=3.3" target="_blank" class="btn-primary" style="display:inline-block; text-decoration:none;">
             📝 Open Resume (CV)
           </a>
           <a href="#lineup" class="btn-secondary">
@@ -193,7 +228,10 @@
 
           <!-- Card Photo Frame -->
           <div class="card-photo-frame">
-            <img src="assets/ubaid-headshot.jpg" alt="Muhammad Ubaid Raza" class="card-player-img">
+            <picture>
+              <source srcset="assets/ubaid-headshot.webp" type="image/webp">
+              <img src="assets/ubaid-headshot.jpg" alt="Muhammad Ubaid Raza" class="card-player-img" width="682" height="1024" fetchpriority="high">
+            </picture>
           </div>
 
           <!-- Player Name Plate -->
@@ -270,9 +308,9 @@
 
             <!-- ATTACK ROW: Flagship AI Project -->
             <div class="tactical-row">
-              <div class="pitch-player-slot" data-project="subtitle-gen" onclick="openProjectModal('subtitle-gen')">
+              <div class="pitch-player-slot" data-project="subtitle-gen" tabindex="0" role="button" aria-label="Open technical report for Multilingual Video Subtitle Generator" onclick="openProjectModal('subtitle-gen')">
                 <div class="pitch-marker-radar"></div>
-                <div class="project-tactical-card" onclick="openProjectModal('subtitle-gen')">
+                <div class="project-tactical-card">
                   <span class="card-position-badge fw">FULL-STACK AI</span>
                   <div class="card-project-header">
                     <h3 class="card-project-title">Multilingual Subtitle Generator</h3>
@@ -284,9 +322,10 @@
                   </p>
                   <div class="card-tech-badges">
                     <span class="tech-tag">Python</span>
-                    <span class="tech-tag">Whisper AI</span>
                     <span class="tech-tag">Streamlit</span>
+                    <span class="tech-tag">Whisper AI</span>
                     <span class="tech-tag">FFmpeg</span>
+                    <span class="tech-tag">PyTorch</span>
                   </div>
                   <div class="card-click-prompt">
                     <span>View Technical Report</span>
@@ -298,9 +337,9 @@
 
             <!-- MIDFIELD ROW: Algorithmic Systems -->
             <div class="tactical-row" style="justify-content: space-around;">
-              <div class="pitch-player-slot" data-project="therac-recovery" onclick="openProjectModal('therac-recovery')">
+              <div class="pitch-player-slot" data-project="therac-recovery" tabindex="0" role="button" aria-label="Open technical report for THERAC-25 Recovery System" onclick="openProjectModal('therac-recovery')">
                 <div class="pitch-marker-radar"></div>
-                <div class="project-tactical-card" onclick="openProjectModal('therac-recovery')">
+                <div class="project-tactical-card">
                   <span class="card-position-badge">SYSTEMS PROGRAMMING</span>
                   <div class="card-project-header">
                     <h3 class="card-project-title">THERAC-25 Recovery System</h3>
@@ -313,7 +352,8 @@
                     <span class="tech-tag">C++</span>
                     <span class="tech-tag">Graphs</span>
                     <span class="tech-tag">Stacks</span>
-                    <span class="tech-tag">Safety Critical</span>
+                    <span class="tech-tag">Linked Lists</span>
+                    <span class="tech-tag">File Handling</span>
                   </div>
                   <div class="card-click-prompt">
                     <span>View Technical Report</span>
@@ -322,9 +362,9 @@
                 </div>
               </div>
 
-              <div class="pitch-player-slot" data-project="garden-mgmt" onclick="openProjectModal('garden-mgmt')">
+              <div class="pitch-player-slot" data-project="garden-mgmt" tabindex="0" role="button" aria-label="Open technical report for Garden Management Engine" onclick="openProjectModal('garden-mgmt')">
                 <div class="pitch-marker-radar"></div>
-                <div class="project-tactical-card" onclick="openProjectModal('garden-mgmt')">
+                <div class="project-tactical-card">
                   <span class="card-position-badge">ADVANCED DATA STRUCTURES</span>
                   <div class="card-project-header">
                     <h3 class="card-project-title">Garden Management Engine</h3>
@@ -336,7 +376,8 @@
                     <span class="tech-tag">C++</span>
                     <span class="tech-tag">AVL Trees</span>
                     <span class="tech-tag">Self-Balancing BST</span>
-                    <span class="tech-tag">Recursion</span>
+                    <span class="tech-tag">Recursive Traversal</span>
+                    <span class="tech-tag">Tree Rebalancing</span>
                   </div>
                   <div class="card-click-prompt">
                     <span>View Technical Report</span>
@@ -348,9 +389,9 @@
 
             <!-- DEFENSE ROW: Enterprise Structure -->
             <div class="tactical-row">
-              <div class="pitch-player-slot" data-project="hostel-mgmt" onclick="openProjectModal('hostel-mgmt')">
+              <div class="pitch-player-slot" data-project="hostel-mgmt" tabindex="0" role="button" aria-label="Open technical report for Hostel Management System" onclick="openProjectModal('hostel-mgmt')">
                 <div class="pitch-marker-radar"></div>
-                <div class="project-tactical-card" onclick="openProjectModal('hostel-mgmt')">
+                <div class="project-tactical-card">
                   <span class="card-position-badge">ENTERPRISE SOFTWARE</span>
                   <div class="card-project-header">
                     <h3 class="card-project-title">Hostel Management System</h3>
@@ -361,8 +402,8 @@
                   <div class="card-tech-badges">
                     <span class="tech-tag">Java</span>
                     <span class="tech-tag">Swing GUI</span>
-                    <span class="tech-tag">Database</span>
-                    <span class="tech-tag">OOP</span>
+                    <span class="tech-tag">Database / File IO</span>
+                    <span class="tech-tag">OOP Architecture</span>
                   </div>
                   <div class="card-click-prompt">
                     <span>View Technical Report</span>
@@ -422,7 +463,7 @@
 
         <!-- Trophy 2 -->
         <div class="trophy-card">
-          <span class="trophy-year-badge">CHAMPION</span>
+          <span class="trophy-year-badge">2024</span>
           <div class="trophy-icon-box">⚽</div>
           <h3 class="trophy-title">Football Team Captain</h3>
           <div class="trophy-org">Inter-House Football Championship</div>
@@ -454,6 +495,9 @@
             Completed prestigious international AI Prompt Engineering program launched by His Highness Sheikh Hamdan bin
             Mohammed Al Maktoum.
           </p>
+          <a href="https://www.dubaifuture.ae/one-million-prompters" target="_blank" rel="noopener" class="trophy-verify-link" style="display: inline-flex; align-items: center; gap: 6px; margin-top: 14px; font-size: 0.8rem; font-family: var(--font-hud); color: var(--ucl-cyan); text-decoration: none; letter-spacing: 0.5px; font-weight: 700;">
+            Verify Initiative ↗
+          </a>
         </div>
       </div>
     </div>
@@ -757,7 +801,8 @@
 
           <form id="transferInquiryForm" action="https://formsubmit.co/ubaid183d9@gmail.com" method="POST">
             <!-- Formsubmit Configurations -->
-            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_captcha" value="true">
+            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
             <input type="hidden" name="_subject" value="New Portfolio Contact Submission">
             <input type="hidden" name="_template" value="table">
             <input type="hidden" name="_next" value="https://ubaidraza-jpg.github.io/portfolio/#contact">
@@ -820,7 +865,7 @@
   <!-- ==========================================================================
        MODAL 1: "VAR MATCH REPORT" (PROJECT DEEP-DIVE)
        ========================================================================== -->
-  <div class="modal-overlay" id="projectModalOverlay">
+  <div class="modal-overlay" id="projectModalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalProjectTitle" aria-hidden="true">
     <div class="modal-container">
       <div class="modal-header">
         <div class="modal-title-group">
