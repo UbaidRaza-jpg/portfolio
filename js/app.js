@@ -24,6 +24,8 @@ function initFutCardTilt() {
   const card = document.getElementById('starPlayerCard');
   if (!card) return;
 
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
   card.addEventListener('mousemove', (e) => {
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left;
@@ -85,7 +87,7 @@ const projectsData = {
     title: 'Multilingual Video Subtitle Generator',
     role: 'AI / Speech-to-Text Flagship Project',
     tag: 'FULL-STACK AI',
-    stack: ['Python', 'Streamlit', 'OpenAI Whisper', 'FFmpeg', 'PyTorch'],
+    stack: ['Python', 'Streamlit', 'Whisper AI', 'FFmpeg', 'PyTorch'],
     desc: 'An AI-powered web application that automates subtitle generation for multi-language video content. It extracts audio with FFmpeg, processes speech through OpenAI Whisper models, generates synchronized timestamps, and provides translated subtitles across English, Urdu, Spanish, Chinese, and Turkish.',
     features: [
       'Automatic speech recognition with multi-language detection and translation',
@@ -100,7 +102,7 @@ const projectsData = {
     title: 'THERAC-25 Recovery System',
     role: 'Mission-Critical Simulator & Safety Verifier',
     tag: 'SYSTEMS PROGRAMMING',
-    stack: ['C++', 'Graph Data Structures', 'Stacks', 'Linked Lists', 'File Handling'],
+    stack: ['C++', 'Graphs', 'Stacks', 'Linked Lists', 'File Handling'],
     desc: 'A robust risk-validated workflow simulator inspired by the historic Therac-25 radiation machine case study. Designed to eliminate race conditions and software faults through state validation graphs, operation rollback stacks, and strict state machine transitions.',
     features: [
       'Graph-based operational state machine preventing unauthorized hazard states',
@@ -115,7 +117,7 @@ const projectsData = {
     title: 'Hostel Management System',
     role: 'Enterprise Operations & Booking Engine',
     tag: 'ENTERPRISE SOFTWARE',
-    stack: ['Java', 'Swing GUI', 'Relational DB / File IO', 'OOP Architecture'],
+    stack: ['Java', 'Swing GUI', 'Database / File IO', 'OOP Architecture'],
     desc: 'Java, GUI, database-backed system for room check-in, check-out, and booking. Engineered with modular Object-Oriented principles, persistent record storage, dynamic availability checking, and automated expense calculations.',
     features: [
       'Modular OOP design with full encapsulation, inheritance, and clean polymorphism',
@@ -143,15 +145,39 @@ const projectsData = {
   }
 };
 
+let lastFocusedElementBeforeModal = null;
+
 window.openProjectModal = function(projectId) {
   const modalOverlay = document.getElementById('projectModalOverlay');
   const project = projectsData[projectId];
   if (!project || !modalOverlay) return;
 
+  lastFocusedElementBeforeModal = document.activeElement;
   populateProjectModal(project);
   modalOverlay.classList.add('active');
+  modalOverlay.setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';
+
+  // Move focus to modal close button
+  const closeBtn = document.getElementById('projectModalClose');
+  if (closeBtn) {
+    closeBtn.focus();
+  }
 };
+
+function closeProjectModal() {
+  const modalOverlay = document.getElementById('projectModalOverlay');
+  if (!modalOverlay || !modalOverlay.classList.contains('active')) return;
+
+  modalOverlay.classList.remove('active');
+  modalOverlay.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+
+  // Return focus to the triggering element
+  if (lastFocusedElementBeforeModal && typeof lastFocusedElementBeforeModal.focus === 'function') {
+    lastFocusedElementBeforeModal.focus();
+  }
+}
 
 function initProjectModals() {
   const modalOverlay = document.getElementById('projectModalOverlay');
@@ -170,25 +196,54 @@ function initProjectModals() {
       e.stopPropagation();
       window.openProjectModal(projectId);
     });
+
+    el.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        window.openProjectModal(projectId);
+      }
+    });
   });
 
-  closeBtn.addEventListener('click', () => {
-    modalOverlay.classList.remove('active');
-    document.body.style.overflow = '';
-  });
+  closeBtn.addEventListener('click', closeProjectModal);
 
   modalOverlay.addEventListener('click', (e) => {
     if (e.target === modalOverlay) {
-      modalOverlay.classList.remove('active');
-      document.body.style.overflow = '';
+      closeProjectModal();
     }
   });
 
-  // ESC key closes modal
+  // ESC key closes modal and returns focus
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
-      modalOverlay.classList.remove('active');
-      document.body.style.overflow = '';
+      closeProjectModal();
+    }
+  });
+
+  // Focus trap within modal dialog
+  modalOverlay.addEventListener('keydown', (e) => {
+    if (e.key !== 'Tab' || !modalOverlay.classList.contains('active')) return;
+
+    const focusableSelectors = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+    const allFocusables = Array.from(modalOverlay.querySelectorAll(focusableSelectors)).filter((elem) => {
+      return elem.offsetParent !== null && !elem.disabled && window.getComputedStyle(elem).display !== 'none';
+    });
+
+    if (allFocusables.length === 0) return;
+
+    const firstFocusable = allFocusables[0];
+    const lastFocusable = allFocusables[allFocusables.length - 1];
+
+    if (e.shiftKey) {
+      if (document.activeElement === firstFocusable || document.activeElement === modalOverlay) {
+        e.preventDefault();
+        lastFocusable.focus();
+      }
+    } else {
+      if (document.activeElement === lastFocusable) {
+        e.preventDefault();
+        firstFocusable.focus();
+      }
     }
   });
 }
@@ -420,8 +475,9 @@ function initCustomCursor() {
   const trail = document.getElementById('cursorTrail');
   if (!dot || !trail) return;
 
-  // Only run on non-touch devices
+  // Only run on non-touch devices and when reduced motion is not preferred
   if (window.matchMedia('(pointer: coarse)').matches) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
   let mouseX = window.innerWidth / 2;
   let mouseY = window.innerHeight / 2;
