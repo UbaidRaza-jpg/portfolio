@@ -2311,3 +2311,107 @@ body {
     cursor: auto !important;
   }
 }
+
+/* ==========================================================================
+   KEYBOARD ACCESSIBILITY & FOCUS STYLES
+   ========================================================================== */
+
+/* Universal Focus Visible Baseline */
+:focus-visible {
+  outline: 2px solid var(--ucl-cyan, #00f0ff) !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 12px rgba(0, 240, 255, 0.45) !important;
+}
+
+/* Form Controls */
+.form-input:focus-visible,
+.form-textarea:focus-visible {
+  outline: 2px solid var(--ucl-cyan, #00f0ff) !important;
+  outline-offset: 1px !important;
+  border-color: var(--ucl-cyan, #00f0ff) !important;
+  box-shadow: 0 0 16px rgba(0, 240, 255, 0.35) !important;
+}
+
+/* Nav Links & Buttons */
+.nav-links a:focus-visible,
+.nav-cta-btn:focus-visible,
+.btn-primary:focus-visible,
+.btn-secondary:focus-visible,
+.btn-live-stream:focus-visible,
+.mobile-menu-toggle:focus-visible,
+.modal-close-btn:focus-visible {
+  outline: 2px solid var(--ucl-cyan, #00f0ff) !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 14px rgba(0, 240, 255, 0.5) !important;
+}
+
+/* Tactical Project Cards & Slots */
+.pitch-player-slot:focus-visible,
+.project-tactical-card:focus-visible {
+  outline: 2px solid var(--gold-primary, #f6c445) !important;
+  outline-offset: 4px !important;
+  border-color: var(--ucl-cyan, #00f0ff) !important;
+  box-shadow: 0 0 24px rgba(0, 240, 255, 0.55), 0 0 10px rgba(246, 196, 69, 0.4) !important;
+}
+
+/* Achievement & Contact Links */
+.trophy-verify-link:focus-visible,
+.contact-item:focus-visible,
+.press-social-link:focus-visible,
+.footer-links a:focus-visible {
+  outline: 2px solid var(--gold-primary, #f6c445) !important;
+  outline-offset: 2px !important;
+}
+
+/* Modal Close Button */
+.modal-close-btn:focus-visible {
+  outline: 2px solid var(--ucl-cyan, #00f0ff) !important;
+  outline-offset: 2px !important;
+  background: rgba(0, 240, 255, 0.2) !important;
+}
+
+/* ==========================================================================
+   REDUCED MOTION SUPPORT (a11y)
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Disable persistent lighting sweeps, ambient glows, and orbital rotations */
+  .floodlight-layer,
+  .stadium-lights,
+  .light-beam,
+  .orbit-ring-1,
+  .orbit-ring-2,
+  .orbit-ring-3,
+  .orbit-item,
+  .pitch-marker-radar,
+  .live-dot,
+  .card-live-dot {
+    animation: none !important;
+  }
+
+  /* Disable custom cursor overhead */
+  .custom-cursor-dot,
+  .custom-cursor-trail {
+    display: none !important;
+  }
+
+  * {
+    cursor: auto !important;
+  }
+
+  /* Immediate scroll reveal without translation lag */
+  .scroll-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
