@@ -60,6 +60,9 @@
 html {
   scroll-behavior: smooth;
   color-scheme: dark;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -67,7 +70,10 @@ body {
   background-color: var(--bg-darkest);
   color: var(--text-white);
   min-height: 100vh;
+  width: 100%;
+  max-width: 100%;
   overflow-x: hidden;
+  position: relative;
   line-height: 1.6;
   background-image: 
     radial-gradient(circle at 50% 0%, rgba(29, 114, 254, 0.18) 0%, transparent 60%),
@@ -498,9 +504,9 @@ body {
 .hero-match-badge {
   display: flex;
   align-items: center;
-  flex-wrap: nowrap;
-  white-space: nowrap;
+  flex-wrap: wrap;
   gap: 10px;
+  max-width: 100%;
 }
 
 .hero-match-badge .section-badge {
@@ -513,18 +519,21 @@ body {
   font-family: var(--font-hud);
   font-weight: 800;
   font-size: 0.85rem;
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
   padding: 6px 14px;
   border-radius: 999px;
   display: inline-flex;
   align-items: center;
+  max-width: 100%;
+  text-align: center;
 }
 
 .hero-tech-stack {
   display: flex;
-  gap: 12px;
+  gap: 10px;
   margin-bottom: 20px;
   flex-wrap: wrap;
+  max-width: 100%;
 }
 
 .hero-tech-stack span {
@@ -536,15 +545,18 @@ body {
   color: var(--ucl-cyan);
   font-family: var(--font-mono);
   font-weight: 600;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
 }
 
 .hero-title-group h1 {
-  font-size: clamp(2.5rem, 5vw, 4.2rem);
+  font-size: clamp(2rem, 5vw, 4.2rem);
   font-weight: 900;
   letter-spacing: -0.02em;
-  line-height: 1.05;
+  line-height: 1.08;
   text-transform: uppercase;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 .hero-title-group .captain-number {
@@ -556,7 +568,7 @@ body {
 }
 
 .hero-role {
-  font-size: clamp(1.2rem, 2.5vw, 1.7rem);
+  font-size: clamp(1.1rem, 2.5vw, 1.7rem);
   font-weight: 700;
   color: var(--ucl-cyan);
   font-family: var(--font-hud);
@@ -565,7 +577,9 @@ body {
   margin-top: 6px;
   display: flex;
   align-items: center;
-  gap: 12px;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-width: 100%;
 }
 
 .role-tag-pill {
@@ -2067,19 +2081,31 @@ body {
     grid-template-columns: 1fr;
     gap: 40px;
     text-align: center;
+    width: 100%;
+    max-width: 100%;
+  }
+  .hero-content {
+    align-items: center;
+    width: 100%;
+    max-width: 100%;
   }
   .hero-bio {
     margin: 0 auto;
     border-left: none;
     border-bottom: 2px solid var(--gold-primary);
-    padding: 0 0 12px 0;
+    padding: 0 0 14px 0;
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
   }
-  .hero-meta-badges, .hero-cta-group, .hero-match-badge, .hero-role {
+  .hero-meta-badges, .hero-cta-group, .hero-match-badge, .hero-role, .hero-tech-stack {
     justify-content: center;
+    width: 100%;
   }
   .fut-card {
     width: 320px;
     height: 480px;
+    margin: 0 auto;
   }
   .card-photo-frame {
     width: 240px;
@@ -2089,10 +2115,13 @@ body {
   .football-pitch {
     transform: none !important;
     padding: 30px 10px;
+    width: 100%;
+    max-width: 100%;
   }
   .tactical-row {
     flex-direction: column;
     gap: 24px;
+    width: 100%;
   }
   .stats-grid, .contact-grid {
     grid-template-columns: 1fr;
@@ -2118,38 +2147,184 @@ body {
     padding: 24px;
     border-bottom: 1px solid var(--border-gold);
     gap: 16px;
+    z-index: 200;
+  }
+  .broadcast-ticker {
+    padding: 6px 0;
   }
   .ticker-inner {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    text-align: center;
     gap: 6px;
+    width: 100%;
+  }
+  .ticker-live-status {
+    font-size: 0.8rem;
+    gap: 8px;
+    justify-content: center;
+  }
+  .ticker-info {
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    gap: 8px;
+    font-size: 0.78rem;
+    width: 100%;
+  }
+  .hero-match-badge {
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+  }
+  .ucl-starball-tag,
+  .hero-match-badge .section-badge {
+    font-size: 0.78rem;
+    padding: 5px 12px;
+    letter-spacing: 1px;
+    white-space: normal;
+    text-align: center;
+  }
+  .hero-title-group h1 {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+  .hero-role {
+    font-size: 1.15rem;
+    letter-spacing: 1px;
+    justify-content: center;
+    text-align: center;
   }
   .project-tactical-card {
     width: 100%;
     max-width: 320px;
+    margin: 0 auto;
   }
 }
 
 @media (max-width: 480px) {
   .container {
-    padding: 0 14px;
+    padding: 0 16px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .brand-name {
+    font-size: 1.02rem;
+  }
+  .brand-sub {
+    font-size: 0.65rem;
+    letter-spacing: 1px;
+  }
+  .crest-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 0.95rem;
+  }
+  .ticker-info {
+    font-size: 0.72rem;
+    line-height: 1.35;
+  }
+  .ticker-tag {
+    font-size: 0.68rem;
+    padding: 1px 6px;
+  }
+  .hero-section {
+    padding: 30px 0 60px;
+    width: 100%;
+    max-width: 100%;
+  }
+  .hero-match-badge {
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    width: 100%;
+  }
+  .ucl-starball-tag,
+  .hero-match-badge .section-badge {
+    font-size: 0.74rem;
+    padding: 5px 12px;
+    letter-spacing: 1px;
+    width: auto;
+  }
+  .hero-title-group h1 {
+    font-size: clamp(1.8rem, 8vw, 2.35rem);
+    line-height: 1.12;
+    word-break: break-word;
+  }
+  .hero-role {
+    font-size: 1.05rem;
+    letter-spacing: 0.8px;
+    gap: 8px;
+    justify-content: center;
+    text-align: center;
+  }
+  .hero-tech-stack {
+    gap: 6px;
+    margin-bottom: 16px;
+    justify-content: center;
+    width: 100%;
+  }
+  .hero-tech-stack span {
+    font-size: 0.75rem;
+    padding: 3px 10px;
+  }
+  .hero-bio {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    padding-bottom: 12px;
+    width: 100%;
+    max-width: 100%;
+  }
+  .hero-meta-badges {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+  }
+  .meta-chip {
+    width: 100%;
+    max-width: 310px;
+    justify-content: center;
+    padding: 8px 12px;
+    font-size: 0.78rem;
+    text-align: center;
+    box-sizing: border-box;
+  }
+  .hero-cta-group {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+  }
+  .hero-cta-group .btn-primary,
+  .hero-cta-group .btn-secondary {
+    width: 100%;
+    max-width: 310px;
+    justify-content: center;
+    padding: 12px 20px;
+    font-size: 0.95rem;
+    text-align: center;
+    box-sizing: border-box;
   }
   .fut-card {
     width: 100%;
-    max-width: 300px;
-    height: 460px;
+    max-width: 290px;
+    height: 440px;
     padding: 14px;
     border-radius: 18px;
+    margin: 0 auto;
+    box-sizing: border-box;
   }
   .card-photo-frame {
-    width: 210px;
-    height: 210px;
+    width: 200px;
+    height: 195px;
     margin: -10px auto 6px;
   }
   .radar-chart-container {
-    padding: 14px 6px;
+    padding: 12px 4px;
     width: 100%;
     overflow: hidden;
+    box-sizing: border-box;
   }
   .radar-chart-container svg {
     max-width: 100%;
@@ -2158,6 +2333,24 @@ body {
   .project-tactical-card {
     max-width: 100%;
     padding: 14px;
+    box-sizing: border-box;
+  }
+  .orbit-stage {
+    width: 290px;
+    height: 290px;
+    transform: scale(0.85);
+    transform-origin: center center;
+  }
+  .pitch-penalty-box-top,
+  .pitch-penalty-box-bottom {
+    width: 80%;
+    max-width: 240px;
+  }
+  .football-pitch {
+    padding: 20px 8px;
+    border-width: 2px;
+    border-radius: 14px;
+    box-sizing: border-box;
   }
 }
 
