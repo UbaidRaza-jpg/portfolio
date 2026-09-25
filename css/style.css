@@ -1265,6 +1265,44 @@ body {
   line-height: 1.5;
 }
 
+.trophy-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.btn-cert-pdf {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--gold-gradient);
+  color: #040814 !important;
+  font-family: var(--font-hud);
+  font-weight: 800;
+  font-size: 0.8rem;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  padding: 8px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(230, 202, 101, 0.25);
+  transition: var(--transition-fast);
+}
+
+.btn-cert-pdf:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(230, 202, 101, 0.5);
+  filter: brightness(1.08);
+}
+
+.btn-cert-pdf svg {
+  flex-shrink: 0;
+}
+
 /* ==========================================================================
    STATS & TACTICAL RADAR ATTRIBUTES
    ========================================================================== */
