@@ -58,11 +58,30 @@
 }
 
 html {
+  font-size: 17px;
   scroll-behavior: smooth;
   color-scheme: dark;
   width: 100%;
   max-width: 100%;
   overflow-x: hidden;
+}
+
+@media (min-width: 1400px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1920px) {
+  html {
+    font-size: 19.5px;
+  }
+}
+
+@media (min-width: 2400px) {
+  html {
+    font-size: 21px;
+  }
 }
 
 body {
@@ -122,10 +141,10 @@ body {
   color: var(--gold-primary);
   font-family: var(--font-hud);
   font-weight: 700;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   letter-spacing: 2px;
   text-transform: uppercase;
-  padding: 6px 14px;
+  padding: 8px 16px;
   border-radius: 999px;
   margin-bottom: 14px;
   backdrop-filter: blur(8px);
@@ -157,9 +176,9 @@ body {
 }
 
 .section-desc {
-  font-size: 1.05rem;
+  font-size: 1.18rem;
   color: var(--text-dim);
-  max-width: 680px;
+  max-width: 760px;
   margin-bottom: 48px;
 }
 
@@ -191,7 +210,7 @@ body {
   gap: 12px;
   font-weight: 700;
   letter-spacing: 1.5px;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   text-transform: uppercase;
 }
 
@@ -213,15 +232,18 @@ body {
   display: flex;
   align-items: center;
   gap: 16px;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   color: var(--text-dim);
 }
 
 .ticker-tag {
   color: var(--gold-primary);
   border: 1px solid var(--border-gold);
-  padding: 2px 8px;
+  padding: 3px 10px;
   border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
 .ticker-actions {
@@ -343,8 +365,8 @@ body {
 }
 
 .crest-icon {
-  width: 38px;
-  height: 38px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   background: linear-gradient(135deg, #1d72fe, #070d22);
   border: 2px solid var(--gold-primary);
@@ -353,7 +375,7 @@ body {
   justify-content: center;
   font-family: var(--font-hud);
   font-weight: 800;
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   color: var(--gold-primary);
   box-shadow: 0 0 15px var(--gold-glow);
 }
@@ -366,14 +388,14 @@ body {
 .brand-name {
   font-family: var(--font-hud);
   font-weight: 700;
-  font-size: 1.15rem;
+  font-size: 1.28rem;
   letter-spacing: 1px;
   color: var(--text-white);
   line-height: 1.1;
 }
 
 .brand-sub {
-  font-size: 0.72rem;
+  font-size: 0.85rem;
   letter-spacing: 1.5px;
   color: var(--gold-primary);
   text-transform: uppercase;
@@ -390,13 +412,13 @@ body {
 .nav-links a {
   text-decoration: none;
   font-family: var(--font-hud);
-  font-size: 0.95rem;
+  font-size: 1.08rem;
   font-weight: 600;
   letter-spacing: 1px;
   text-transform: uppercase;
   color: var(--text-dim);
   position: relative;
-  padding: 6px 0;
+  padding: 8px 0;
   transition: var(--transition-fast);
 }
 
@@ -529,9 +551,9 @@ body {
   color: #040814;
   font-family: var(--font-hud);
   font-weight: 800;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   letter-spacing: 1.5px;
-  padding: 6px 14px;
+  padding: 7px 16px;
   border-radius: 999px;
   display: inline-flex;
   align-items: center;
@@ -552,12 +574,13 @@ body {
   background: rgba(0, 240, 255, 0.08);
   border: 1px solid var(--border-ucl);
   border-radius: 20px;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   color: var(--ucl-cyan);
   font-family: var(--font-mono);
   font-weight: 600;
   letter-spacing: 0.5px;
   white-space: nowrap;
+  padding: 6px 14px;
 }
 
 .hero-title-group h1 {
@@ -594,11 +617,11 @@ body {
 }
 
 .role-tag-pill {
-  font-size: 0.75rem;
+  font-size: 0.88rem;
   background: rgba(230, 202, 101, 0.15);
   border: 1px solid var(--border-gold);
   color: var(--gold-primary);
-  padding: 3px 10px;
+  padding: 5px 12px;
   border-radius: 999px;
   letter-spacing: 1px;
 }
@@ -627,8 +650,9 @@ body {
   border: 1px solid var(--border-subtle);
   padding: 6px 14px;
   border-radius: 8px;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   color: var(--text-dim);
+  padding: 8px 16px;
 }
 
 .meta-chip strong {
@@ -665,10 +689,10 @@ body {
   color: #050b1a;
   font-family: var(--font-hud);
   font-weight: 800;
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  padding: 14px 28px;
+  padding: 16px 32px;
   border-radius: 8px;
   border: none;
   cursor: pointer;
@@ -691,10 +715,10 @@ body {
   border: 1px solid var(--border-ucl);
   font-family: var(--font-hud);
   font-weight: 700;
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  padding: 14px 26px;
+  padding: 16px 30px;
   border-radius: 8px;
   cursor: pointer;
   text-decoration: none;
@@ -865,11 +889,11 @@ body {
 }
 
 .card-player-sub {
-  font-size: 0.75rem;
-  letter-spacing: 1px;
+  font-size: 0.88rem;
+  letter-spacing: 1.2px;
   color: var(--gold-primary);
   text-transform: uppercase;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 /* Card Attributes Matrix */
@@ -890,13 +914,13 @@ body {
 }
 
 .stat-value {
-  font-size: 1.25rem;
+  font-size: 1.4rem;
   font-weight: 800;
   color: var(--text-white);
 }
 
 .stat-label {
-  font-size: 0.82rem;
+  font-size: 0.92rem;
   font-weight: 700;
   color: var(--gold-primary);
   letter-spacing: 1px;
@@ -909,7 +933,7 @@ body {
   margin-top: 12px;
   padding-top: 8px;
   border-top: 1px solid var(--border-subtle);
-  font-size: 0.72rem;
+  font-size: 0.82rem;
   color: var(--text-muted);
   font-family: var(--font-mono);
 }
@@ -1131,7 +1155,7 @@ body {
 
 .card-project-title {
   font-family: var(--font-hud);
-  font-size: 1.18rem;
+  font-size: 1.3rem;
   font-weight: 800;
   color: var(--text-white);
   line-height: 1.2;
@@ -1146,9 +1170,9 @@ body {
 }
 
 .card-project-desc {
-  font-size: 0.82rem;
+  font-size: 0.92rem;
   color: var(--text-dim);
-  line-height: 1.45;
+  line-height: 1.55;
   margin-bottom: 12px;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -1165,7 +1189,7 @@ body {
 
 .tech-tag {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.82rem;
   background: rgba(255, 255, 255, 0.07);
   color: #e2e8f0;
   padding: 2px 7px;
@@ -1178,7 +1202,7 @@ body {
   align-items: center;
   justify-content: space-between;
   font-family: var(--font-hud);
-  font-size: 0.78rem;
+  font-size: 0.88rem;
   font-weight: 700;
   letter-spacing: 1px;
   color: var(--gold-primary);
@@ -1236,16 +1260,16 @@ body {
   top: 24px;
   right: 24px;
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.88rem;
   color: var(--gold-primary);
   background: rgba(230, 202, 101, 0.1);
-  padding: 3px 8px;
+  padding: 4px 10px;
   border-radius: 4px;
 }
 
 .trophy-title {
   font-family: var(--font-hud);
-  font-size: 1.35rem;
+  font-size: 1.48rem;
   font-weight: 800;
   letter-spacing: 0.5px;
   margin-bottom: 8px;
@@ -1253,16 +1277,16 @@ body {
 }
 
 .trophy-org {
-  font-size: 0.88rem;
+  font-size: 1.02rem;
   color: var(--ucl-cyan);
   font-weight: 600;
   margin-bottom: 12px;
 }
 
 .trophy-desc {
-  font-size: 0.9rem;
+  font-size: 1.05rem;
   color: var(--text-dim);
-  line-height: 1.5;
+  line-height: 1.65;
 }
 
 .trophy-actions {
@@ -1283,10 +1307,10 @@ body {
   color: #040814 !important;
   font-family: var(--font-hud);
   font-weight: 800;
-  font-size: 0.8rem;
+  font-size: 0.92rem;
   letter-spacing: 0.8px;
   text-transform: uppercase;
-  padding: 8px 14px;
+  padding: 10px 18px;
   border-radius: 6px;
   text-decoration: none;
   box-shadow: 0 4px 15px rgba(230, 202, 101, 0.25);
@@ -1365,7 +1389,7 @@ body {
 
 .category-header h3 {
   font-family: var(--font-hud);
-  font-size: 1.15rem;
+  font-size: 1.3rem;
   font-weight: 800;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -1386,9 +1410,10 @@ body {
   border: 1px solid var(--border-subtle);
   padding: 6px 12px;
   border-radius: 8px;
-  font-size: 0.85rem;
+  font-size: 0.98rem;
   color: #e2e8f0;
   font-weight: 500;
+  padding: 8px 14px;
   transition: var(--transition-fast);
 }
 
@@ -1467,16 +1492,16 @@ body {
 
 .timeline-period {
   font-family: var(--font-mono);
-  font-size: 0.8rem;
+  font-size: 0.92rem;
   color: var(--gold-primary);
   background: rgba(230, 202, 101, 0.12);
-  padding: 3px 10px;
+  padding: 5px 12px;
   border-radius: 4px;
 }
 
 .timeline-badge {
   font-family: var(--font-hud);
-  font-size: 0.8rem;
+  font-size: 0.92rem;
   font-weight: 700;
   letter-spacing: 1px;
   color: var(--ucl-cyan);
@@ -1485,22 +1510,22 @@ body {
 
 .timeline-title {
   font-family: var(--font-hud);
-  font-size: 1.3rem;
+  font-size: 1.45rem;
   font-weight: 800;
   margin-bottom: 4px;
   color: var(--text-white);
 }
 
 .timeline-subtitle {
-  font-size: 0.95rem;
+  font-size: 1.08rem;
   color: var(--gold-primary);
   margin-bottom: 12px;
 }
 
 .timeline-body {
-  font-size: 0.92rem;
+  font-size: 1.06rem;
   color: var(--text-dim);
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 .timeline-bullets {
@@ -1512,8 +1537,9 @@ body {
   position: relative;
   padding-left: 18px;
   margin-bottom: 6px;
-  font-size: 0.88rem;
+  font-size: 1.02rem;
   color: #cbd5e1;
+  line-height: 1.6;
 }
 
 .timeline-bullets li::before {
@@ -1588,14 +1614,14 @@ body {
 }
 
 .channel-label {
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   letter-spacing: 1px;
   text-transform: uppercase;
   color: var(--text-muted);
 }
 
 .channel-val {
-  font-size: 0.98rem;
+  font-size: 1.12rem;
   font-weight: 600;
   color: var(--text-white);
 }
@@ -1615,7 +1641,7 @@ body {
 .form-label {
   display: block;
   font-family: var(--font-hud);
-  font-size: 0.85rem;
+  font-size: 0.98rem;
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -1631,7 +1657,8 @@ body {
   padding: 12px 16px;
   color: white;
   font-family: var(--font-main);
-  font-size: 0.95rem;
+  font-size: 1.08rem;
+  padding: 14px 18px;
   transition: var(--transition-fast);
 }
 
@@ -1783,7 +1810,7 @@ body {
   border-top: 1px solid var(--border-subtle);
   background: #03060f;
   padding: 40px 0 30px;
-  font-size: 0.88rem;
+  font-size: 1.02rem;
   color: var(--text-muted);
 }
 
