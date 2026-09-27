@@ -1234,6 +1234,8 @@ body {
   overflow: hidden;
   box-shadow: var(--shadow-card);
   transition: var(--transition-fast);
+  display: flex;
+  flex-direction: column;
 }
 
 .trophy-card:hover {
@@ -1287,34 +1289,40 @@ body {
   font-size: 1.05rem;
   color: var(--text-dim);
   line-height: 1.65;
+  flex: 1 1 auto;
 }
 
 .trophy-actions {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: row;
   align-items: center;
-  gap: 12px;
-  margin-top: 18px;
-  padding-top: 14px;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 16px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .btn-cert-pdf {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
+  gap: 6px;
   background: var(--gold-gradient);
   color: #040814 !important;
   font-family: var(--font-hud);
   font-weight: 800;
-  font-size: 0.92rem;
-  letter-spacing: 0.8px;
+  font-size: 0.84rem;
+  letter-spacing: 0.5px;
   text-transform: uppercase;
-  padding: 10px 18px;
+  padding: 8px 12px;
   border-radius: 6px;
   text-decoration: none;
   box-shadow: 0 4px 15px rgba(230, 202, 101, 0.25);
   transition: var(--transition-fast);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .btn-cert-pdf:hover {
@@ -1325,6 +1333,26 @@ body {
 
 .btn-cert-pdf svg {
   flex-shrink: 0;
+}
+
+.trophy-verify-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.82rem;
+  font-family: var(--font-hud);
+  color: var(--ucl-cyan) !important;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  font-weight: 700;
+  white-space: nowrap;
+  transition: var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.trophy-verify-link:hover {
+  text-decoration: underline;
+  filter: brightness(1.25);
 }
 
 /* ==========================================================================
