@@ -1,32 +1,35 @@
 /**
  * ==========================================================================
- * UCL + REAL MADRID THEMED PORTFOLIO ENGINE
- * Muhammad Ubaid Raza (#1) - AI Applications & Software Developer
+ * PROJECT I.G.I. // TACTICAL INTELLIGENCE HUD ENGINE
+ * Operative: Muhammad Ubaid Raza | Codename: OPERATIVE-01
+ * AI Applications & Systems Architect | Bahria University Karachi
  * ==========================================================================
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   initCleanTopNav();
-  initFutCardTilt();
-  initLineupObserver();
+  initOperativeCardTilt();
+  initTextPoppingEngine();
+  initTacticalCursor();
   initProjectModals();
   initMobileMenu();
   initActiveNav();
   initScrollReveal();
-  initCustomCursor();
   initContactForm();
 });
 
 /* ==========================================================================
-   2. 3D INTERACTIVE FUT CARD TILT EFFECT
+   1. 3D INTERACTIVE OPERATIVE CARD TILT (TACTICAL TARGET LOCK)
    ========================================================================== */
-function initFutCardTilt() {
-  const card = document.getElementById('starPlayerCard');
+function initOperativeCardTilt() {
+  const card = document.getElementById('operativeCard');
   if (!card) return;
 
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-  card.addEventListener('mousemove', (e) => {
+  const wrapper = card.closest('.operative-card-wrapper') || card;
+
+  wrapper.addEventListener('mousemove', (e) => {
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
@@ -40,70 +43,200 @@ function initFutCardTilt() {
     card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.03, 1.03, 1.03)`;
   });
 
-  card.addEventListener('mouseleave', () => {
+  wrapper.addEventListener('mouseleave', () => {
     card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
   });
 }
 
 /* ==========================================================================
-   3. TACTICAL LINEUP PITCH REVEAL (STAGGERED POP-UP ANIMATION)
+   2. LETTER-BY-LETTER & WORD-BY-WORD POPPING TEXT ENGINE
    ========================================================================== */
-function initLineupObserver() {
-  const pitchSlots = document.querySelectorAll('.pitch-player-slot');
-  if (!pitchSlots.length) return;
+function initTextPoppingEngine() {
+  const popElements = document.querySelectorAll('.pop-text');
+  if (!popElements.length) return;
 
-  let hasPopped = false;
+  // Split each pop-text element into word and character spans
+  popElements.forEach((el) => {
+    prepareElementForPopping(el);
+  });
 
-  function triggerLineup() {
-    if (hasPopped) return;
-    hasPopped = true;
-
-    pitchSlots.forEach((slot, index) => {
-      setTimeout(() => {
-        slot.classList.add('popped-in');
-      }, index * 200);
-    });
-  }
-
+  // Stagger animation on scroll into view using IntersectionObserver
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
-        triggerLineup();
+        entry.target.classList.add('popped');
+        observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.15 });
 
-  const lineupSection = document.getElementById('lineup');
-  if (lineupSection) {
-    observer.observe(lineupSection);
+  popElements.forEach((el) => {
+    // If element is already in the viewport (e.g. hero section), trigger immediately
+    const rect = el.getBoundingClientRect();
+    if (rect.top >= 0 && rect.top <= window.innerHeight) {
+      setTimeout(() => {
+        el.classList.add('popped');
+      }, 100);
+    } else {
+      observer.observe(el);
+    }
+  });
+}
+
+/**
+ * Splits text nodes inside an element into .pop-word and .pop-char spans
+ * preserving any inner markup (e.g. <span class="neon">)
+ */
+function prepareElementForPopping(el) {
+  const childNodes = Array.from(el.childNodes);
+  let wordCounter = 0;
+
+  function processTextString(text, extraClass) {
+    const tokens = text.split(/(\s+)/);
+    const fragment = document.createDocumentFragment();
+
+    tokens.forEach((token) => {
+      if (!token) return;
+      if (/^\s+$/.test(token)) {
+        fragment.appendChild(document.createTextNode(' '));
+        return;
+      }
+
+      const wordSpan = document.createElement('span');
+      wordSpan.className = 'pop-word' + (extraClass ? ' ' + extraClass : '');
+
+      for (let i = 0; i < token.length; i++) {
+        const charSpan = document.createElement('span');
+        charSpan.className = 'pop-char';
+        charSpan.textContent = token[i];
+        
+        // Stagger formula: Word index delay + character index delay
+        const delay = (wordCounter * 110) + (i * 32);
+        charSpan.style.animationDelay = `${delay}ms`;
+        wordSpan.appendChild(charSpan);
+      }
+
+      wordCounter++;
+      fragment.appendChild(wordSpan);
+    });
+
+    return fragment;
   }
+
+  const newFragment = document.createDocumentFragment();
+
+  childNodes.forEach((node) => {
+    if (node.nodeType === Node.TEXT_NODE) {
+      newFragment.appendChild(processTextString(node.textContent, ''));
+    } else if (node.nodeType === Node.ELEMENT_NODE) {
+      const clonedWrapper = node.cloneNode(false);
+      clonedWrapper.appendChild(processTextString(node.textContent, node.className));
+      newFragment.appendChild(clonedWrapper);
+    }
+  });
+
+  el.innerHTML = '';
+  el.appendChild(newFragment);
 }
 
 /* ==========================================================================
-   4. PROJECT DATA & "TECHNICAL REPORT" MODAL ENGINE
+   3. TACTICAL TARGET CROSSHAIR CURSOR ENGINE
+   ========================================================================== */
+function initTacticalCursor() {
+  const cursor = document.getElementById('tacticalCursor');
+  const trail = document.getElementById('cursorTrail');
+  if (!cursor) return;
+
+  if (window.matchMedia('(pointer: coarse)').matches) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+  let trailX = window.innerWidth / 2;
+  let trailY = window.innerHeight / 2;
+
+  // Position reticle exactly on mouse coordinate
+  window.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    cursor.style.left = `${mouseX}px`;
+    cursor.style.top = `${mouseY}px`;
+    cursor.style.opacity = '1';
+    if (trail) trail.style.opacity = '1';
+  });
+
+  // Smooth trailing tracker dot with linear interpolation
+  if (trail) {
+    function animateTracker() {
+      trailX += (mouseX - trailX) * 0.18;
+      trailY += (mouseY - trailY) * 0.18;
+      trail.style.left = `${trailX}px`;
+      trail.style.top = `${trailY}px`;
+      requestAnimationFrame(animateTracker);
+    }
+    animateTracker();
+  }
+
+  // Click weapon recoil animation
+  window.addEventListener('mousedown', () => {
+    cursor.classList.add('recoil');
+    setTimeout(() => {
+      cursor.classList.remove('recoil');
+    }, 150);
+  });
+
+  // Target lock-on when hovering interactive elements
+  const interactiveTarget = 'a, button, input, textarea, select, .mission-target-node, .project-tactical-card, .trophy-card, .skill-category-card, .timeline-card, [tabindex="0"]';
+
+  document.addEventListener('mouseover', (e) => {
+    if (e.target.closest(interactiveTarget)) {
+      cursor.classList.add('locked');
+    }
+  });
+
+  document.addEventListener('mouseout', (e) => {
+    if (e.target.closest(interactiveTarget)) {
+      cursor.classList.remove('locked');
+    }
+  });
+
+  // Fade out cursor when mouse leaves window
+  document.addEventListener('mouseleave', () => {
+    cursor.style.opacity = '0';
+    if (trail) trail.style.opacity = '0';
+  });
+
+  document.addEventListener('mouseenter', () => {
+    cursor.style.opacity = '1';
+    if (trail) trail.style.opacity = '1';
+  });
+}
+
+/* ==========================================================================
+   4. CLASSIFIED MISSION INTEL MODAL ENGINE
    ========================================================================== */
 const projectsData = {
   'subtitle-gen': {
     title: 'Multilingual Video Subtitle Generator',
-    role: 'AI / Speech-to-Text Flagship Project',
-    tag: 'FULL-STACK AI',
+    role: 'NEURAL AI / SPEECH RECONNAISSANCE',
+    tag: 'CLASSIFIED INTEL // AI',
     stack: ['Python', 'Streamlit', 'Whisper AI', 'FFmpeg', 'PyTorch'],
-    desc: 'An AI-powered web application that automates subtitle generation for multi-language video content. It extracts audio with FFmpeg, processes speech through OpenAI Whisper models, generates synchronized timestamps, and provides translated subtitles across English, Urdu, Spanish, Chinese, and Turkish.',
+    desc: 'An AI-powered tactical audio reconnaissance web application that automates subtitle extraction and translation for multi-language video streams. It deploys FFmpeg streaming pipelines, processes speech through OpenAI Whisper neural models, generates synchronized timestamps, and provides translated subtitle payloads across English, Urdu, Spanish, Chinese, and Turkish.',
     features: [
-      'Automatic speech recognition with multi-language detection and translation',
-      'Audio extraction pipeline optimized with FFmpeg streaming',
-      'Dual output support for industry standard .SRT and .VTT subtitle formats',
-      'Interactive Streamlit UI with live video preview and instant subtitle playback'
+      'Automatic speech recognition with multi-language detection and neural translation',
+      'Audio extraction pipeline optimized with streaming FFmpeg sub-processes',
+      'Dual output support for industry standard .SRT and .VTT subtitle files',
+      'Interactive Streamlit UI with live video preview and synchronized subtitle playback'
     ],
     liveUrl: 'https://built-by-ubaid-multilingual-video-subtitle-generator.streamlit.app/',
     githubUrl: 'https://github.com/UbaidRaza-jpg/Multilingual-Video-Subtitle-Generator'
   },
   'therac-recovery': {
     title: 'THERAC-25 Recovery System',
-    role: 'Mission-Critical Simulator & Safety Verifier',
+    role: 'MISSION-CRITICAL RISK SIMULATOR & FAIL-SAFE OVERRIDE',
     tag: 'SYSTEMS PROGRAMMING',
     stack: ['C++', 'Graphs', 'Stacks', 'Linked Lists', 'File Handling'],
-    desc: 'A robust risk-validated workflow simulator inspired by the historic Therac-25 radiation machine case study. Designed to eliminate race conditions and software faults through state validation graphs, operation rollback stacks, and strict state machine transitions.',
+    desc: 'A robust risk-validated workflow simulator inspired by the historic Therac-25 radiation hazard case study. Engineered to eliminate race conditions and software faults through state validation graphs, operation rollback stacks, and strict state machine transitions in C++.',
     features: [
       'Graph-based operational state machine preventing unauthorized hazard states',
       'Stack-based rollback mechanism allowing instant recovery upon anomaly detection',
@@ -115,10 +248,10 @@ const projectsData = {
   },
   'hostel-mgmt': {
     title: 'Hostel Management System',
-    role: 'Enterprise Operations & Booking Engine',
-    tag: 'ENTERPRISE SOFTWARE',
+    role: 'BASE LOGISTICS & BOOKING ENGINE',
+    tag: 'ENTERPRISE ARCHITECTURE',
     stack: ['Java', 'Swing GUI', 'Database / File IO', 'OOP Architecture'],
-    desc: 'Java, GUI, database-backed system for room check-in, check-out, and booking. Engineered with modular Object-Oriented principles, persistent record storage, dynamic availability checking, and automated expense calculations.',
+    desc: 'Java, GUI, and database-backed base facility operations system for resident check-in, check-out, and room booking. Engineered with modular Object-Oriented principles, persistent record storage, dynamic availability checking, and automated expense calculations.',
     features: [
       'Modular OOP design with full encapsulation, inheritance, and clean polymorphism',
       'Room reservation engine with dynamic status updates and conflict avoidance',
@@ -130,14 +263,14 @@ const projectsData = {
   },
   'garden-mgmt': {
     title: 'Garden Management Engine (AVL Tree Architecture)',
-    role: 'Self-Balancing BST & Plant Systems Engine',
+    role: 'ARBOREAL CIPHER & SELF-BALANCING AVL ENGINE',
     tag: 'ADVANCED DATA STRUCTURES',
     stack: ['C++', 'AVL Trees', 'Self-Balancing BST', 'Recursive Traversal', 'Tree Rebalancing'],
-    desc: 'A high-performance C++ plant and garden management engine built around an AVL (Adelson-Velsky and Landis) self-balancing binary search tree. Guarantees strict O(log n) search, insertion, and deletion complexity via dynamic single and double tree rotations (LL, RR, LR, RL). Features recursive depth-first tree traversal for batch growth updates, robust deletion with full rebalancing, and zero memory leaks.',
+    desc: 'A high-performance C++ plant and vegetation management engine built around an AVL (Adelson-Velsky and Landis) self-balancing binary search tree. Guarantees strict O(log n) search, insertion, and deletion complexity via dynamic single and double tree rotations (LL, RR, LR, RL). Features recursive depth-first tree traversal for batch growth updates, robust deletion with full rebalancing, and zero memory leaks.',
     features: [
       'Self-balancing AVL tree architecture maintaining strict balance factors (-1, 0, +1) across all node insertions and modifications',
       'Robust delete function with full rebalancing via LL, RR, LR, and RL rotations and in-order successor substitution',
-      'Recursive tree traversal engine executing scheduled batch plant growth updates and hydration calculations',
+      'Recursive tree traversal engine executing scheduled batch growth updates and calculations',
       'Guaranteed O(log n) worst-case search and retrieval velocity with custom C++ pointer management and zero memory leaks'
     ],
     liveUrl: null,
@@ -158,7 +291,6 @@ window.openProjectModal = function(projectId) {
   modalOverlay.setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';
 
-  // Move focus to modal close button
   const closeBtn = document.getElementById('projectModalClose');
   if (closeBtn) {
     closeBtn.focus();
@@ -173,7 +305,6 @@ function closeProjectModal() {
   modalOverlay.setAttribute('aria-hidden', 'true');
   document.body.style.overflow = '';
 
-  // Return focus to the triggering element
   if (lastFocusedElementBeforeModal && typeof lastFocusedElementBeforeModal.focus === 'function') {
     lastFocusedElementBeforeModal.focus();
   }
@@ -182,13 +313,13 @@ function closeProjectModal() {
 function initProjectModals() {
   const modalOverlay = document.getElementById('projectModalOverlay');
   const closeBtn = document.getElementById('projectModalClose');
-  const tacticalCards = document.querySelectorAll('.pitch-player-slot, .project-tactical-card');
+  const tacticalNodes = document.querySelectorAll('.mission-target-node, .project-tactical-card');
 
   if (!modalOverlay || !closeBtn) return;
 
-  tacticalCards.forEach((el) => {
-    const slot = el.closest('.pitch-player-slot') || el;
-    const projectId = slot.getAttribute('data-project');
+  tacticalNodes.forEach((el) => {
+    const node = el.closest('.mission-target-node') || el;
+    const projectId = node.getAttribute('data-project');
     if (!projectId) return;
 
     el.style.cursor = 'pointer';
@@ -213,14 +344,14 @@ function initProjectModals() {
     }
   });
 
-  // ESC key closes modal and returns focus
+  // ESC key closes modal
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
       closeProjectModal();
     }
   });
 
-  // Focus trap within modal dialog
+  // Focus trap within modal
   modalOverlay.addEventListener('keydown', (e) => {
     if (e.key !== 'Tab' || !modalOverlay.classList.contains('active')) return;
 
@@ -272,23 +403,15 @@ function populateProjectModal(project) {
   const liveBtn = document.getElementById('modalLiveLink');
 
   if (project.liveUrl) {
-    if (liveCallout) {
-      liveCallout.style.display = 'flex';
-    }
-    if (calloutBtn) {
-      calloutBtn.href = project.liveUrl;
-    }
+    if (liveCallout) liveCallout.style.display = 'flex';
+    if (calloutBtn) calloutBtn.href = project.liveUrl;
     if (liveBtn) {
       liveBtn.href = project.liveUrl;
       liveBtn.style.display = 'inline-flex';
     }
   } else {
-    if (liveCallout) {
-      liveCallout.style.display = 'none';
-    }
-    if (calloutBtn) {
-      calloutBtn.removeAttribute('href');
-    }
+    if (liveCallout) liveCallout.style.display = 'none';
+    if (calloutBtn) calloutBtn.removeAttribute('href');
     if (liveBtn) {
       liveBtn.style.display = 'none';
       liveBtn.removeAttribute('href');
@@ -346,7 +469,6 @@ function initActiveNav() {
       }
     });
 
-    // Force highlight "Contact" if user is at the absolute bottom of the page
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
       current = 'contact';
     }
@@ -373,7 +495,6 @@ function initCleanTopNav() {
     }
   }
 
-  // If page loads with #hero in hash, strip it from address bar immediately
   stripHeroHash();
   window.addEventListener('hashchange', stripHeroHash);
 
@@ -392,19 +513,17 @@ function initCleanTopNav() {
   });
 }
 
-
-
 /* ==========================================================================
    8. SCROLL REVEAL ANIMATION ENGINE
    ========================================================================== */
 function initScrollReveal() {
-  // Auto-apply scroll-reveal class to trophy cards and timeline items
   const revealTargets = [
     ...document.querySelectorAll('.trophy-card'),
     ...document.querySelectorAll('.timeline-item'),
     ...document.querySelectorAll('.skill-category-card'),
     ...document.querySelectorAll('.contact-dossier-card'),
-    ...document.querySelectorAll('.contact-form-box')
+    ...document.querySelectorAll('.contact-form-box'),
+    ...document.querySelectorAll('.mission-target-node')
   ];
 
   revealTargets.forEach((el) => el.classList.add('scroll-reveal'));
@@ -416,68 +535,13 @@ function initScrollReveal() {
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.15 });
+  }, { threshold: 0.12 });
 
   revealTargets.forEach((el) => observer.observe(el));
 }
 
-
 /* ==========================================================================
-   9. CUSTOM MOUSE CURSOR ENGINE
-   ========================================================================== */
-function initCustomCursor() {
-  const dot = document.getElementById('cursorDot');
-  const trail = document.getElementById('cursorTrail');
-  if (!dot || !trail) return;
-
-  // Only run on non-touch devices and when reduced motion is not preferred
-  if (window.matchMedia('(pointer: coarse)').matches) return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-  let mouseX = window.innerWidth / 2;
-  let mouseY = window.innerHeight / 2;
-  let trailX = window.innerWidth / 2;
-  let trailY = window.innerHeight / 2;
-
-  window.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-    
-    // Dot moves instantly
-    dot.style.transform = `translate(calc(${mouseX}px - 50%), calc(${mouseY}px - 50%))`;
-  });
-
-  function animateTrail() {
-    trailX += (mouseX - trailX) * 0.15;
-    trailY += (mouseY - trailY) * 0.15;
-    
-    trail.style.transform = `translate(calc(${trailX}px - 50%), calc(${trailY}px - 50%))`;
-    requestAnimationFrame(animateTrail);
-  }
-  animateTrail();
-
-  // Add hover effect for all clickable elements
-  const clickables = document.querySelectorAll('a, button, input, textarea, .card-project, .fut-card, .project-tactical-card, .pitch-player-slot');
-  clickables.forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      trail.style.width = '48px';
-      trail.style.height = '48px';
-      trail.style.backgroundColor = 'rgba(0, 240, 255, 0.15)';
-      trail.style.borderColor = 'rgba(0, 240, 255, 0.8)';
-      dot.style.backgroundColor = 'var(--gold-primary)';
-    });
-    el.addEventListener('mouseleave', () => {
-      trail.style.width = '32px';
-      trail.style.height = '32px';
-      trail.style.backgroundColor = 'rgba(0, 240, 255, 0.05)';
-      trail.style.borderColor = 'rgba(0, 240, 255, 0.5)';
-      dot.style.backgroundColor = 'var(--ucl-cyan)';
-    });
-  });
-}
-
-/* ==========================================================================
-   10. ASYNC CONTACT INQUIRY ENGINE (SEAMLESS IN-PAGE DISPATCH)
+   9. ASYNC SECURE TRANSMISSION FORM DISPATCH
    ========================================================================== */
 function initContactForm() {
   const form = document.getElementById('transferInquiryForm');
@@ -489,7 +553,7 @@ function initContactForm() {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const originalText = submitBtn.innerHTML;
-    submitBtn.innerHTML = 'DISPATCHING INQUIRY...';
+    submitBtn.innerHTML = '[TRANSMITTING SECURE PACKET...]';
     submitBtn.disabled = true;
 
     try {
@@ -505,10 +569,10 @@ function initContactForm() {
       if (response.ok) {
         if (statusMsg) {
           statusMsg.style.display = 'block';
-          statusMsg.style.background = 'rgba(0, 240, 255, 0.1)';
-          statusMsg.style.border = '1px solid var(--border-ucl)';
-          statusMsg.style.color = 'var(--ucl-cyan)';
-          statusMsg.innerHTML = '<strong>Inquiry Dispatched Successfully!</strong> Muhammad Ubaid Raza will review and respond directly to your email.';
+          statusMsg.style.background = 'rgba(0, 255, 102, 0.1)';
+          statusMsg.style.border = '1px solid var(--border-neon)';
+          statusMsg.style.color = 'var(--neon-green)';
+          statusMsg.innerHTML = '<strong>TRANSMISSION LOGGED SUCCESSFULLY.</strong> Operative Muhammad Ubaid Raza will review debrief and establish contact via secure email.';
         }
         form.reset();
       } else {
@@ -517,10 +581,10 @@ function initContactForm() {
     } catch (err) {
       if (statusMsg) {
         statusMsg.style.display = 'block';
-        statusMsg.style.background = 'rgba(239, 68, 68, 0.15)';
-        statusMsg.style.border = '1px solid #ef4444';
-        statusMsg.style.color = '#fca5a5';
-        statusMsg.innerHTML = 'Transmission failed. Please email directly at <strong>ubaid183d9@gmail.com</strong>';
+        statusMsg.style.background = 'rgba(255, 50, 50, 0.15)';
+        statusMsg.style.border = '1px solid #ff3333';
+        statusMsg.style.color = '#ff6666';
+        statusMsg.innerHTML = 'Transmission failed. Transmit directly to field comms: <strong>ubaid183d9@gmail.com</strong>';
       }
     } finally {
       submitBtn.innerHTML = originalText;

@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Muhammad Ubaid Raza (#1) | AI Applications & Software Developer</title>
+  <title>Muhammad Ubaid Raza | Tactical AI & Systems Operative</title>
   <meta name="description"
-    content="Official UCL & Real Madrid themed portfolio of Muhammad Ubaid Raza (#1) - AI Applications & Software Developer, Football Team Captain, and BS IT student at Bahria University Karachi.">
+    content="Project IGI tactical military HUD portfolio of Muhammad Ubaid Raza — AI Applications & Software Developer, Bahria University Karachi.">
   <meta name="keywords"
     content="Muhammad Ubaid Raza, Software Developer, AI Engineer, Python, Whisper AI, C++, Java, Streamlit, Bahria University">
   <meta name="author" content="Muhammad Ubaid Raza">
@@ -14,21 +14,21 @@
   <!-- Open Graph / LinkedIn / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://ubaidraza-jpg.github.io/portfolio/">
-  <meta property="og:title" content="Muhammad Ubaid Raza (#1) | AI Applications & Software Developer">
+  <meta property="og:title" content="Muhammad Ubaid Raza | Tactical AI & Systems Operative">
   <meta property="og:description"
-    content="Official UCL & Real Madrid themed portfolio of Muhammad Ubaid Raza (#1) — AI Applications & Software Developer, Football Team Captain, and BS IT student at Bahria University Karachi.">
+    content="Project IGI tactical military HUD portfolio of Muhammad Ubaid Raza — AI Applications & Software Developer, Bahria University Karachi.">
   <meta property="og:image" content="https://ubaidraza-jpg.github.io/portfolio/assets/og-preview.jpg">
   <meta property="og:image:secure_url" content="https://ubaidraza-jpg.github.io/portfolio/assets/og-preview.jpg">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Muhammad Ubaid Raza (#1) - Portfolio Preview">
+  <meta property="og:image:alt" content="Muhammad Ubaid Raza - Portfolio Preview">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Muhammad Ubaid Raza (#1) | AI Applications & Software Developer">
+  <meta name="twitter:title" content="Muhammad Ubaid Raza | Tactical AI & Systems Operative">
   <meta name="twitter:description"
-    content="Official UCL & Real Madrid themed portfolio — AI Developer, Football Captain, Bahria University Karachi">
+    content="Project IGI tactical military HUD portfolio — AI Developer, Bahria University Karachi">
   <meta name="twitter:image" content="https://ubaidraza-jpg.github.io/portfolio/assets/og-preview.jpg">
 
   <!-- Canonical & Search Engine Directives -->
@@ -67,213 +67,218 @@
   </script>
 
   <!-- Mobile Browser Theme Color -->
-  <meta name="theme-color" content="#040814">
+  <meta name="theme-color" content="#030504">
 
-  <!-- Favicon / Crest -->
+  <!-- Favicon / Tactical Crosshair -->
   <link rel="icon"
-    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M45 5 L10 55 L45 55 L35 95 L90 40 L55 40 Z' fill='%238b5cf6'/></svg>">
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='38' fill='none' stroke='%2300ff66' stroke-width='6'/><line x1='50' y1='5' x2='50' y2='30' stroke='%2300ff66' stroke-width='6'/><line x1='50' y1='70' x2='50' y2='95' stroke='%2300ff66' stroke-width='6'/><line x1='5' y1='50' x2='30' y2='50' stroke='%2300ff66' stroke-width='6'/><line x1='70' y1='50' x2='95' y2='50' stroke='%2300ff66' stroke-width='6'/><circle cx='50' cy='50' r='8' fill='%2300ff66'/></svg>">
 
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="css/style.css?v=4.1">
+  <link rel="stylesheet" href="css/style.css?v=5.0">
 </head>
 
 <body>
 
-  <!-- Custom Mouse Cursor -->
-  <div class="custom-cursor-dot" id="cursorDot"></div>
-  <div class="custom-cursor-trail" id="cursorTrail"></div>
+  <!-- Tactical Target Crosshair Cursor -->
+  <div class="tactical-cursor" id="tacticalCursor">
+    <div class="cursor-crosshair-h"></div>
+    <div class="cursor-crosshair-v"></div>
+    <div class="cursor-reticle-ring"></div>
+    <div class="cursor-bracket tl"></div>
+    <div class="cursor-bracket tr"></div>
+    <div class="cursor-bracket bl"></div>
+    <div class="cursor-bracket br"></div>
+    <div class="cursor-dot"></div>
+  </div>
+  <div class="cursor-trailing-tracker" id="cursorTrail"></div>
 
-  <!-- Stadium Floodlight Sweeps — Persistent Background Animation (Never Stops) -->
-  <div class="floodlight-layer" aria-hidden="true">
-    <div class="floodlight-beam beam-1"></div>
-    <div class="floodlight-beam beam-2"></div>
-    <div class="floodlight-beam beam-3"></div>
+  <!-- Tactical Radar Grid & Night-Ops Surveillance Sweep (Persistent Background) -->
+  <div class="tactical-grid-overlay" aria-hidden="true">
+    <div class="radar-scanline"></div>
+    <div class="radar-sweep-beam"></div>
   </div>
 
   <!-- ==========================================================================
-       BROADCAST TICKER / TOP HUD
+       TACTICAL SATELLITE STATUS BAR / TOP HUD
        ========================================================================== -->
   <div class="broadcast-ticker" id="broadcastTicker">
     <div class="container ticker-inner">
       <div class="ticker-live-status">
         <span class="live-dot"></span>
-        <span>PORTFOLIO STATUS LIVE</span>
+        <span>STATUS: ACTIVE OPERATIVE</span>
       </div>
       <div class="ticker-info">
-        <span class="ticker-tag">TRANSFER STATUS</span>
-        <span>Open for Global Opportunities / Worldwide Remote (UTC+5 / PKT)</span>
+        <span class="ticker-tag">SAT-UPLINK</span>
+        <span>MISSION GRID: ASIA-PKT // CLEARANCE: LEVEL-1 // FIELD READINESS: 100% // ENCRYPTION: AES-256</span>
       </div>
     </div>
   </div>
 
   <!-- ==========================================================================
-       NAVIGATION BAR
+       TACTICAL COMMAND NAVIGATION
        ========================================================================== -->
   <header class="site-nav">
     <div class="container nav-container">
       <a href="#" class="brand-logo">
-        <div class="crest-icon">#1</div>
+        <div class="crest-icon">IGI</div>
         <div class="brand-meta">
           <span class="brand-name">M. UBAID RAZA</span>
-          <span class="brand-sub">AI & Systems Engineer</span>
+          <span class="brand-sub">OPERATIVE-01 // AI & SYSTEMS</span>
         </div>
       </a>
 
       <nav>
         <ul class="nav-links" id="navLinks">
-          <li><a href="#" class="active" id="navAboutMe">About Me</a></li>
-          <li><a href="#lineup">Projects</a></li>
-          <li><a href="#trophies">Achievements</a></li>
-          <li><a href="#stats">Skills</a></li>
-          <li><a href="#career">Timeline</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><a href="assets/resume.pdf?v=3.4" target="_blank" class="nav-cta-btn">Resume</a></li>
+          <li><a href="#" class="active" id="navAboutMe">[01] DOSSIER</a></li>
+          <li><a href="#lineup">[02] OPERATIONS</a></li>
+          <li><a href="#trophies">[03] COMMENDATIONS</a></li>
+          <li><a href="#stats">[04] ARSENAL</a></li>
+          <li><a href="#career">[05] SERVICE LOG</a></li>
+          <li><a href="#contact">[06] COMMS LINK</a></li>
+          <li><a href="assets/resume.pdf?v=3.4" target="_blank" class="nav-cta-btn">[EXTRACT RESUME]</a></li>
         </ul>
       </nav>
 
       <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Toggle navigation">
-        ☰
+        [MENU]
       </button>
     </div>
   </header>
 
   <!-- ==========================================================================
-       HERO: PROFESSIONAL PROFILE
+       HERO: TACTICAL OPERATIVE DOSSIER
        ========================================================================== -->
   <section class="hero-section" id="hero">
-    <!-- Stadium Floodlight Atmosphere -->
-    <div class="stadium-lights">
-      <div class="light-beam"></div>
-      <div class="light-beam right"></div>
-    </div>
-
     <div class="container hero-grid">
       <!-- Left Hero Content -->
       <div class="hero-content">
         <div class="hero-match-badge">
-          <span class="ucl-starball-tag">⭐ HIGH-PERFORMANCE PROFILE</span>
-          <span class="section-badge">PROFESSIONAL PROFILE</span>
+          <span class="section-badge">PROJECT I.G.I. // TACTICAL DOSSIER // CLASSIFIED</span>
         </div>
 
         <div class="hero-title-group">
-          <h1>
-            MUHAMMAD<br>
-            UBAID RAZA <span class="captain-number">#1</span>
+          <h1 class="pop-text" id="heroTitle">
+            MUHAMMAD UBAID RAZA
           </h1>
 
           <div class="hero-tech-stack">
-            <span>Python</span>
-            <span>C++</span>
-            <span>Applied AI</span>
-            <span>React / Web</span>
+            <span>[PYTHON]</span>
+            <span>[C++]</span>
+            <span>[APPLIED AI]</span>
+            <span>[SYSTEMS ARCH]</span>
           </div>
           <div class="hero-role">
-            <span>AI Applications & Software Developer</span>
-            <span class="role-tag-pill">CAPTAIN</span>
+            <span class="pop-text">TACTICAL AI & SYSTEMS ARCHITECT</span>
+            <span class="role-tag-pill">OPERATIVE-01</span>
           </div>
         </div>
 
         <p class="hero-bio">
-          Rising IT talent from <strong>Bahria University Karachi</strong> specializing in the intersection of Applied
-          Artificial Intelligence and high-performance software engineering. Known for tactical composure under pressure
-          as a football team captain and runner-up in high-intensity live coding competitions. Master of speech-to-text
-          models, C++ risk simulators, and resilient full-stack systems.
+          Tactical software engineer and IT operative from <strong>Bahria University Karachi</strong>. Field-specialized in high-risk autonomous systems, low-latency neural pipelines, and algorithmic safety protocols. Renowned for unflinching composure under severe operational pressure in live-fire competitive programming deployments. Master of speech-to-text models, C++ risk simulators, and resilient full-stack systems.
         </p>
 
         <!-- Meta status chips -->
         <div class="hero-meta-badges">
           <div class="meta-chip available">
             <span class="status-beacon"></span>
-            <strong>Transfer Ready:</strong> Worldwide Remote
+            <strong>STATUS:</strong> DEPLOYMENT-READY // WORLDWIDE REMOTE
           </div>
           <div class="meta-chip">
-            <span>📍</span>
-            <strong>Base:</strong> Malir 15, Karachi (PKT / UTC+5)
+            <strong>COORDINATES:</strong> 24.8607° N, 67.0011° E (MALIR, KARACHI)
           </div>
           <div class="meta-chip">
-            <span>🎓</span>
-            <strong>Academia:</strong> Bahria University (4th Sem)
+            <strong>ACADEMIA:</strong> BAHRIA UNIVERSITY (4TH SEMESTER)
           </div>
           <div class="meta-chip">
-            <span>⚽</span>
-            <strong>Honors:</strong> 2024 Football Champion
+            <strong>FIELD RECORD:</strong> HACKATHON RUNNER-UP & SQUAD LEADER
           </div>
         </div>
 
         <!-- Call to Actions -->
         <div class="hero-cta-group">
-          <a href="assets/resume.pdf?v=3.4" target="_blank" class="btn-primary" style="display:inline-block; text-decoration:none;">
-            📝 Open Resume (CV)
+          <a href="assets/resume.pdf?v=3.4" target="_blank" class="btn-primary" style="text-decoration:none;">
+            [EXTRACT RESUME / CV]
           </a>
           <a href="#lineup" class="btn-secondary">
-            ⚽ View Projects Portfolio
+            [VIEW FIELD OPERATIONS]
           </a>
-          <a href="#contact" class="btn-secondary"
-            style="border-color: var(--border-gold); color: var(--gold-primary);">
-            ⚡ Contact Me
+          <a href="#contact" class="btn-secondary">
+            [SECURE TRANSMISSION]
           </a>
         </div>
       </div>
 
-      <!-- Right: 3D Profile Card -->
-      <div class="fut-card-wrapper">
-        <div class="fut-card" id="starPlayerCard">
-          <!-- Card Header (Rating, Position, Badges) -->
-          <div class="card-header-badge">
-            <div class="player-ovr-box">
-              <span class="player-ovr">92</span>
-              <span class="player-pos">LEAD</span>
+      <!-- Right: Operative Card with Revolving & Roaming HUD Frames -->
+      <div class="operative-card-wrapper">
+        <!-- Multiple animated revolving and roaming frames behind the photo -->
+        <div class="roaming-frame-system" aria-hidden="true">
+          <div class="revolving-frame frame-circular-radar"></div>
+          <div class="revolving-frame frame-coordinate-compass"></div>
+          <div class="revolving-frame frame-tactical-brackets"></div>
+          <div class="revolving-frame frame-roaming-reticle"></div>
+          <div class="radar-sweep-cone"></div>
+        </div>
+
+        <!-- 3D Moving Operative Card -->
+        <div class="operative-card" id="operativeCard">
+          <!-- Top HUD Bar -->
+          <div class="card-top-hud">
+            <div class="hud-clearance">
+              <span class="hud-status-led"></span>
+              <span>LEVEL-1 CLEARANCE</span>
             </div>
-            <div class="card-top-icons">
-              <span class="national-flag" title="Pakistan">🇵🇰</span>
-              <div class="club-crest" title="Real Madrid Aesthetic">👑</div>
+            <div class="hud-freq">FREQ: 142.85 MHz</div>
+          </div>
+
+          <!-- Photo Viewport with Corner Crosshairs -->
+          <div class="operative-photo-viewport">
+            <div class="photo-corner-crosshair tl">+</div>
+            <div class="photo-corner-crosshair tr">+</div>
+            <div class="photo-corner-crosshair bl">+</div>
+            <div class="photo-corner-crosshair br">+</div>
+            <div class="photo-scanline-bar"></div>
+            <img src="assets/ubaid-headshot.webp" alt="Muhammad Ubaid Raza" class="operative-img" width="682" height="1024" fetchpriority="high">
+          </div>
+
+          <!-- Operative Plate -->
+          <div class="operative-info-plate">
+            <div class="operative-codename">M. UBAID RAZA</div>
+            <div class="operative-designation">LEAD SYSTEMS & AI OPERATIVE</div>
+          </div>
+
+          <!-- Tactical Performance Spec Matrix (Replacing football attributes) -->
+          <div class="operative-specs-matrix">
+            <div class="spec-node">
+              <span class="spec-val">94%</span>
+              <span class="spec-label">NEURAL AI</span>
+            </div>
+            <div class="spec-node">
+              <span class="spec-val">90%</span>
+              <span class="spec-label">SYSTEMS</span>
+            </div>
+            <div class="spec-node">
+              <span class="spec-val">88%</span>
+              <span class="spec-label">ALGORITHMS</span>
+            </div>
+            <div class="spec-node">
+              <span class="spec-val">96%</span>
+              <span class="spec-label">LEADERSHIP</span>
+            </div>
+            <div class="spec-node">
+              <span class="spec-val">92%</span>
+              <span class="spec-label">VELOCITY</span>
+            </div>
+            <div class="spec-node">
+              <span class="spec-val">95%</span>
+              <span class="spec-label">RESILIENCE</span>
             </div>
           </div>
 
-          <!-- Card Photo Frame -->
-          <div class="card-photo-frame">
-            <img src="assets/ubaid-headshot.webp" alt="Muhammad Ubaid Raza" class="card-player-img" width="682" height="1024" fetchpriority="high">
-          </div>
-
-          <!-- Player Name Plate -->
-          <div class="card-name-plate">
-            <div class="card-player-name">M. UBAID RAZA</div>
-            <div class="card-player-sub">AI & Systems Architect #1</div>
-          </div>
-
-          <!-- Card Attributes Matrix (FUT Style) -->
-          <div class="card-stats-matrix">
-            <div class="stat-item">
-              <span class="stat-value">94</span>
-              <span class="stat-label">AI</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-value">90</span>
-              <span class="stat-label">DS</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-value">88</span>
-              <span class="stat-label">SY</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-value">96</span>
-              <span class="stat-label">LD</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-value">92</span>
-              <span class="stat-label">EX</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-value">95</span>
-              <span class="stat-label">PS</span>
-            </div>
-          </div>
-
-          <!-- Card Bottom Ribbon -->
-          <div class="card-footer-ribbon">
-            <span>PORTFOLIO EDITION</span>
+          <!-- Card Bottom Status Bar -->
+          <div class="operative-bottom-bar">
+            <span>PROJECT I.G.I. SPEC</span>
             <span>BAHRIA UNIVERSITY</span>
-            <span>M. UBAID RAZA</span>
+            <span>SYS: ARMED</span>
           </div>
         </div>
       </div>
@@ -281,45 +286,38 @@
   </section>
 
   <!-- ==========================================================================
-       FEATURED PROJECTS SECTION
+       TACTICAL FIELD OPERATIONS MATRIX (PROJECTS)
        ========================================================================== -->
   <section class="lineup-section" id="lineup">
     <div class="container">
       <div style="text-align: center; margin-bottom: 24px;">
-        <span class="section-badge ucl">PROJECT ARCHITECTURE</span>
-        <h2 class="section-title">FEATURED <span class="gold">PROJECTS</span></h2>
+        <span class="section-badge">TACTICAL DEPLOYMENTS</span>
+        <h2 class="section-title pop-text">ACTIVE <span class="neon">FIELD MISSIONS</span></h2>
         <p class="section-desc" style="margin: 0 auto 36px;">
-          Explore the technical projects below. Click on any card to view a <strong>Technical Analysis</strong> with
-          architecture breakdown, live demos, and source code.
+          Satellite reconnaissance and technical dossiers. Select any target node below to inspect the <strong>Classified Mission Brief</strong> with architecture diagrams, live endpoints, and source repositories.
         </p>
       </div>
 
-      <!-- Tactical Pitch Stage -->
-      <div class="tactical-pitch-stage">
-        <div class="football-pitch">
-          <!-- Pitch Field Markings -->
-          <div class="pitch-center-line"></div>
-          <div class="pitch-center-circle"></div>
-          <div class="pitch-center-spot"></div>
-          <div class="pitch-penalty-box-top"></div>
-          <div class="pitch-penalty-box-bottom"></div>
+      <!-- Tactical Mission Radar Grid Stage -->
+      <div class="tactical-mission-stage">
+        <div class="mission-radar-grid">
+          <div class="mission-crosshair-center"></div>
 
-          <!-- Tactical Grid Formation -->
-          <div class="pitch-formation-grid">
+          <!-- Mission Slots Container -->
+          <div class="mission-slots-container">
 
-            <!-- ATTACK ROW: Flagship AI Project -->
-            <div class="tactical-row">
-              <div class="pitch-player-slot" data-project="subtitle-gen" tabindex="0" role="button" aria-label="Open technical report for Multilingual Video Subtitle Generator" onclick="openProjectModal('subtitle-gen')">
-                <div class="pitch-marker-radar"></div>
+            <!-- Mission Row 1: Flagship AI Neural Mission -->
+            <div class="mission-row">
+              <div class="mission-target-node" data-project="subtitle-gen" tabindex="0" role="button" aria-label="Open technical report for Multilingual Video Subtitle Generator" onclick="openProjectModal('subtitle-gen')">
+                <div class="node-sonar-pulse"></div>
                 <div class="project-tactical-card">
-                  <span class="card-position-badge fw">FULL-STACK AI</span>
+                  <span class="card-sector-badge">SECTOR: NEURAL RECON</span>
                   <div class="card-project-header">
                     <h3 class="card-project-title">Multilingual Subtitle Generator</h3>
                     <span class="card-live-dot" title="Live Application Online"></span>
                   </div>
                   <p class="card-project-desc">
-                    AI-powered speech recognition app with Whisper, FFmpeg & Streamlit generating subtitles in English,
-                    Urdu, Spanish, Chinese & Turkish.
+                    AI-powered speech recognition system with Whisper, FFmpeg & Streamlit generating synchronized subtitles across English, Urdu, Spanish, Chinese & Turkish.
                   </p>
                   <div class="card-tech-badges">
                     <span class="tech-tag">Python</span>
@@ -329,25 +327,24 @@
                     <span class="tech-tag">PyTorch</span>
                   </div>
                   <div class="card-click-prompt">
-                    <span>View Technical Report</span>
-                    <span>➔</span>
+                    <span>[ACCESS MISSION BRIEF]</span>
+                    <span>&gt;&gt;</span>
                   </div>
                 </div>
               </div>
             </div>
 
-            <!-- MIDFIELD ROW: Algorithmic Systems -->
-            <div class="tactical-row" style="justify-content: space-around;">
-              <div class="pitch-player-slot" data-project="therac-recovery" tabindex="0" role="button" aria-label="Open technical report for THERAC-25 Recovery System" onclick="openProjectModal('therac-recovery')">
-                <div class="pitch-marker-radar"></div>
+            <!-- Mission Row 2: Algorithmic Systems -->
+            <div class="mission-row" style="justify-content: space-around;">
+              <div class="mission-target-node" data-project="therac-recovery" tabindex="0" role="button" aria-label="Open technical report for THERAC-25 Recovery System" onclick="openProjectModal('therac-recovery')">
+                <div class="node-sonar-pulse"></div>
                 <div class="project-tactical-card">
-                  <span class="card-position-badge">SYSTEMS PROGRAMMING</span>
+                  <span class="card-sector-badge">SECTOR: FAIL-SAFE OVERRIDE</span>
                   <div class="card-project-header">
                     <h3 class="card-project-title">THERAC-25 Recovery System</h3>
                   </div>
                   <p class="card-project-desc">
-                    Risk-validated workflow simulator inspired by Therac-25. Implements graphs, rollback stacks, and
-                    safety state machines in C++.
+                    Risk-validated workflow simulator inspired by Therac-25. Implements graphs, rollback stacks, and safety state machines in C++.
                   </p>
                   <div class="card-tech-badges">
                     <span class="tech-tag">C++</span>
@@ -357,21 +354,21 @@
                     <span class="tech-tag">File Handling</span>
                   </div>
                   <div class="card-click-prompt">
-                    <span>View Technical Report</span>
-                    <span>➔</span>
+                    <span>[ACCESS MISSION BRIEF]</span>
+                    <span>&gt;&gt;</span>
                   </div>
                 </div>
               </div>
 
-              <div class="pitch-player-slot" data-project="garden-mgmt" tabindex="0" role="button" aria-label="Open technical report for Garden Management Engine" onclick="openProjectModal('garden-mgmt')">
-                <div class="pitch-marker-radar"></div>
+              <div class="mission-target-node" data-project="garden-mgmt" tabindex="0" role="button" aria-label="Open technical report for Garden Management Engine" onclick="openProjectModal('garden-mgmt')">
+                <div class="node-sonar-pulse"></div>
                 <div class="project-tactical-card">
-                  <span class="card-position-badge">ADVANCED DATA STRUCTURES</span>
+                  <span class="card-sector-badge">SECTOR: ARBOREAL CIPHER</span>
                   <div class="card-project-header">
                     <h3 class="card-project-title">Garden Management Engine</h3>
                   </div>
                   <p class="card-project-desc">
-                    C++ self-balancing AVL tree system for plant records with full rebalancing deletions, recursive traversal, and rotation logic.
+                    High-performance C++ self-balancing AVL tree system with full rebalancing rotations, recursive depth traversal, and zero memory leaks.
                   </p>
                   <div class="card-tech-badges">
                     <span class="tech-tag">C++</span>
@@ -381,24 +378,24 @@
                     <span class="tech-tag">Tree Rebalancing</span>
                   </div>
                   <div class="card-click-prompt">
-                    <span>View Technical Report</span>
-                    <span>➔</span>
+                    <span>[ACCESS MISSION BRIEF]</span>
+                    <span>&gt;&gt;</span>
                   </div>
                 </div>
               </div>
             </div>
 
-            <!-- DEFENSE ROW: Enterprise Structure -->
-            <div class="tactical-row">
-              <div class="pitch-player-slot" data-project="hostel-mgmt" tabindex="0" role="button" aria-label="Open technical report for Hostel Management System" onclick="openProjectModal('hostel-mgmt')">
-                <div class="pitch-marker-radar"></div>
+            <!-- Mission Row 3: Base Logistics -->
+            <div class="mission-row">
+              <div class="mission-target-node" data-project="hostel-mgmt" tabindex="0" role="button" aria-label="Open technical report for Hostel Management System" onclick="openProjectModal('hostel-mgmt')">
+                <div class="node-sonar-pulse"></div>
                 <div class="project-tactical-card">
-                  <span class="card-position-badge">ENTERPRISE SOFTWARE</span>
+                  <span class="card-sector-badge">SECTOR: BASE LOGISTICS</span>
                   <div class="card-project-header">
                     <h3 class="card-project-title">Hostel Management System</h3>
                   </div>
                   <p class="card-project-desc">
-                    Java, GUI, database-backed system for room check-in, check-out, and booking.
+                    Java, GUI, database-backed system for facility logistics, automated check-in/out scheduling, and persistent accounting records.
                   </p>
                   <div class="card-tech-badges">
                     <span class="tech-tag">Java</span>
@@ -407,24 +404,22 @@
                     <span class="tech-tag">OOP Architecture</span>
                   </div>
                   <div class="card-click-prompt">
-                    <span>View Technical Report</span>
-                    <span>➔</span>
+                    <span>[ACCESS MISSION BRIEF]</span>
+                    <span>&gt;&gt;</span>
                   </div>
                 </div>
               </div>
             </div>
 
-            <!-- GOALKEEPER / ANCHOR: Star Captain -->
-            <div class="tactical-row">
-              <div class="pitch-player-slot" style="cursor: default;" title="The Anchor and Captain">
-                <div class="project-tactical-card"
-                  style="border-color: var(--ucl-cyan); text-align: center; width: 230px; padding: 12px;">
-                  <span class="card-position-badge gk">GK · M. UBAID RAZA</span>
-                  <div
-                    style="font-family: var(--font-hud); font-size: 1.15rem; font-weight: 800; color: var(--gold-primary); margin-top: 8px;">
-                    M. UBAID RAZA
+            <!-- Mission Row 4: Base Command Center Node -->
+            <div class="mission-row">
+              <div class="mission-target-node" style="cursor: default;" title="Base Command Center">
+                <div class="project-tactical-card base-command-node">
+                  <span class="card-sector-badge">COMMAND // HQ</span>
+                  <div style="font-family: var(--font-hud); font-size: 1.15rem; font-weight: 800; color: var(--neon-green); margin-top: 8px;">
+                    OPERATIVE M. UBAID RAZA
                   </div>
-                  <div style="font-size: 0.78rem; color: var(--ucl-cyan);">BSIT · 4TH SEMESTER</div>
+                  <div style="font-size: 0.8rem; color: var(--grey-muted); font-family: var(--font-mono);">BSIT · 4TH SEMESTER // SECURE</div>
                 </div>
               </div>
             </div>
@@ -436,61 +431,70 @@
   </section>
 
   <!-- ==========================================================================
-       TROPHY CABINET (HONORS & REAL CHAMPIONSHIPS)
+       TACTICAL COMMENDATIONS & HONORS (MEDALS & CERTS)
        ========================================================================== -->
   <section class="trophy-section" id="trophies">
     <div class="container">
       <div style="text-align: center;">
-        <span class="section-badge">HONORS & TROPHIES</span>
-        <h2 class="section-title">ACHIEVEMENTS <span class="gold">& AWARDS</span></h2>
+        <span class="section-badge">FIELD MERIT & HONORS</span>
+        <h2 class="section-title pop-text">TACTICAL <span class="neon">COMMENDATIONS</span></h2>
         <p class="section-desc" style="margin: 0 auto 50px;">
-          Demonstrated leadership and technical excellence under pressure in competitive coding and international AI
-          programs.
+          Demonstrated leadership, composure under severe pressure in competitive coding operations, and certified international artificial intelligence credentials.
         </p>
       </div>
 
       <div class="trophy-grid">
-        <!-- Trophy 1 -->
+        <!-- Commendation 1 -->
         <div class="trophy-card">
           <span class="trophy-year-badge">2024</span>
-          <div class="trophy-icon-box">🏆</div>
-          <h3 class="trophy-title">Sports Fest Football Champion</h3>
+          <div class="trophy-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+          </div>
+          <h3 class="trophy-title">Tournament Athletic Champion</h3>
           <div class="trophy-org">Sports Fest Annual Tournament</div>
           <p class="trophy-desc">
-            Led the team to championship victory through tactical defense, high-speed counterplay, and unwavering
-            composure in knockout finals.
+            Commanded tactical defense and high-velocity counter-play to secure the championship victory through unwavering composure in high-stakes knockout finals.
           </p>
         </div>
 
-        <!-- Trophy 2 -->
+        <!-- Commendation 2 -->
         <div class="trophy-card">
           <span class="trophy-year-badge">2024</span>
-          <div class="trophy-icon-box">⚽</div>
-          <h3 class="trophy-title">Football Team Captain</h3>
-          <div class="trophy-org">Inter-House Football Championship</div>
+          <div class="trophy-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <h3 class="trophy-title">Squad Tactical Captain</h3>
+          <div class="trophy-org">Inter-House Championship</div>
           <p class="trophy-desc">
-            Appointed squad captain; directed pitch tactics, motivated teammates during high-pressure deficits, and
-            lifted the Inter-House championship trophy.
+            Appointed squad captain; directed field strategy, maintained team morale under pressure deficits, and spearheaded the championship title run.
           </p>
         </div>
 
-        <!-- Trophy 3 -->
+        <!-- Commendation 3 -->
         <div class="trophy-card">
           <span class="trophy-year-badge">MAY 2026</span>
-          <div class="trophy-icon-box">🥈</div>
+          <div class="trophy-icon-box">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="16 18 22 12 16 6"/>
+              <polyline points="8 6 2 12 8 18"/>
+            </svg>
+          </div>
           <h3 class="trophy-title">Techathon 2.0 Runner-Up</h3>
           <div class="trophy-org">"Code in the Dark" · Bahria University</div>
           <p class="trophy-desc">
-            Represented team <em>Innovators RoadPe</em> in an intense blind programming contest—coding complex front-end
-            systems without browser previews.
+            Represented squad <em>Innovators RoadPe</em> in an intense blind programming hackathon—authoring complex frontend architectures without live browser previews.
           </p>
         </div>
 
-        <!-- Trophy 4: Dubai 1 Million Prompters Certificate -->
+        <!-- Commendation 4: Dubai 1 Million Prompters Certificate -->
         <div class="trophy-card">
           <span class="trophy-year-badge">CERTIFIED</span>
           <div class="trophy-icon-box">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--ucl-cyan);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="8" r="7"/>
               <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/>
             </svg>
@@ -503,19 +507,19 @@
           <div class="trophy-actions">
             <a href="assets/certificate-dubai-prompter.pdf" target="_blank" rel="noopener" class="btn-cert-pdf">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-              View Certificate (PDF) ↗
+              View Certificate (PDF)
             </a>
             <a href="https://dub.ai/omp" target="_blank" rel="noopener" class="trophy-verify-link">
-              Verify Initiative ↗
+              Verify Initiative
             </a>
           </div>
         </div>
 
-        <!-- Trophy 5: LinkedIn Learning Generative AI Certificate -->
+        <!-- Commendation 5: LinkedIn Learning Generative AI Certificate -->
         <div class="trophy-card">
           <span class="trophy-year-badge">JUN 2026</span>
           <div class="trophy-icon-box">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--gold-primary);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
               <path d="M6 12v5c3 3 9 3 12 0v-5"/>
             </svg>
@@ -528,10 +532,10 @@
           <div class="trophy-actions">
             <a href="assets/certificate-generative-ai.pdf" target="_blank" rel="noopener" class="btn-cert-pdf">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-              View Certificate (PDF) ↗
+              View Certificate (PDF)
             </a>
             <a href="https://www.linkedin.com/learning/what-is-generative-ai" target="_blank" rel="noopener" class="trophy-verify-link">
-              Verify Course ↗
+              Verify Course
             </a>
           </div>
         </div>
@@ -540,78 +544,76 @@
   </section>
 
   <!-- ==========================================================================
-       TACTICAL STATS & ATTRIBUTES RADAR
+       TACTICAL ATTRIBUTES RADAR & SKILLS ARSENAL
        ========================================================================== -->
   <section class="stats-section" id="stats">
     <div class="container">
       <div style="text-align: center;">
-        <span class="section-badge ucl">TECHNICAL ATTRIBUTES</span>
-        <h2 class="section-title">SKILLS <span class="cyan">& CAPABILITIES</span></h2>
+        <span class="section-badge">OPERATIVE ARSENAL</span>
+        <h2 class="section-title pop-text">CAPABILITIES <span class="neon">& WEAPONRY</span></h2>
         <p class="section-desc" style="margin: 0 auto 50px;">
-          A quantitative evaluation of engineering firepower, algorithm mastery, and leadership discipline.
+          Quantitative evaluation of engineering firepower, algorithm mastery, and operational leadership under fire.
         </p>
       </div>
 
       <div class="stats-grid">
-        <!-- SVG Radar Hexagon -->
+        <!-- SVG Tactical Radar Hexagon -->
         <div class="radar-chart-container">
           <h3
-            style="font-family: var(--font-hud); font-size: 1.3rem; margin-bottom: 20px; color: var(--gold-primary); text-transform: uppercase;">
-            Attribute Hexagon (OVR: 92)
+            style="font-family: var(--font-hud); font-size: 1.3rem; margin-bottom: 20px; color: var(--neon-green); text-transform: uppercase;">
+            TACTICAL CAPABILITY RADAR (SPEC: 92)
           </h3>
           <svg viewBox="-115 10 630 385" width="100%" height="auto" style="max-width: 440px;">
-            <!-- Background Rings -->
-            <polygon points="200,40 338,120 338,280 200,360 62,280 62,120" fill="none" stroke="rgba(255,255,255,0.08)"
+            <!-- Background Rings in Neon Grey -->
+            <polygon points="200,40 338,120 338,280 200,360 62,280 62,120" fill="none" stroke="rgba(0,255,102,0.15)"
               stroke-width="1.5" />
-            <polygon points="200,80 304,140 304,260 200,320 96,260 96,140" fill="none" stroke="rgba(255,255,255,0.08)"
+            <polygon points="200,80 304,140 304,260 200,320 96,260 96,140" fill="none" stroke="rgba(0,255,102,0.12)"
               stroke-width="1.5" />
             <polygon points="200,120 270,160 270,240 200,280 130,240 130,160" fill="none"
-              stroke="rgba(255,255,255,0.08)" stroke-width="1.5" />
+              stroke="rgba(0,255,102,0.08)" stroke-width="1.5" />
 
             <!-- Axis Lines -->
-            <line x1="200" y1="200" x2="200" y2="40" stroke="rgba(255,255,255,0.15)" stroke-width="1" />
-            <line x1="200" y1="200" x2="338" y2="120" stroke="rgba(255,255,255,0.15)" stroke-width="1" />
-            <line x1="200" y1="200" x2="338" y2="280" stroke="rgba(255,255,255,0.15)" stroke-width="1" />
-            <line x1="200" y1="200" x2="200" y2="360" stroke="rgba(255,255,255,0.15)" stroke-width="1" />
-            <line x1="200" y1="200" x2="62" y2="280" stroke="rgba(255,255,255,0.15)" stroke-width="1" />
-            <line x1="200" y1="200" x2="62" y2="120" stroke="rgba(255,255,255,0.15)" stroke-width="1" />
+            <line x1="200" y1="200" x2="200" y2="40" stroke="rgba(0,255,102,0.2)" stroke-width="1" />
+            <line x1="200" y1="200" x2="338" y2="120" stroke="rgba(0,255,102,0.2)" stroke-width="1" />
+            <line x1="200" y1="200" x2="338" y2="280" stroke="rgba(0,255,102,0.2)" stroke-width="1" />
+            <line x1="200" y1="200" x2="200" y2="360" stroke="rgba(0,255,102,0.2)" stroke-width="1" />
+            <line x1="200" y1="200" x2="62" y2="280" stroke="rgba(0,255,102,0.2)" stroke-width="1" />
+            <line x1="200" y1="200" x2="62" y2="120" stroke="rgba(0,255,102,0.2)" stroke-width="1" />
 
-            <!-- Ubaid's Radar Stats Polygon -->
-            <!-- AI: 94, DS: 90, SY: 88, LD: 96, EX: 92, PS: 95 -->
-            <polygon points="200,50 325,128 322,270 200,354 75,274 72,128" fill="rgba(0, 240, 255, 0.25)"
-              stroke="var(--ucl-cyan)" stroke-width="2.5" />
+            <!-- Ubaid's Radar Stats Polygon in Pure Neon Green -->
+            <polygon points="200,50 325,128 322,270 200,354 75,274 72,128" fill="rgba(0, 255, 102, 0.22)"
+              stroke="var(--neon-green)" stroke-width="2.5" />
 
-            <!-- Stat Marker Points -->
-            <circle cx="200" cy="50" r="5" fill="var(--gold-primary)" />
-            <circle cx="325" cy="128" r="5" fill="var(--gold-primary)" />
-            <circle cx="322" cy="270" r="5" fill="var(--gold-primary)" />
-            <circle cx="200" cy="354" r="5" fill="var(--gold-primary)" />
-            <circle cx="75" cy="274" r="5" fill="var(--gold-primary)" />
-            <circle cx="72" cy="128" r="5" fill="var(--gold-primary)" />
+            <!-- Marker Points -->
+            <circle cx="200" cy="50" r="5" fill="var(--neon-green)" />
+            <circle cx="325" cy="128" r="5" fill="var(--neon-green)" />
+            <circle cx="322" cy="270" r="5" fill="var(--neon-green)" />
+            <circle cx="200" cy="354" r="5" fill="var(--neon-green)" />
+            <circle cx="75" cy="274" r="5" fill="var(--neon-green)" />
+            <circle cx="72" cy="128" r="5" fill="var(--neon-green)" />
 
             <!-- Labels -->
-            <text x="200" y="28" fill="var(--ucl-cyan)" font-family="Rajdhani" font-weight="700" font-size="14"
+            <text x="200" y="28" fill="var(--neon-green)" font-family="Rajdhani" font-weight="700" font-size="14"
               text-anchor="middle">APPLIED AI (94)</text>
-            <text x="350" y="118" fill="var(--gold-primary)" font-family="Rajdhani" font-weight="700" font-size="14"
+            <text x="350" y="118" fill="var(--text-white)" font-family="Rajdhani" font-weight="700" font-size="14"
               text-anchor="start">DATA STRUCTURES (90)</text>
-            <text x="350" y="288" fill="var(--ucl-cyan)" font-family="Rajdhani" font-weight="700" font-size="14"
+            <text x="350" y="288" fill="var(--neon-green)" font-family="Rajdhani" font-weight="700" font-size="14"
               text-anchor="start">SYSTEMS & OOP (88)</text>
-            <text x="200" y="385" fill="var(--gold-primary)" font-family="Rajdhani" font-weight="700" font-size="14"
+            <text x="200" y="385" fill="var(--text-white)" font-family="Rajdhani" font-weight="700" font-size="14"
               text-anchor="middle">LEADERSHIP & COMPOSURE (96)</text>
-            <text x="50" y="288" fill="var(--ucl-cyan)" font-family="Rajdhani" font-weight="700" font-size="14"
+            <text x="50" y="288" fill="var(--neon-green)" font-family="Rajdhani" font-weight="700" font-size="14"
               text-anchor="end">EXECUTION VELOCITY (92)</text>
-            <text x="50" y="118" fill="var(--gold-primary)" font-family="Rajdhani" font-weight="700" font-size="14"
+            <text x="50" y="118" fill="var(--text-white)" font-family="Rajdhani" font-weight="700" font-size="14"
               text-anchor="end">PRESSURE RESILIENCE (95)</text>
           </svg>
         </div>
 
         <!-- Technical Arsenal Stack -->
         <div class="skills-tactical-stack">
-          <!-- Category 1: Attack -->
+          <!-- Category 1: Offensive Neural Arsenal -->
           <div class="skill-category-card">
             <div class="category-header">
-              <span>⚡</span>
-              <h3>Focus: Applied AI & Modern Web</h3>
+              <h3>OFFENSIVE ARSENAL: APPLIED AI & MODERN WEB</h3>
             </div>
             <div class="skills-pill-group">
               <span class="skill-pill">Python</span>
@@ -624,11 +626,10 @@
             </div>
           </div>
 
-          <!-- Category 2: Midfield -->
+          <!-- Category 2: Core Systems -->
           <div class="skill-category-card">
             <div class="category-header">
-              <span>🧠</span>
-              <h3>Foundation: Core Systems & Algorithms</h3>
+              <h3>CORE DEFENSIVE SYSTEMS: ALGORITHMS & ARCHITECTURE</h3>
             </div>
             <div class="skills-pill-group">
               <span class="skill-pill">C++ (Modern)</span>
@@ -640,11 +641,10 @@
             </div>
           </div>
 
-          <!-- Category 3: Defense -->
+          <!-- Category 3: Logistics & Infra -->
           <div class="skill-category-card">
             <div class="category-header">
-              <span>🛡️</span>
-              <h3>Operations: Infrastructure</h3>
+              <h3>LOGISTICS & FIELD INFRASTRUCTURE: DEPLOYMENT</h3>
             </div>
             <div class="skills-pill-group">
               <span class="skill-pill">Git & GitHub</span>
@@ -652,7 +652,7 @@
               <span class="skill-pill">FFmpeg Pipelines</span>
               <span class="skill-pill">File Serialization</span>
               <span class="skill-pill">High-Pressure Team Leadership</span>
-              <span class="skill-pill">Customer & Stock Operations</span>
+              <span class="skill-pill">Operational Logistics</span>
             </div>
           </div>
         </div>
@@ -661,16 +661,15 @@
   </section>
 
   <!-- ==========================================================================
-       CAREER & TRANSFER HISTORY
+       OPERATIONAL SERVICE RECORD // TIMELINE
        ========================================================================== -->
   <section class="career-section" id="career">
     <div class="container">
       <div style="text-align: center;">
-        <span class="section-badge">EDUCATION & EXPERIENCE</span>
-        <h2 class="section-title">PROFESSIONAL & <span class="gold">ACADEMIC TIMELINE</span></h2>
+        <span class="section-badge">FIELD RECORD & SERVICE</span>
+        <h2 class="section-title pop-text">OPERATIONAL <span class="neon">SERVICE LOG</span></h2>
         <p class="section-desc" style="margin: 0 auto 50px;">
-          The development trajectory from foundational education to university IT mastery and real-world
-          high-responsibility operations.
+          The operational service trajectory from foundational STEM education to university IT mastery and independent field operations.
         </p>
       </div>
 
@@ -680,15 +679,13 @@
           <div class="timeline-marker"></div>
           <div class="timeline-card">
             <div class="timeline-meta">
-              <span class="timeline-period">2024 — 2028 (PRESENT)</span>
-              <span class="timeline-badge">UNIVERSITY</span>
+              <span class="timeline-period">2024 — 2028 (ACTIVE)</span>
+              <span class="timeline-badge">ACADEMY</span>
             </div>
             <h3 class="timeline-title">BS Information Technology</h3>
             <div class="timeline-subtitle">Bahria University Karachi Campus</div>
             <div class="timeline-body">
-              Currently in <strong>4th Semester (CGPA: 3.06)</strong>. Rigorous coursework covering Data Structures &
-              Algorithms, Object-Oriented Programming, Database Systems, Computer Programming, and Applied AI
-              applications. Actively representing the university in competitive programming hackathons.
+              Currently in <strong>4th Semester (CGPA: 3.06)</strong>. Rigorous training covering Data Structures & Algorithms, Object-Oriented Programming, Database Systems, Systems Programming, and Applied AI applications. Actively deployed in competitive programming hackathons.
             </div>
           </div>
         </div>
@@ -704,15 +701,11 @@
             <h3 class="timeline-title">Counter Manager & Store In-Charge</h3>
             <div class="timeline-subtitle">360 Cadet College Sanghar & 8 Signal Army Canteen</div>
             <div class="timeline-body">
-              Entrusted as the <strong>sole independent operator</strong> running high-volume food service and canteen
-              counters.
+              Entrusted as the <strong>sole independent operator</strong> running high-volume service and inventory operations under strict military facility discipline.
               <ul class="timeline-bullets">
-                <li>Managed daily cash transactions, accounting balance, and inventory tracking without supervision.
-                </li>
-                <li>Ensured 100% item availability, fast turnaround, and composed communication under peak rush periods.
-                </li>
-                <li>Built practical discipline, team leadership, and real customer trust that informs software product
-                  empathy.</li>
+                <li>Managed daily accounting reconciliation and inventory logistics without direct supervision.</li>
+                <li>Ensured 100% item availability, rapid turnaround, and composed communication under peak operational rush periods.</li>
+                <li>Built practical discipline, team leadership, and real user trust that informs software engineering empathy.</li>
               </ul>
             </div>
           </div>
@@ -729,7 +722,7 @@
             <h3 class="timeline-title">Intermediate in Computer Science (ICS)</h3>
             <div class="timeline-subtitle">Board of Intermediate Education Karachi · 74%</div>
             <div class="timeline-body">
-              Graduated with strong foundations in Computer Science principles, mathematics, and structured logic.
+              Graduated with strong foundations in Computer Science principles, mathematics, and structured algorithmic logic.
             </div>
           </div>
         </div>
@@ -743,11 +736,9 @@
               <span class="timeline-badge">SECONDARY</span>
             </div>
             <h3 class="timeline-title">Matriculation (Science)</h3>
-            <div class="timeline-subtitle">Federal Board of Intermediate & Secondary Education · 89.6% High Distinction
-            </div>
+            <div class="timeline-subtitle">Federal Board of Intermediate & Secondary Education · 89.6% Distinction</div>
             <div class="timeline-body">
-              Completed matriculation with an exceptional <strong>89.6%</strong> distinction, demonstrating consistent
-              academic rigor.
+              Completed matriculation with an exceptional <strong>89.6%</strong> high distinction, demonstrating consistent academic rigor.
             </div>
           </div>
         </div>
@@ -756,83 +747,82 @@
   </section>
 
   <!-- ==========================================================================
-       PRESS ROOM / CONTACT & TRANSFER INQUIRY
+       SECURE COMMS TERMINAL // CONTACT SECTION
        ========================================================================== -->
   <section class="contact-section" id="contact">
     <div class="container">
       <div style="text-align: center;">
-        <span class="section-badge ucl">CONTACT ME</span>
-        <h2 class="section-title">THE <span class="cyan">TRANSFER WINDOW</span></h2>
+        <span class="section-badge">TRANSMISSION LINK</span>
+        <h2 class="section-title pop-text">THE <span class="neon">COMMS TERMINAL</span></h2>
         <p class="section-desc" style="margin: 0 auto 50px;">
-          Ready to sign a high-impact AI developer and software engineer? Initiate transfer talks or send a direct
-          inquiry.
+          Initiate direct communication for software engineering roles, autonomous AI initiatives, or tactical freelance deployment.
         </p>
       </div>
 
       <div class="contact-grid">
-        <!-- Direct Scout Channels -->
+        <!-- Direct Operative Channels -->
         <div class="contact-dossier-card">
           <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
             <div class="crest-icon">#1</div>
             <div>
-              <h3 style="font-family: var(--font-hud); font-size: 1.4rem; color: var(--gold-primary);">
-                CONTACT DETAILS
+              <h3 style="font-family: var(--font-hud); font-size: 1.4rem; color: var(--neon-green);">
+                OPERATIVE COMMS CHANNELS
               </h3>
-              <p style="font-size: 0.85rem; color: var(--text-dim);">Direct agent & player contact line</p>
+              <p style="font-size: 0.85rem; color: var(--grey-muted); font-family: var(--font-mono);">Direct agent & transmission line</p>
             </div>
           </div>
 
           <div class="contact-channels">
             <a href="mailto:ubaid183d9@gmail.com" class="contact-channel-item">
-              <div class="channel-icon">✉️</div>
+              <div class="channel-icon">[EMAIL]</div>
               <div class="channel-meta">
-                <span class="channel-label">Official Email</span>
+                <span class="channel-label">Official Comms Channel</span>
                 <span class="channel-val">ubaid183d9@gmail.com</span>
               </div>
             </a>
 
             <a href="tel:03272731053" class="contact-channel-item">
-              <div class="channel-icon">📞</div>
+              <div class="channel-icon">[PHONE]</div>
               <div class="channel-meta">
-                <span class="channel-label">Direct Phone / WhatsApp</span>
+                <span class="channel-label">Direct Line / WhatsApp</span>
                 <span class="channel-val">0327-2731053</span>
               </div>
             </a>
 
             <a href="https://linkedin.com/in/muhammad-ubaid-raza-9b2912297" target="_blank" rel="noopener"
               class="contact-channel-item">
-              <div class="channel-icon">💼</div>
+              <div class="channel-icon">[IN]</div>
               <div class="channel-meta">
-                <span class="channel-label">Professional Network</span>
+                <span class="channel-label">Intel Network</span>
                 <span class="channel-val" style="text-decoration: underline;">linkedin.com/in/muhammad-ubaid-raza</span>
               </div>
             </a>
 
             <a href="https://github.com/UbaidRaza-jpg" target="_blank" rel="noopener" class="contact-channel-item">
-              <div class="channel-icon">🐙</div>
+              <div class="channel-icon">[GIT]</div>
               <div class="channel-meta">
-                <span class="channel-label">Source Code Repository</span>
+                <span class="channel-label">Code Vault Repository</span>
                 <span class="channel-val" style="text-decoration: underline;">github.com/UbaidRaza-jpg</span>
               </div>
             </a>
 
             <div class="contact-channel-item" style="cursor: default;">
-              <div class="channel-icon">📍</div>
+              <div class="channel-icon">[LOC]</div>
               <div class="channel-meta">
-                <span class="channel-label">Home Ground / Working Zone</span>
+                <span class="channel-label">Deployment Coordinates</span>
                 <span class="channel-val">Malir 15, Karachi · Worldwide Remote (UTC+5)</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Contact Me Form -->
+        <!-- Message Transmission Form -->
         <div class="contact-form-box">
           <h3 style="font-family: var(--font-hud); font-size: 1.4rem; color: var(--text-white); margin-bottom: 6px;">
-            SEND A MESSAGE
+            DISPATCH TRANSMISSION
           </h3>
-          <p style="font-size: 0.88rem; color: var(--text-dim); margin-bottom: 24px;">
-            Send an interview invite, project opportunity, or freelance inquiry directly to Muhammad Ubaid Raza.
+          <p style="font-size: 0.88rem; color: var(--grey-muted); margin-bottom: 24px; font-family: var(--font-mono);">
+            Send an interview debrief, project mission, or inquiry directly to Muhammad Ubaid Raza.
           </p>
 
           <form id="transferInquiryForm" action="https://formsubmit.co/ubaid183d9@gmail.com" method="POST">
@@ -844,33 +834,33 @@
             <input type="hidden" name="_next" value="https://ubaidraza-jpg.github.io/portfolio/#contact">
 
             <div class="form-group">
-              <label class="form-label" for="senderName">Your Name / Scout</label>
+              <label class="form-label" for="senderName">Operative Name / Recruiter</label>
               <input type="text" name="Name" id="senderName" class="form-input"
-                placeholder="e.g. Hiring Manager / Recruiter" required>
+                placeholder="e.g. Hiring Commander / Recruiter" required>
             </div>
 
             <div class="form-group">
-              <label class="form-label" for="senderOrg">Club / Company Name</label>
+              <label class="form-label" for="senderOrg">Organization / Agency</label>
               <input type="text" name="Organization" id="senderOrg" class="form-input"
                 placeholder="e.g. AI Innovations Corp / Software Studio" required>
             </div>
 
             <div class="form-group">
-              <label class="form-label" for="senderSubject">Subject / Opportunity</label>
+              <label class="form-label" for="senderSubject">Mission Objective / Subject</label>
               <input type="text" name="Subject" id="senderSubject" class="form-input"
-                placeholder="e.g. AI Developer Internship / Full-Stack Project" required>
+                placeholder="e.g. AI Developer Mission / Systems Engineering Role" required>
             </div>
 
             <div class="form-group">
-              <label class="form-label" for="senderMessage">Contract Proposal / Message</label>
+              <label class="form-label" for="senderMessage">Mission Briefing / Message</label>
               <textarea name="Message" id="senderMessage" class="form-textarea"
-                placeholder="Describe the role, timeline, or engineering challenge..." required></textarea>
+                placeholder="Describe the operational challenge, timeline, or requirements..." required></textarea>
             </div>
 
             <button type="submit" class="btn-primary" id="contactSubmitBtn" style="width: 100%; justify-content: center;">
-              SEND MESSAGE
+              [TRANSMIT MESSAGE]
             </button>
-            <div id="formStatusMessage" style="display:none; margin-top: 15px; padding: 12px 16px; border-radius: 8px; font-size: 0.9rem; font-family: var(--font-hud); letter-spacing: 0.5px; text-align: center;"></div>
+            <div id="formStatusMessage" style="display:none; margin-top: 15px; padding: 12px 16px; border-radius: 4px; font-size: 0.9rem; font-family: var(--font-mono); letter-spacing: 0.5px; text-align: center;"></div>
           </form>
         </div>
       </div>
@@ -878,72 +868,71 @@
   </section>
 
   <!-- ==========================================================================
-       FOOTER
+       FOOTER // TACTICAL TERMINAL
        ========================================================================== -->
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-credits">
-        <strong>MUHAMMAD UBAID RAZA (#1)</strong> · AI Applications & Software Developer
+        <strong>MUHAMMAD UBAID RAZA</strong> // AI Applications & Systems Operative
         <br>
-        <span style="font-size: 0.8rem; color: var(--text-muted);">
-          Inspired by the UEFA Champions League & Real Madrid FC
+        <span style="font-size: 0.8rem; color: var(--grey-muted);">
+          Project I.G.I. Tactical Interface Architecture // All Systems Nominal
         </span>
       </div>
 
       <div style="display: flex; gap: 20px;">
         <a href="#" class="back-to-top-btn"
-          style="color: var(--gold-primary); text-decoration: none; font-size: 0.85rem; font-family: var(--font-hud);">BACK
-          TO TOP ⬆</a>
+          style="color: var(--neon-green); text-decoration: none; font-size: 0.85rem; font-family: var(--font-mono);">[TOP OF RADAR ^]</a>
       </div>
     </div>
   </footer>
 
   <!-- ==========================================================================
-       MODAL 1: "VAR MATCH REPORT" (PROJECT DEEP-DIVE)
+       CLASSIFIED MISSION DEBRIEF MODAL
        ========================================================================== -->
   <div class="modal-overlay" id="projectModalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalProjectTitle" aria-hidden="true">
     <div class="modal-container">
       <div class="modal-header">
-        <div class="modal-title-group">
-          <span class="modal-var-badge">VAR REVIEW</span>
+        <div class="modal-title-group" style="display: flex; align-items: center; gap: 10px;">
+          <span class="modal-var-badge">MISSION INTEL</span>
           <span class="modal-title" id="modalProjectTitle">Project Title</span>
         </div>
-        <button class="modal-close-btn" id="projectModalClose" aria-label="Close modal">✕</button>
+        <button class="modal-close-btn" id="projectModalClose" aria-label="Close modal">[X]</button>
       </div>
 
       <div class="modal-body">
-        <!-- Prominent Live Streamlit Callout Banner -->
+        <!-- Live Streamlit Callout Banner -->
         <div id="modalLiveCallout"
-          style="display:none; margin-bottom: 22px; padding: 14px 18px; border-radius: 12px; background: linear-gradient(135deg, rgba(0, 240, 255, 0.16), rgba(29, 114, 254, 0.22)); border: 2px solid #00f0ff; box-shadow: 0 0 25px rgba(0, 240, 255, 0.35); align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px;">
+          style="display:none; margin-bottom: 22px; padding: 14px 18px; border-radius: 8px; background: rgba(0, 255, 102, 0.08); border: 1.5px solid var(--neon-green); box-shadow: 0 0 25px rgba(0, 255, 102, 0.25); align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px;">
           <div>
-            <div style="color: #00f0ff; font-family: var(--font-hud); font-weight: 800; font-size: 0.95rem; letter-spacing: 1px; display: flex; align-items: center; gap: 8px;">
-              <span style="display:inline-block; width:10px; height:10px; border-radius:50%; background:#00f0ff; box-shadow: 0 0 10px #00f0ff;"></span>
-              LIVE STREAMLIT APPLICATION READY
+            <div style="color: var(--neon-green); font-family: var(--font-hud); font-weight: 800; font-size: 0.95rem; letter-spacing: 1px; display: flex; align-items: center; gap: 8px;">
+              <span style="display:inline-block; width:10px; height:10px; border-radius:50%; background:var(--neon-green); box-shadow: 0 0 10px var(--neon-green);"></span>
+              LIVE STREAMLIT DEPLOYMENT ACTIVE
             </div>
-            <div style="color: #e2e8f0; font-size: 0.85rem; margin-top: 4px;">
-              Interactive web app deployed live in the cloud. Upload or transcribe in real-time.
+            <div style="color: var(--text-dim); font-size: 0.85rem; margin-top: 4px; font-family: var(--font-mono);">
+              Interactive web application running on cloud infrastructure. Test transcription in real-time.
             </div>
           </div>
           <a href="https://built-by-ubaid-multilingual-video-subtitle-generator.streamlit.app/" id="modalCalloutBtn" target="_blank" rel="noopener" class="btn-live-stream" style="padding: 10px 18px; font-size: 0.88rem;">
-            🚀 OPEN STREAMLIT APP ↗
+            [LAUNCH LIVE APPLICATION -&gt;]
           </a>
         </div>
 
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
-          <div style="color: var(--gold-primary); font-family: var(--font-hud); font-size: 1.1rem; font-weight: 700;"
+          <div style="color: var(--neon-green); font-family: var(--font-hud); font-size: 1.1rem; font-weight: 700;"
             id="modalProjectRole">
             Role & Category
           </div>
-          <span class="section-badge ucl" id="modalProjectTag">POSITION</span>
+          <span class="section-badge" id="modalProjectTag">CLASSIFIED</span>
         </div>
 
-        <p style="color: #cbd5e1; font-size: 1rem; line-height: 1.65; margin-bottom: 24px;" id="modalProjectDesc">
+        <p style="color: var(--text-dim); font-size: 1rem; line-height: 1.65; margin-bottom: 24px;" id="modalProjectDesc">
           Description
         </p>
 
         <h4
           style="font-family: var(--font-hud); color: var(--text-white); font-size: 1.1rem; text-transform: uppercase; margin-bottom: 10px;">
-          Tactical Tech Stack:
+          Ordnance & Tech Stack:
         </h4>
         <div class="card-tech-badges" id="modalProjectStack" style="margin-bottom: 24px;">
           <!-- dynamically injected -->
@@ -951,19 +940,19 @@
 
         <h4
           style="font-family: var(--font-hud); color: var(--text-white); font-size: 1.1rem; text-transform: uppercase; margin-bottom: 10px;">
-          Key Engineering Highlights:
+          Classified Engineering Highlights:
         </h4>
-        <ul class="timeline-bullets" id="modalProjectFeatures" style="margin-bottom: 30px;">
+        <ul class="timeline-bullets" id="modalProjectFeatures" style="margin-bottom: 30px; color: var(--text-dim);">
           <!-- dynamically injected -->
         </ul>
 
         <div
           style="display: flex; flex-wrap: wrap; gap: 14px; border-top: 1px solid var(--border-subtle); padding-top: 20px; align-items: center;">
           <a href="https://built-by-ubaid-multilingual-video-subtitle-generator.streamlit.app/" target="_blank" rel="noopener" class="btn-live-stream" id="modalLiveLink">
-            Launch Live Application (Streamlit) ↗
+            [ACCESS LIVE STREAMLIT APP -&gt;]
           </a>
           <a href="https://github.com/UbaidRaza-jpg/Multilingual-Video-Subtitle-Generator" target="_blank" rel="noopener" class="btn-secondary" id="modalGithubLink">
-            Inspect Source Code
+            [INSPECT SOURCE CODE]
           </a>
         </div>
       </div>
@@ -971,7 +960,7 @@
   </div>
 
   <!-- JavaScript Application -->
-  <script src="js/app.js?v=3.2"></script>
+  <script src="js/app.js?v=5.0"></script>
 </body>
 
 </html>
