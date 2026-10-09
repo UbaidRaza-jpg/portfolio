@@ -1,8 +1,8 @@
 /**
  * ==========================================================================
- * PROJECT I.G.I. // TACTICAL INTELLIGENCE HUD ENGINE
- * Operative: Muhammad Ubaid Raza | Codename: OPERATIVE-01
- * AI Applications & Systems Architect | Bahria University Karachi
+ * PORTFOLIO APPLICATION ENGINE
+ * Muhammad Ubaid Raza - AI Applications & Software Developer
+ * Bahria University Karachi
  * ==========================================================================
  */
 
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ==========================================================================
-   1. 3D INTERACTIVE OPERATIVE CARD TILT (TACTICAL TARGET LOCK)
+   1. 3D INTERACTIVE PROFILE PICTURE TILT
    ========================================================================== */
 function initOperativeCardTilt() {
   const card = document.getElementById('operativeCard');
@@ -140,7 +140,7 @@ function prepareElementForPopping(el) {
 }
 
 /* ==========================================================================
-   3. TACTICAL TARGET CROSSHAIR CURSOR ENGINE
+   3. TARGET CROSSHAIR CURSOR ENGINE
    ========================================================================== */
 function initTacticalCursor() {
   const cursor = document.getElementById('tacticalCursor');
@@ -213,15 +213,15 @@ function initTacticalCursor() {
 }
 
 /* ==========================================================================
-   4. CLASSIFIED MISSION INTEL MODAL ENGINE
+   4. PROJECT DETAILS MODAL ENGINE
    ========================================================================== */
 const projectsData = {
   'subtitle-gen': {
     title: 'Multilingual Video Subtitle Generator',
-    role: 'NEURAL AI / SPEECH RECONNAISSANCE',
-    tag: 'CLASSIFIED INTEL // AI',
+    role: 'AI & Speech Recognition',
+    tag: 'Full-Stack AI Application',
     stack: ['Python', 'Streamlit', 'Whisper AI', 'FFmpeg', 'PyTorch'],
-    desc: 'An AI-powered tactical audio reconnaissance web application that automates subtitle extraction and translation for multi-language video streams. It deploys FFmpeg streaming pipelines, processes speech through OpenAI Whisper neural models, generates synchronized timestamps, and provides translated subtitle payloads across English, Urdu, Spanish, Chinese, and Turkish.',
+    desc: 'An AI-powered web application that automates subtitle extraction and translation for multi-language video streams. It deploys FFmpeg streaming pipelines, processes speech through OpenAI Whisper neural models, generates synchronized timestamps, and provides translated subtitles across English, Urdu, Spanish, Chinese, and Turkish.',
     features: [
       'Automatic speech recognition with multi-language detection and neural translation',
       'Audio extraction pipeline optimized with streaming FFmpeg sub-processes',
@@ -233,10 +233,10 @@ const projectsData = {
   },
   'therac-recovery': {
     title: 'THERAC-25 Recovery System',
-    role: 'MISSION-CRITICAL RISK SIMULATOR & FAIL-SAFE OVERRIDE',
-    tag: 'SYSTEMS PROGRAMMING',
+    role: 'Systems Programming & Safety Verifier',
+    tag: 'C++ Systems Architecture',
     stack: ['C++', 'Graphs', 'Stacks', 'Linked Lists', 'File Handling'],
-    desc: 'A robust risk-validated workflow simulator inspired by the historic Therac-25 radiation hazard case study. Engineered to eliminate race conditions and software faults through state validation graphs, operation rollback stacks, and strict state machine transitions in C++.',
+    desc: 'A robust risk-validated workflow simulator inspired by the historic Therac-25 radiation machine case study. Engineered to eliminate race conditions and software faults through state validation graphs, operation rollback stacks, and strict finite state machine transitions in C++.',
     features: [
       'Graph-based operational state machine preventing unauthorized hazard states',
       'Stack-based rollback mechanism allowing instant recovery upon anomaly detection',
@@ -248,10 +248,10 @@ const projectsData = {
   },
   'hostel-mgmt': {
     title: 'Hostel Management System',
-    role: 'BASE LOGISTICS & BOOKING ENGINE',
-    tag: 'ENTERPRISE ARCHITECTURE',
+    role: 'Management Software & Booking Engine',
+    tag: 'Desktop Application',
     stack: ['Java', 'Swing GUI', 'Database / File IO', 'OOP Architecture'],
-    desc: 'Java, GUI, and database-backed base facility operations system for resident check-in, check-out, and room booking. Engineered with modular Object-Oriented principles, persistent record storage, dynamic availability checking, and automated expense calculations.',
+    desc: 'A modular Java and Swing desktop application backed by database storage for resident room booking, check-in/out, and automated expense calculations. Engineered with clean Object-Oriented principles, persistent record storage, dynamic availability checking, and billing receipts.',
     features: [
       'Modular OOP design with full encapsulation, inheritance, and clean polymorphism',
       'Room reservation engine with dynamic status updates and conflict avoidance',
@@ -263,10 +263,10 @@ const projectsData = {
   },
   'garden-mgmt': {
     title: 'Garden Management Engine (AVL Tree Architecture)',
-    role: 'ARBOREAL CIPHER & SELF-BALANCING AVL ENGINE',
-    tag: 'ADVANCED DATA STRUCTURES',
+    role: 'Self-Balancing AVL Tree Engine',
+    tag: 'Data Structures & Algorithms',
     stack: ['C++', 'AVL Trees', 'Self-Balancing BST', 'Recursive Traversal', 'Tree Rebalancing'],
-    desc: 'A high-performance C++ plant and vegetation management engine built around an AVL (Adelson-Velsky and Landis) self-balancing binary search tree. Guarantees strict O(log n) search, insertion, and deletion complexity via dynamic single and double tree rotations (LL, RR, LR, RL). Features recursive depth-first tree traversal for batch growth updates, robust deletion with full rebalancing, and zero memory leaks.',
+    desc: 'A high-performance C++ plant management engine built around an AVL (Adelson-Velsky and Landis) self-balancing binary search tree. Guarantees strict O(log n) search, insertion, and deletion complexity via dynamic single and double tree rotations (LL, RR, LR, RL). Features recursive depth-first tree traversal for batch growth updates, robust deletion with full rebalancing, and clean memory management.',
     features: [
       'Self-balancing AVL tree architecture maintaining strict balance factors (-1, 0, +1) across all node insertions and modifications',
       'Robust delete function with full rebalancing via LL, RR, LR, and RL rotations and in-order successor substitution',
@@ -541,7 +541,7 @@ function initScrollReveal() {
 }
 
 /* ==========================================================================
-   9. ASYNC SECURE TRANSMISSION FORM DISPATCH
+   9. ASYNC CONTACT FORM DISPATCH
    ========================================================================== */
 function initContactForm() {
   const form = document.getElementById('transferInquiryForm');
@@ -553,7 +553,7 @@ function initContactForm() {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const originalText = submitBtn.innerHTML;
-    submitBtn.innerHTML = '[TRANSMITTING SECURE PACKET...]';
+    submitBtn.innerHTML = 'Sending Message...';
     submitBtn.disabled = true;
 
     try {
@@ -572,7 +572,7 @@ function initContactForm() {
           statusMsg.style.background = 'rgba(0, 255, 102, 0.1)';
           statusMsg.style.border = '1px solid var(--border-neon)';
           statusMsg.style.color = 'var(--neon-green)';
-          statusMsg.innerHTML = '<strong>TRANSMISSION LOGGED SUCCESSFULLY.</strong> Operative Muhammad Ubaid Raza will review debrief and establish contact via secure email.';
+          statusMsg.innerHTML = '<strong>Message Sent Successfully!</strong> Thank you for reaching out. Muhammad Ubaid Raza will review and respond promptly.';
         }
         form.reset();
       } else {
@@ -584,7 +584,7 @@ function initContactForm() {
         statusMsg.style.background = 'rgba(255, 50, 50, 0.15)';
         statusMsg.style.border = '1px solid #ff3333';
         statusMsg.style.color = '#ff6666';
-        statusMsg.innerHTML = 'Transmission failed. Transmit directly to field comms: <strong>ubaid183d9@gmail.com</strong>';
+        statusMsg.innerHTML = 'Message failed to send. Please email directly at: <strong>ubaid183d9@gmail.com</strong>';
       }
     } finally {
       submitBtn.innerHTML = originalText;
