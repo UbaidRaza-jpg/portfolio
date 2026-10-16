@@ -74,13 +74,16 @@
   <link rel="icon" type="image/svg+xml"
     href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%234F46E5'/><text x='32' y='42' font-family='system-ui, -apple-system, sans-serif' font-size='28' font-weight='700' fill='%23FFFFFF' text-anchor='middle'>UR</text></svg>">
 
+  <!-- Preload Hero Cutout Image -->
+  <link rel="preload" as="image" href="assets/ubaid-cutout.webp" type="image/webp">
+
   <!-- Typography: Inter Sans-serif Font Family -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
 
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="css/style.css?v=7.0">
+  <link rel="stylesheet" href="css/style.css?v=8.0">
 </head>
 
 <body>
@@ -105,7 +108,7 @@
           <li><a href="#credentials" class="nav-link" id="navLinkCredentials">Credentials</a></li>
           <li><a href="#contact" class="nav-link" id="navLinkContact">Contact</a></li>
           <li>
-            <a href="assets/resume.pdf?v=3.4" target="_blank" rel="noopener" class="btn btn-nav" id="navBtnResume">
+            <a href="assets/resume.pdf" target="_blank" rel="noopener" class="btn btn-nav" id="navBtnResume">
               Download CV
             </a>
           </li>
@@ -132,54 +135,60 @@
       <div class="section-container hero-grid">
         <!-- Hero Text Column -->
         <div class="hero-text-col">
-          <div class="hero-badge">
-            <span class="badge-dot"></span>
-            <span>Available for Software &amp; AI Roles</span>
-          </div>
-
+          <span class="hero-intro">Hi, I'm</span>
           <h1 class="hero-name" id="heroName">Muhammad Ubaid Raza</h1>
 
           <div class="hero-title-unbroken" id="heroTitle">
-            Software Developer | Python &amp; AI Applications
+            <span class="title-primary">Software Developer</span>
+            <span class="title-separator" aria-hidden="true">|</span>
+            <span class="title-secondary">Python &amp; AI Applications</span>
           </div>
 
           <p class="hero-tagline">
-            I build applied AI web applications, data-driven software, and algorithmic systems with Python, C++, and Java.
+            I build applied AI apps and algorithmic software with Python, C++ and Java.
           </p>
 
           <div class="hero-meta-summary">
-            <span class="meta-item">Bahria University Karachi (4th Semester)</span>
-            <span class="meta-divider" aria-hidden="true">/</span>
-            <span class="meta-item">Malir 15, Karachi (Remote Worldwide)</span>
+            <span class="meta-item">Bahria University Karachi · 4th Semester</span>
           </div>
 
           <div class="hero-actions">
             <a href="#projects" class="btn btn-primary" id="heroViewProjects">
               View Projects
             </a>
-            <a href="assets/resume.pdf?v=3.4" target="_blank" rel="noopener" class="btn btn-secondary" id="heroDownloadCV">
+            <a href="assets/resume.pdf" target="_blank" rel="noopener" class="btn btn-secondary" id="heroDownloadCV">
               Download CV
             </a>
             <a href="https://github.com/UbaidRaza-jpg" target="_blank" rel="noopener" class="btn btn-secondary" id="heroGithubLink">
               GitHub
             </a>
           </div>
+
+          <!-- Hero badge row (small, under the buttons) -->
+          <div class="hero-badge-row">
+            <span class="hero-honor-badge">Techathon 2.0 Runner-Up · May 2026</span>
+          </div>
         </div>
 
-        <!-- Hero Portrait Column with Duotone Effect and Offset Frame -->
+        <!-- Hero Portrait Column with Cutout & Outlined Words -->
         <div class="hero-portrait-col">
-          <div class="portrait-stage">
-            <!-- Decorative faint background layer -->
-            <div class="portrait-watermark" aria-hidden="true">DEVELOPER</div>
+          <div class="portrait-stage" id="portraitStage">
+            <!-- Decorative background outlined word: SOFTWARE -->
+            <div class="portrait-outline-word portrait-word-back" id="parallaxWordBack" aria-hidden="true">SOFTWARE</div>
 
-            <!-- Offset accent frame -->
-            <div class="portrait-offset-frame" aria-hidden="true"></div>
+            <!-- Offset accent outline frame -->
+            <div class="portrait-offset-frame" id="parallaxOffsetFrame" aria-hidden="true"></div>
 
-            <!-- Image wrapper with CSS duotone treatment -->
-            <div class="portrait-frame">
-              <img src="assets/ubaid-headshot.webp" alt="Muhammad Ubaid Raza portrait" class="portrait-img" width="360" height="480" fetchpriority="high">
-              <div class="portrait-duotone-layer" aria-hidden="true"></div>
+            <!-- Light-indigo rounded backdrop shape that the cutout sits on -->
+            <div class="portrait-backdrop-shape" id="parallaxShape" aria-hidden="true"></div>
+
+            <!-- Portrait cutout image: head and shoulders slightly overlap top edge -->
+            <div class="portrait-image-wrapper" id="parallaxImage">
+              <img src="assets/ubaid-cutout.webp" alt="Muhammad Ubaid Raza portrait" class="portrait-cutout-img" width="456" height="608" fetchpriority="high">
             </div>
+
+            <!-- Decorative foreground outlined word: DEVELOPER -->
+            <div class="portrait-outline-word portrait-word-front" id="parallaxWordFront" aria-hidden="true">DEVELOPER</div>
           </div>
         </div>
       </div>
