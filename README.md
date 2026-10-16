@@ -25,7 +25,7 @@ A clean, fast, and credible engineering portfolio built with vanilla HTML5, CSS3
 1. **Hero**: Quick identity, unbroken title line, value proposition, CV download, and CSS duotone headshot portrait with offset depth frame
 2. **Projects**: Multilingual Subtitle Generator (featured deployed web app) followed by systems and algorithm projects (THERAC-25 Recovery System, Garden Management Engine, Hostel Management System)
 3. **Skills**: Domain-grouped tags (Languages, AI, CS Core, Developer Tools) without arbitrary percentage bars
-4. **Background**: Compact education and experience timeline (BS IT at Bahria University Karachi, home tutoring, operations management)
+4. **Background**: Compact education and experience timeline (BS IT at Bahria University Karachi, operations management)
 5. **Credentials**: Verified technical certifications, Techathon 2.0 runner-up, and leadership honors
 6. **Contact**: Direct communication channels and asynchronous message dispatch form
 
