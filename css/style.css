@@ -1267,31 +1267,36 @@ img {
   }
 
   .hero-name {
-    font-size: 2.4rem;
+    font-size: 2.5rem;
   }
 }
 
 @media (max-width: 860px) {
-  .hero-grid {
-    grid-template-columns: 1fr;
-    gap: 48px;
+  .hero-section {
+    padding-top: 40px;
+    padding-bottom: 56px;
   }
 
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  /* Text first on mobile: portrait goes below buttons */
   .hero-portrait-col {
-    order: -1;
+    order: 1;
     justify-content: center;
+    width: 100%;
   }
 
   .portrait-stage {
-    max-width: 280px;
+    max-width: 300px;
+    min-height: auto;
     margin: 0 auto;
   }
 
-  .portrait-watermark {
-    font-size: 2.8rem;
-    left: -8px;
-    top: -16px;
-    max-width: 100%;
+  .portrait-cutout-img {
+    max-height: 45vh;
   }
 
   .skills-grid,
@@ -1323,8 +1328,41 @@ img {
 }
 
 @media (max-width: 768px) {
+  .hero-name {
+    font-size: 2.25rem;
+    margin-bottom: 8px;
+  }
+
   .hero-title-unbroken {
     white-space: normal;
+    text-wrap: balance;
+    margin-bottom: 12px;
+    line-height: 1.35;
+  }
+
+  .hero-title-unbroken .title-primary,
+  .hero-title-unbroken .title-secondary {
+    display: block;
+  }
+
+  .hero-title-unbroken .title-separator {
+    display: none;
+  }
+
+  .hero-tagline {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 14px;
+  }
+
+  .hero-meta-summary {
+    font-size: 0.8125rem;
+    margin-bottom: 18px;
+  }
+
+  .hero-actions {
+    gap: 10px;
+    margin-bottom: 14px;
   }
 
   .mobile-toggle {
@@ -1362,10 +1400,6 @@ img {
     grid-template-columns: 1fr;
   }
 
-  .hero-name {
-    font-size: 2.1rem;
-  }
-
   .section {
     padding-top: 60px;
     padding-bottom: 60px;
@@ -1374,20 +1408,80 @@ img {
 
 @media (max-width: 480px) {
   :root {
-    --container-padding: 18px;
+    --container-padding: 16px;
+  }
+
+  .hero-section {
+    padding-top: 24px;
+    padding-bottom: 40px;
+  }
+
+  .hero-intro {
+    font-size: 0.9375rem;
+    margin-bottom: 4px;
   }
 
   .hero-name {
-    font-size: 1.875rem;
+    font-size: 1.85rem;
+    line-height: 1.15;
+    margin-bottom: 6px;
+  }
+
+  .hero-title-unbroken {
+    font-size: 1.05rem;
+    margin-bottom: 10px;
+  }
+
+  .hero-tagline {
+    font-size: 0.9375rem;
+    line-height: 1.45;
+    margin-bottom: 12px;
+  }
+
+  .hero-meta-summary {
+    margin-bottom: 16px;
+    font-size: 0.8125rem;
   }
 
   .hero-actions {
-    flex-direction: column;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
     width: 100%;
+    margin-bottom: 12px;
   }
 
   .hero-actions .btn {
-    width: 100%;
+    font-size: 0.875rem;
+    padding: 8px 14px;
+  }
+
+  .hero-badge-row {
+    margin-bottom: 8px;
+  }
+
+  .hero-honor-badge {
+    font-size: 0.75rem;
+    padding: 3px 10px;
+  }
+
+  /* Portrait adjustments on mobile below 480px */
+  .portrait-stage {
+    max-width: 250px;
+  }
+
+  .portrait-word-back {
+    font-size: 2.2rem;
+    top: 4%;
+  }
+
+  /* Hide front DEVELOPER word on small screens if it crowds */
+  .portrait-word-front {
+    display: none !important;
+  }
+
+  .portrait-cutout-img {
+    max-height: 42vh;
   }
 
   .featured-header-row {
@@ -1396,20 +1490,31 @@ img {
   }
 
   .featured-project-card {
-    padding: 20px 18px;
+    padding: 20px 16px;
   }
 
   .card {
-    padding: 20px 18px;
+    padding: 20px 16px;
   }
 }
 
 /* --------------------------------------------------------------------------
-   16. Accessibility & Motion Preferences
+   16. Progressive Enhancement (Hide-before-animate only when JS & GSAP ready)
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: no-preference) {
+  html.js-ready .hero-intro,
+  html.js-ready .hero-name,
+  html.js-ready .hero-title-unbroken {
+    opacity: 0;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   17. Accessibility & Motion Preferences (Strict Respect)
    -------------------------------------------------------------------------- */
 @media (prefers-reduced-motion: reduce) {
   html {
-    scroll-behavior: auto;
+    scroll-behavior: auto !important;
   }
 
   *, *::before, *::after {
@@ -1421,8 +1526,10 @@ img {
 
   .card:hover,
   .btn:hover,
-  .portrait-stage:hover .portrait-frame,
-  .portrait-stage:hover .portrait-offset-frame {
+  .portrait-outline-word,
+  .portrait-offset-frame,
+  .portrait-backdrop-shape,
+  .portrait-image-wrapper {
     transform: none !important;
   }
 }
