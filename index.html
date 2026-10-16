@@ -683,41 +683,57 @@
             </ul>
           </div>
 
-          <!-- Right: Async Contact Form -->
-          <div class="contact-form-card card">
+          <!-- Right: Contact Card (Form or Direct Email/LinkedIn Fallback) -->
+          <div class="contact-form-card card" id="contactFormContainer">
             <h3 class="contact-card-title">Send a Message</h3>
-            <p class="contact-card-subtitle">
+            <p class="contact-card-subtitle" id="contactCardSubtitle">
               Inquiries regarding engineering roles, projects, or collaborations.
             </p>
 
-            <form id="transferInquiryForm" action="https://formsubmit.co/ubaid183d9@gmail.com" method="POST" novalidate>
-              <!-- FormSubmit Anti-Spam & Configuration -->
-              <input type="hidden" name="_captcha" value="true">
-              <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+            <!-- Direct Contact Fallback (Visible when FORM_ENDPOINT is empty) -->
+            <div id="contactDirectFallback" class="contact-direct-fallback" style="display: none;">
+              <p class="direct-fallback-desc">
+                Feel free to send an inquiry directly via email or connect professionally on LinkedIn:
+              </p>
+              <div class="direct-fallback-actions">
+                <a href="mailto:ubaid183d9@gmail.com" class="btn btn-primary" id="btnDirectEmail">
+                  Email Muhammad Ubaid Raza
+                </a>
+                <a href="https://linkedin.com/in/muhammad-ubaid-raza-9b2912297" target="_blank" rel="noopener" class="btn btn-secondary" id="btnDirectLinkedIn">
+                  Connect on LinkedIn
+                </a>
+              </div>
+            </div>
+
+            <!-- Asynchronous Contact Form (Visible when FORM_ENDPOINT is set) -->
+            <form id="transferInquiryForm" method="POST" novalidate>
               <input type="hidden" name="_subject" value="New Portfolio Message - Muhammad Ubaid Raza">
-              <input type="hidden" name="_template" value="table">
-              <input type="hidden" name="_next" value="https://ubaidraza-jpg.github.io/portfolio/#contact">
 
               <div class="form-row">
                 <div class="form-group">
                   <label class="form-label" for="senderName">Your Name</label>
-                  <input type="text" name="Name" id="senderName" class="form-control" placeholder="Jane Doe" required>
+                  <input type="text" name="name" id="senderName" class="form-control" required>
                 </div>
 
                 <div class="form-group">
                   <label class="form-label" for="senderOrg">Company / Organization</label>
-                  <input type="text" name="Organization" id="senderOrg" class="form-control" placeholder="Company Name" required>
+                  <input type="text" name="organization" id="senderOrg" class="form-control" required>
                 </div>
               </div>
 
               <div class="form-group">
+                <label class="form-label" for="senderEmail">Your Email</label>
+                <input type="email" name="email" id="senderEmail" class="form-control" required>
+              </div>
+
+              <div class="form-group">
                 <label class="form-label" for="senderSubject">Subject</label>
-                <input type="text" name="Subject" id="senderSubject" class="form-control" placeholder="Software Engineering Role / Project Inquiry" required>
+                <input type="text" name="subject" id="senderSubject" class="form-control" required>
               </div>
 
               <div class="form-group">
                 <label class="form-label" for="senderMessage">Message</label>
-                <textarea name="Message" id="senderMessage" class="form-control form-textarea" rows="4" placeholder="Detail the opportunity, scope, or message..." required></textarea>
+                <textarea name="message" id="senderMessage" class="form-control form-textarea" rows="4" required></textarea>
               </div>
 
               <button type="submit" class="btn btn-primary btn-block" id="contactSubmitBtn">
