@@ -440,16 +440,18 @@ img {
    7. Hero Section
    -------------------------------------------------------------------------- */
 .hero-section {
-  padding-top: 72px;
+  padding-top: 64px;
   padding-bottom: 72px;
   border-bottom: 1px solid var(--border-light);
+  position: relative;
+  overflow: hidden;
 }
 
 .hero-grid {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
   align-items: center;
-  gap: 56px;
+  gap: 48px;
 }
 
 .hero-text-col {
@@ -458,32 +460,19 @@ img {
   align-items: flex-start;
 }
 
-.hero-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background-color: var(--bg-surface);
-  border: 1px solid var(--border-light);
-  padding: 4px 12px;
-  border-radius: var(--radius-full);
-  font-size: 0.8125rem;
+.hero-intro {
+  display: inline-block;
+  font-size: 1.0625rem;
   font-weight: var(--font-weight-medium);
   color: var(--text-muted);
-  margin-bottom: 20px;
-  box-shadow: var(--shadow-sm);
-}
-
-.badge-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: #10B981;
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
 }
 
 .hero-name {
-  font-size: 2.875rem;
-  font-weight: var(--font-weight-bold);
-  letter-spacing: -0.03em;
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -0.035em;
   color: var(--text-main);
   line-height: 1.1;
   margin-bottom: 12px;
@@ -497,7 +486,13 @@ img {
   white-space: nowrap;
   letter-spacing: -0.01em;
   margin-bottom: 18px;
-  line-height: 1.3;
+  line-height: 1.35;
+}
+
+.hero-title-unbroken .title-separator {
+  margin: 0 6px;
+  color: var(--accent-border);
+  font-weight: 400;
 }
 
 .hero-tagline {
@@ -514,12 +509,9 @@ img {
   flex-wrap: wrap;
   gap: 8px;
   font-size: 0.875rem;
+  font-weight: var(--font-weight-medium);
   color: var(--text-subtle);
-  margin-bottom: 28px;
-}
-
-.meta-divider {
-  color: var(--border-light);
+  margin-bottom: 24px;
 }
 
 .hero-actions {
@@ -527,6 +519,27 @@ img {
   align-items: center;
   flex-wrap: wrap;
   gap: 12px;
+  margin-bottom: 16px;
+}
+
+/* Hero Badge Row (small, under the buttons) */
+.hero-badge-row {
+  display: flex;
+  align-items: center;
+}
+
+.hero-honor-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8125rem;
+  font-weight: var(--font-weight-medium);
+  color: var(--accent-hover);
+  background-color: var(--accent-light);
+  border: 1px solid var(--accent-border);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  box-shadow: 0 1px 2px rgba(79, 70, 229, 0.05);
 }
 
 /* Hero Portrait Column */
@@ -534,92 +547,106 @@ img {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .portrait-stage {
   position: relative;
   width: 100%;
-  max-width: 340px;
+  max-width: 360px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  min-height: 440px;
 }
 
-/* Decorative background faint word */
-.portrait-watermark {
+/* Decorative Outlined Typography (Stroke only, indigo ~25% opacity, aria-hidden) */
+.portrait-outline-word {
   position: absolute;
-  top: -24px;
-  left: -20px;
-  font-size: 4rem;
+  font-family: var(--font-family);
   font-weight: 900;
-  letter-spacing: 0.05em;
-  color: rgba(79, 70, 229, 0.05);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: transparent;
   user-select: none;
   pointer-events: none;
-  z-index: 0;
   line-height: 1;
+  white-space: nowrap;
+  will-change: transform;
 }
 
-/* Offset accent frame behind photo */
+.portrait-word-back {
+  top: 6%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: clamp(3.2rem, 6.8vw, 4.2rem);
+  -webkit-text-stroke: 1.5px rgba(79, 70, 229, 0.28);
+  z-index: 1;
+}
+
+/* Offset accent outline frame */
 .portrait-offset-frame {
   position: absolute;
-  top: 14px;
-  left: 14px;
-  width: 100%;
-  height: 100%;
-  border: 2px solid var(--accent-border);
-  border-radius: var(--radius-lg);
-  background-color: var(--accent-light);
+  bottom: -10px;
+  left: calc(50% + 12px);
+  transform: translateX(-50%);
+  width: 86%;
+  height: calc(100% - 46px);
+  border: 2px solid rgba(79, 70, 229, 0.35);
+  border-radius: 28px;
   z-index: 1;
-  transition: transform var(--transition-normal);
+  pointer-events: none;
+  will-change: transform;
 }
 
-/* Image wrapper with duotone treatment */
-.portrait-frame {
+/* Light-indigo rounded backdrop shape that the cutout sits on */
+.portrait-backdrop-shape {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 86%;
+  height: calc(100% - 46px);
+  background: linear-gradient(180deg, #EEF2FF 0%, #E0E7FF 100%);
+  border-radius: 28px;
+  border: 1px solid var(--accent-border);
+  box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.12);
+  z-index: 2;
+  will-change: transform;
+}
+
+/* Portrait Cutout Wrapper - head and shoulders overlap top edge */
+.portrait-image-wrapper {
   position: relative;
   width: 100%;
-  aspect-ratio: 3 / 4;
-  border-radius: var(--radius-lg);
-  overflow: hidden;
-  border: 1px solid var(--border-light);
-  box-shadow: 0 12px 24px -6px rgba(0, 0, 0, 0.08), 0 4px 8px -2px rgba(0, 0, 0, 0.04);
-  background-color: var(--accent-hover);
-  z-index: 2;
-  transition: transform var(--transition-normal);
+  max-width: 320px;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-bottom: 0;
+  will-change: transform;
 }
 
-.portrait-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
+.portrait-cutout-img {
   display: block;
-  /* High contrast duotone filter base */
-  filter: grayscale(100%) contrast(115%) brightness(96%);
-  transition: filter var(--transition-normal);
-}
-
-/* CSS Duotone Indigo Layer */
-.portrait-duotone-layer {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
-  height: 100%;
-  background: #4F46E5;
-  mix-blend-mode: multiply;
-  opacity: 0.24;
-  pointer-events: none;
-  transition: opacity var(--transition-normal);
+  height: auto;
+  max-height: 450px;
+  object-fit: contain;
+  object-position: bottom center;
+  filter: drop-shadow(0 14px 20px rgba(15, 23, 42, 0.12));
 }
 
-.portrait-stage:hover .portrait-frame {
-  transform: translate(-3px, -3px);
-}
-
-.portrait-stage:hover .portrait-offset-frame {
-  transform: translate(3px, 3px);
-}
-
-.portrait-stage:hover .portrait-duotone-layer {
-  opacity: 0.16;
+/* Foreground outlined word (partially overlapping lower torso, pointer-events: none) */
+.portrait-word-front {
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: clamp(2.4rem, 5.2vw, 3.2rem);
+  -webkit-text-stroke: 1.5px rgba(79, 70, 229, 0.35);
+  z-index: 4;
 }
 
 /* --------------------------------------------------------------------------
