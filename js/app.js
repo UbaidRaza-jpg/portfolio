@@ -2,19 +2,107 @@
  * ==========================================================================
  * PORTFOLIO APPLICATION JAVASCRIPT
  * Muhammad Ubaid Raza - Software Developer | Python & AI Applications
- * Plain Vanilla JS only (No external dependencies)
+ * Vanilla JS with Progressive Enhancement via GSAP CDN
  * ==========================================================================
  */
 
+/**
+ * CONFIGURATION: Contact Form Endpoint
+ * Set this to your Formspree (e.g. "https://formspree.io/f/your_form_id")
+ * or Web3Forms (e.g. "https://api.web3forms.com/submit") endpoint.
+ * When empty, the form is hidden and direct Email/LinkedIn buttons are displayed.
+ */
+const FORM_ENDPOINT = '';
+
 document.addEventListener('DOMContentLoaded', () => {
+  initContactForm();
   initMobileMenu();
   initActiveNav();
-  initContactForm();
   initSmoothScroll();
+  initDesktopParallax();
+  initMotionAnimations();
 });
 
 /**
- * 1. Mobile Menu Toggle & Accessibility
+ * 1. Contact Form Handling & Direct Fallback
+ */
+function initContactForm() {
+  const form = document.getElementById('transferInquiryForm');
+  const fallbackBox = document.getElementById('contactDirectFallback');
+  const submitBtn = document.getElementById('contactSubmitBtn');
+  const statusMsg = document.getElementById('formStatusMessage');
+
+  if (!form || !fallbackBox) return;
+
+  const hasEndpoint = typeof FORM_ENDPOINT === 'string' && FORM_ENDPOINT.trim().length > 0;
+
+  if (!hasEndpoint) {
+    // Mode A: Endpoint is empty -> hide form, show direct contact buttons
+    form.style.display = 'none';
+    fallbackBox.style.display = 'block';
+    return;
+  }
+
+  // Mode B: Endpoint is configured -> show form, hide direct fallback
+  form.style.display = 'block';
+  fallbackBox.style.display = 'none';
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    const originalBtnText = submitBtn.innerHTML;
+    submitBtn.innerHTML = 'Sending Message...';
+    submitBtn.disabled = true;
+
+    if (statusMsg) {
+      statusMsg.className = 'form-status';
+      statusMsg.style.display = 'none';
+      statusMsg.textContent = '';
+    }
+
+    try {
+      const formData = new FormData(form);
+      const payload = Object.fromEntries(formData.entries());
+
+      const response = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (response.ok) {
+        if (statusMsg) {
+          statusMsg.className = 'form-status success';
+          statusMsg.style.display = 'block';
+          statusMsg.textContent = 'Message sent successfully. Muhammad Ubaid Raza will review and respond promptly.';
+        }
+        form.reset();
+      } else {
+        throw new Error('Endpoint returned error status: ' + response.status);
+      }
+    } catch (err) {
+      if (statusMsg) {
+        statusMsg.className = 'form-status error';
+        statusMsg.style.display = 'block';
+        statusMsg.innerHTML = 'Unable to dispatch message via endpoint. Please reach out directly at: <a href="mailto:ubaid183d9@gmail.com" style="color: inherit; text-decoration: underline; font-weight: 600;">ubaid183d9@gmail.com</a>';
+      }
+    } finally {
+      submitBtn.innerHTML = originalBtnText;
+      submitBtn.disabled = false;
+    }
+  });
+}
+
+/**
+ * 2. Mobile Menu Drawer & Accessibility
  */
 function initMobileMenu() {
   const toggleBtn = document.getElementById('mobileToggle');
@@ -28,7 +116,6 @@ function initMobileMenu() {
     navMenu.classList.toggle('mobile-open');
   });
 
-  // Close when clicking nav links
   navMenu.querySelectorAll('.nav-link, .btn-nav').forEach((link) => {
     link.addEventListener('click', () => {
       navMenu.classList.remove('mobile-open');
@@ -36,7 +123,6 @@ function initMobileMenu() {
     });
   });
 
-  // Close when clicking outside
   document.addEventListener('click', (event) => {
     if (!navMenu.contains(event.target) && !toggleBtn.contains(event.target)) {
       navMenu.classList.remove('mobile-open');
@@ -44,7 +130,6 @@ function initMobileMenu() {
     }
   });
 
-  // Close when scrolling page
   window.addEventListener('scroll', () => {
     if (navMenu.classList.contains('mobile-open')) {
       navMenu.classList.remove('mobile-open');
@@ -54,7 +139,7 @@ function initMobileMenu() {
 }
 
 /**
- * 2. Active Section Spy on Scroll
+ * 3. Active Nav Section Spy
  */
 function initActiveNav() {
   const sections = document.querySelectorAll('section[id]');
@@ -74,7 +159,6 @@ function initActiveNav() {
       }
     });
 
-    // If near bottom, activate contact
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 80) {
       currentId = 'contact';
     }
@@ -92,21 +176,23 @@ function initActiveNav() {
 }
 
 /**
- * 3. Smooth Scrolling & Hash Handling
+ * 4. Smooth Anchor Scrolling (Respects prefers-reduced-motion)
  */
 function initSmoothScroll() {
+  const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const behavior = isReducedMotion ? 'auto' : 'smooth';
+
   const brand = document.getElementById('navBrand');
   if (brand) {
     brand.addEventListener('click', (e) => {
       e.preventDefault();
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior });
       if (window.location.hash) {
         history.replaceState(null, '', window.location.pathname + window.location.search);
       }
     });
   }
 
-  // Anchor links
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener('click', function(e) {
       const targetId = this.getAttribute('href');
@@ -115,7 +201,7 @@ function initSmoothScroll() {
       const targetElem = document.querySelector(targetId);
       if (targetElem) {
         e.preventDefault();
-        targetElem.scrollIntoView({ behavior: 'smooth' });
+        targetElem.scrollIntoView({ behavior });
         history.replaceState(null, '', targetId);
       }
     });
@@ -123,74 +209,153 @@ function initSmoothScroll() {
 }
 
 /**
- * 4. Asynchronous Contact Form Dispatch (FormSubmit)
+ * 5. Desktop Subtle Mouse Parallax (Layers moving 4-10px at different depths)
  */
-function initContactForm() {
-  const form = document.getElementById('transferInquiryForm');
-  const submitBtn = document.getElementById('contactSubmitBtn');
-  const statusMsg = document.getElementById('formStatusMessage');
+function initDesktopParallax() {
+  const isFinePointer = window.matchMedia('(pointer: fine)').matches;
+  const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  if (!form || !submitBtn) return;
+  if (!isFinePointer || isReducedMotion) return;
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
+  const hero = document.getElementById('hero');
+  const stage = document.getElementById('portraitStage');
+  if (!hero || !stage) return;
 
-    // Basic validity check
-    if (!form.checkValidity()) {
-      form.reportValidity();
-      return;
-    }
+  const wordBack = document.getElementById('parallaxWordBack');
+  const offsetFrame = document.getElementById('parallaxOffsetFrame');
+  const shape = document.getElementById('parallaxShape');
+  const image = document.getElementById('parallaxImage');
+  const wordFront = document.getElementById('parallaxWordFront');
 
-    const originalBtnText = submitBtn.innerHTML;
-    submitBtn.innerHTML = 'Sending Message...';
-    submitBtn.disabled = true;
+  let rafId = null;
+  let targetX = 0;
+  let targetY = 0;
+  let currentX = 0;
+  let currentY = 0;
 
-    if (statusMsg) {
-      statusMsg.className = 'form-status';
-      statusMsg.style.display = 'none';
-      statusMsg.textContent = '';
-    }
+  hero.addEventListener('mousemove', (e) => {
+    const rect = hero.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width - 0.5;
+    const y = (e.clientY - rect.top) / rect.height - 0.5;
 
-    try {
-      const formData = new FormData(form);
-      const response = await fetch(form.action, {
-        method: 'POST',
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
-      });
+    targetX = x * 2;
+    targetY = y * 2;
 
-      if (response.ok) {
-        if (statusMsg) {
-          statusMsg.className = 'form-status success';
-          statusMsg.textContent = 'Message sent successfully. Thank you for reaching out, Muhammad Ubaid Raza will review and respond promptly.';
-        }
-        form.reset();
-      } else {
-        throw new Error('Server returned an error');
-      }
-    } catch (err) {
-      if (statusMsg) {
-        statusMsg.className = 'form-status error';
-        statusMsg.innerHTML = 'Unable to send message via form. Please email directly at: <a href="mailto:ubaid183d9@gmail.com" style="color: inherit; text-decoration: underline; font-weight: 600;">ubaid183d9@gmail.com</a>';
-      }
-    } finally {
-      submitBtn.innerHTML = originalBtnText;
-      submitBtn.disabled = false;
-
-      // Auto fade message after 8 seconds
-      setTimeout(() => {
-        if (statusMsg && statusMsg.classList.contains('success')) {
-          statusMsg.style.transition = 'opacity 0.4s ease';
-          statusMsg.style.opacity = '0';
-          setTimeout(() => {
-            statusMsg.className = 'form-status';
-            statusMsg.style.display = 'none';
-            statusMsg.style.opacity = '1';
-          }, 400);
-        }
-      }, 8000);
+    if (!rafId) {
+      rafId = requestAnimationFrame(updateParallax);
     }
   });
+
+  hero.addEventListener('mouseleave', () => {
+    targetX = 0;
+    targetY = 0;
+    if (!rafId) {
+      rafId = requestAnimationFrame(updateParallax);
+    }
+  });
+
+  function updateParallax() {
+    currentX += (targetX - currentX) * 0.1;
+    currentY += (targetY - currentY) * 0.1;
+
+    // Different depths between 4px and 10px
+    if (wordBack) {
+      wordBack.style.transform = `translate(calc(-50% + ${currentX * -10}px), ${currentY * -8}px)`;
+    }
+    if (offsetFrame) {
+      offsetFrame.style.transform = `translate(calc(-50% + ${currentX * 6}px), ${currentY * 5}px)`;
+    }
+    if (shape) {
+      shape.style.transform = `translate(calc(-50% + ${currentX * 4}px), ${currentY * 4}px)`;
+    }
+    if (image) {
+      image.style.transform = `translate(${currentX * -5}px, ${currentY * -4}px)`;
+    }
+    if (wordFront) {
+      wordFront.style.transform = `translate(calc(-50% + ${currentX * 9}px), ${currentY * 7}px)`;
+    }
+
+    if (Math.abs(targetX - currentX) > 0.001 || Math.abs(targetY - currentY) > 0.001) {
+      rafId = requestAnimationFrame(updateParallax);
+    } else {
+      rafId = null;
+    }
+  }
+}
+
+/**
+ * 6. Motion Animations (GSAP Reveal under 1 second total, progressive enhancement)
+ */
+function initMotionAnimations() {
+  const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (isReducedMotion) {
+    // Under reduced motion: do not hide or animate anything
+    return;
+  }
+
+  // Check if GSAP is available from CDN
+  if (typeof window.gsap !== 'undefined') {
+    // Add js-ready class now that GSAP is confirmed active
+    document.documentElement.classList.add('js-ready');
+
+    // Hero text reveal: "Hi, I'm" then name then title, total under 1 second
+    const tl = gsap.timeline();
+    tl.fromTo('.hero-intro',
+      { opacity: 0, y: 12 },
+      { opacity: 1, y: 0, duration: 0.25, ease: 'power2.out' }
+    )
+    .fromTo('.hero-name',
+      { opacity: 0, y: 14 },
+      { opacity: 1, y: 0, duration: 0.32, ease: 'power2.out' },
+      '-=0.1'
+    )
+    .fromTo('.hero-title-unbroken',
+      { opacity: 0, y: 14 },
+      { opacity: 1, y: 0, duration: 0.32, ease: 'power2.out' },
+      '-=0.12'
+    );
+
+    // Section scroll reveal using ScrollTrigger if available
+    if (typeof window.ScrollTrigger !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.utils.toArray('.section').forEach((section) => {
+        gsap.from(section, {
+          scrollTrigger: {
+            trigger: section,
+            start: 'top 88%',
+            once: true
+          },
+          opacity: 0,
+          y: 20,
+          duration: 0.55,
+          ease: 'power2.out'
+        });
+      });
+    } else {
+      initIntersectionObserverFallback();
+    }
+  } else {
+    // Fallback if GSAP CDN fails or is blocked:
+    // js-ready is NOT added; all content is already 100% visible and interactive.
+    initIntersectionObserverFallback();
+  }
+}
+
+/**
+ * Fallback section reveal using native IntersectionObserver
+ */
+function initIntersectionObserverFallback() {
+  const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (isReducedMotion || !('IntersectionObserver' in window)) return;
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.section').forEach((sec) => observer.observe(sec));
 }
