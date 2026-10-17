@@ -251,8 +251,8 @@
 
           <ul class="project-features">
             <li>Integrated OpenAI Whisper neural models for multi-language speech recognition and translation across English, Urdu, Spanish, Chinese, and Turkish.</li>
-            <li>Constructed an automated audio extraction pipeline optimized with streaming FFmpeg sub-processes.</li>
-            <li>Generated dual standard subtitle exports (.SRT and .VTT) with synchronized millisecond-accurate timestamps.</li>
+            <li>Built an audio extraction pipeline using FFmpeg sub-processes.</li>
+            <li>Generated dual standard subtitle exports (.SRT and .VTT) with timestamps synchronized to the speech.</li>
             <li>Built an interactive Streamlit user interface featuring in-browser video playback and real-time subtitle preview.</li>
           </ul>
         </div>
@@ -275,7 +275,7 @@
 
             <h3 class="project-title">THERAC-25 Recovery System</h3>
             <p class="project-summary">
-              Risk-validated workflow simulator modeling radiation machine software faults, race condition mitigation, and state recovery in C++.
+              Workflow simulator modeling radiation machine software faults, race-condition mitigation, and state recovery in C++.
             </p>
 
             <div class="project-role-line">
@@ -286,7 +286,7 @@
 
             <ul class="project-features">
               <li>Engineered a graph-based operational state machine to enforce valid transition invariants and prevent hazard states.</li>
-              <li>Implemented a stack-based rollback mechanism allowing instant state recovery upon race condition detection.</li>
+              <li>Implemented a stack-based rollback mechanism that restores the last valid state when a race condition is detected.</li>
               <li>Built persistent diagnostic audit logging and state serialization with custom C++ file handling.</li>
             </ul>
           </article>
@@ -306,7 +306,7 @@
 
             <h3 class="project-title">Garden Management Engine (AVL Tree Architecture)</h3>
             <p class="project-summary">
-              High-performance C++ self-balancing AVL binary search tree engine maintaining strict O(log n) operations with manual pointer memory deallocation.
+              C++ self-balancing AVL binary search tree engine with O(log n) operations and manual pointer memory deallocation.
             </p>
 
             <div class="project-role-line">
@@ -316,9 +316,9 @@
             </div>
 
             <ul class="project-features">
-              <li>Maintained strict AVL balance factors (-1, 0, +1) across all operations using dynamic LL, RR, LR, and RL rotations.</li>
+              <li>Maintained AVL balance factors (-1, 0, +1) using LL, RR, LR and RL rotations.</li>
               <li>Implemented recursive depth-first tree traversal for batch growth recalculations and tree property validation.</li>
-              <li>Engineered robust node deletion with in-order successor substitution and manual pointer memory deallocation.</li>
+              <li>Implemented node deletion with in-order successor substitution and manual pointer memory deallocation.</li>
             </ul>
           </article>
 
