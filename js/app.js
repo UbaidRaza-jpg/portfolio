@@ -8,11 +8,10 @@
 
 /**
  * CONFIGURATION: Contact Form Endpoint
- * Set this to your Formspree (e.g. "https://formspree.io/f/your_form_id")
- * or Web3Forms (e.g. "https://api.web3forms.com/submit") endpoint.
- * When empty, the form is hidden and direct Email/LinkedIn buttons are displayed.
+ * FormSubmit AJAX endpoint for asynchronous portfolio message dispatch.
+ * When set to an empty string, the form card is hidden and the left card expands.
  */
-const FORM_ENDPOINT = '';
+const FORM_ENDPOINT = 'https://formsubmit.co/ajax/ubaid183d9@gmail.com';
 
 document.addEventListener('DOMContentLoaded', () => {
   initContactForm();
@@ -24,28 +23,31 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /**
- * 1. Contact Form Handling & Direct Fallback
+ * 1. Contact Form Handling & Fallback
  */
 function initContactForm() {
-  const form = document.getElementById('transferInquiryForm');
-  const fallbackBox = document.getElementById('contactDirectFallback');
+  const form = document.getElementById('contactQuickForm');
+  const cardRight = document.getElementById('contactCardRight');
+  const cardLeft = document.getElementById('contactCardLeft');
   const submitBtn = document.getElementById('contactSubmitBtn');
   const statusMsg = document.getElementById('formStatusMessage');
 
-  if (!form || !fallbackBox) return;
+  if (!cardRight || !cardLeft) return;
 
   const hasEndpoint = typeof FORM_ENDPOINT === 'string' && FORM_ENDPOINT.trim().length > 0;
 
   if (!hasEndpoint) {
-    // Mode A: Endpoint is empty -> hide form, show direct contact buttons
-    form.style.display = 'none';
-    fallbackBox.style.display = 'block';
+    // If FORM_ENDPOINT is an empty string, hide this card and let the left card span full width
+    cardRight.style.display = 'none';
+    cardLeft.style.gridColumn = '1 / -1';
     return;
   }
 
-  // Mode B: Endpoint is configured -> show form, hide direct fallback
-  form.style.display = 'block';
-  fallbackBox.style.display = 'none';
+  // Ensure card is visible and left card has default column layout
+  cardRight.style.display = 'flex';
+  cardLeft.style.gridColumn = '';
+
+  if (!form || !submitBtn) return;
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -55,8 +57,8 @@ function initContactForm() {
       return;
     }
 
-    const originalBtnText = submitBtn.innerHTML;
-    submitBtn.innerHTML = 'Sending Message...';
+    const originalBtnText = submitBtn.textContent;
+    submitBtn.textContent = 'Sending...';
     submitBtn.disabled = true;
 
     if (statusMsg) {
@@ -67,35 +69,39 @@ function initContactForm() {
 
     try {
       const formData = new FormData(form);
-      const payload = Object.fromEntries(formData.entries());
+      formData.set('_subject', 'Portfolio message');
+      formData.set('_template', 'table');
+      formData.set('_captcha', 'false');
 
       const response = await fetch(FORM_ENDPOINT, {
         method: 'POST',
         headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
+          'Accept': 'application/json'
         },
-        body: JSON.stringify(payload)
+        body: formData
       });
 
-      if (response.ok) {
+      const data = await response.json().catch(() => null);
+
+      if (response.ok && data && (data.success === 'true' || data.success === true)) {
         if (statusMsg) {
           statusMsg.className = 'form-status success';
           statusMsg.style.display = 'block';
-          statusMsg.textContent = 'Message sent successfully. Muhammad Ubaid Raza will review and respond promptly.';
+          statusMsg.textContent = "Sent. I'll reply within 48 hours.";
         }
         form.reset();
       } else {
-        throw new Error('Endpoint returned error status: ' + response.status);
+        const errorDetail = data && data.message ? data.message : ('Status: ' + response.status);
+        throw new Error(errorDetail);
       }
     } catch (err) {
       if (statusMsg) {
         statusMsg.className = 'form-status error';
         statusMsg.style.display = 'block';
-        statusMsg.innerHTML = 'Unable to dispatch message via endpoint. Please reach out directly at: <a href="mailto:ubaid183d9@gmail.com" style="color: inherit; text-decoration: underline; font-weight: 600;">ubaid183d9@gmail.com</a>';
+        statusMsg.innerHTML = 'Could not send. Please email <a href="mailto:ubaid183d9@gmail.com">ubaid183d9@gmail.com</a> directly.';
       }
     } finally {
-      submitBtn.innerHTML = originalBtnText;
+      submitBtn.textContent = originalBtnText;
       submitBtn.disabled = false;
     }
   });
@@ -209,7 +215,7 @@ function initSmoothScroll() {
 }
 
 /**
- * 5. Desktop Subtle Mouse Parallax (Layers moving 4-10px at different depths)
+ * 5. Desktop Subtle Mouse Parallax (4-10px, portrait moving slightly more than card)
  */
 function initDesktopParallax() {
   const isFinePointer = window.matchMedia('(pointer: fine)').matches;
@@ -281,13 +287,11 @@ function initDesktopParallax() {
 function initMotionAnimations() {
   const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (isReducedMotion) {
-    // Under reduced motion: do not hide or animate anything
     return;
   }
 
   // Check if GSAP is available from CDN
   if (typeof window.gsap !== 'undefined') {
-    // Add js-ready class now that GSAP is confirmed active
     document.documentElement.classList.add('js-ready');
 
     // Hero text reveal: "Hi, I'm" then name then title, total under 1 second
@@ -327,8 +331,7 @@ function initMotionAnimations() {
       initIntersectionObserverFallback();
     }
   } else {
-    // Fallback if GSAP CDN fails or is blocked:
-    // js-ready is NOT added; all content is already 100% visible and interactive.
+    // Fallback if GSAP CDN fails or is blocked
     initIntersectionObserverFallback();
   }
 }
