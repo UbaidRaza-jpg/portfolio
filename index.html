@@ -156,7 +156,7 @@
             <a href="#projects" class="btn btn-primary" id="heroViewProjects">
               View Projects
             </a>
-            <a href="assets/resume.pdf" target="_blank" rel="noopener" class="btn btn-secondary" id="heroDownloadCV">
+            <a href="assets/resume.pdf?v=4.0" target="_blank" rel="noopener" class="btn btn-secondary" id="heroDownloadCV">
               Download CV
             </a>
             <a href="https://github.com/UbaidRaza-jpg" target="_blank" rel="noopener" class="btn btn-secondary" id="heroGithubLink">
@@ -166,29 +166,35 @@
 
           <!-- Hero badge row (small, under the buttons) -->
           <div class="hero-badge-row">
-            <span class="hero-honor-badge">Techathon 2.0 Runner-Up · May 2026</span>
+            <span class="hero-honor-badge">Techathon 2.0 Runner-Up (Frontend) - May 2026</span>
           </div>
         </div>
 
-        <!-- Hero Portrait Column with Cutout & Outlined Words -->
+        <!-- Hero Portrait Column with Contained Bust Portrait -->
         <div class="hero-portrait-col">
-          <div class="portrait-stage" id="portraitStage">
-            <!-- Decorative background outlined word: SOFTWARE -->
-            <div class="portrait-outline-word portrait-word-back" id="parallaxWordBack" aria-hidden="true">SOFTWARE</div>
-
-            <!-- Offset accent outline frame -->
+          <div class="portrait-wrapper" id="portraitWrapper">
+            <!-- Parallel offset outline frame (14px right & 14px down, radius 28px) -->
             <div class="portrait-offset-frame" id="parallaxOffsetFrame" aria-hidden="true"></div>
 
-            <!-- Light-indigo rounded backdrop shape that the cutout sits on -->
-            <div class="portrait-backdrop-shape" id="parallaxShape" aria-hidden="true"></div>
-
-            <!-- Portrait cutout image: head and shoulders slightly overlap top edge -->
-            <div class="portrait-image-wrapper" id="parallaxImage">
-              <img src="assets/ubaid-cutout.webp" alt="Muhammad Ubaid Raza portrait" class="portrait-cutout-img" width="456" height="608" fetchpriority="high">
+            <!-- Light indigo gradient card (radius 28px) -->
+            <div class="portrait-card" id="parallaxCard" aria-hidden="true">
+              <!-- Running text layer clipped to card bounds with edge fade -->
+              <div class="portrait-marquee-layer" id="portraitMarqueeLayer" aria-hidden="true">
+                <div class="marquee-track marquee-row-1">
+                  <span class="marquee-text">SOFTWARE &nbsp;&bull;&nbsp; DEVELOPER &nbsp;&bull;&nbsp; SOFTWARE &nbsp;&bull;&nbsp; DEVELOPER &nbsp;&bull;&nbsp; SOFTWARE &nbsp;&bull;&nbsp; DEVELOPER &nbsp;&bull;&nbsp; </span>
+                  <span class="marquee-text" aria-hidden="true">SOFTWARE &nbsp;&bull;&nbsp; DEVELOPER &nbsp;&bull;&nbsp; SOFTWARE &nbsp;&bull;&nbsp; DEVELOPER &nbsp;&bull;&nbsp; SOFTWARE &nbsp;&bull;&nbsp; DEVELOPER &nbsp;&bull;&nbsp; </span>
+                </div>
+                <div class="marquee-track marquee-row-2">
+                  <span class="marquee-text">SOFTWARE &nbsp;&bull;&nbsp; DEVELOPER &nbsp;&bull;&nbsp; SOFTWARE &nbsp;&bull;&nbsp; DEVELOPER &nbsp;&bull;&nbsp; SOFTWARE &nbsp;&bull;&nbsp; DEVELOPER &nbsp;&bull;&nbsp; </span>
+                  <span class="marquee-text" aria-hidden="true">SOFTWARE &nbsp;&bull;&nbsp; DEVELOPER &nbsp;&bull;&nbsp; SOFTWARE &nbsp;&bull;&nbsp; DEVELOPER &nbsp;&bull;&nbsp; SOFTWARE &nbsp;&bull;&nbsp; DEVELOPER &nbsp;&bull;&nbsp; </span>
+                </div>
+              </div>
             </div>
 
-            <!-- Decorative foreground outlined word: DEVELOPER -->
-            <div class="portrait-outline-word portrait-word-front" id="parallaxWordFront" aria-hidden="true">DEVELOPER</div>
+            <!-- Portrait image: separate absolutely positioned element, horizontally centered, bottom aligned, head rises above card -->
+            <div class="portrait-image-wrapper" id="parallaxImage">
+              <img src="assets/ubaid-cutout.webp" alt="Muhammad Ubaid Raza, Software Developer" class="portrait-cutout-img" width="960" height="984" fetchpriority="high">
+            </div>
           </div>
         </div>
       </div>
@@ -523,7 +529,7 @@
               <span class="credential-date">May 2026</span>
             </div>
             <h3 class="credential-title">Techathon 2.0 Runner-Up</h3>
-            <div class="credential-issuer">"Code in the Dark" · Bahria University Karachi</div>
+            <div class="credential-issuer">"Code in the Dark" Â· Bahria University Karachi</div>
             <p class="credential-desc">
               Earned runner-up honor for team <em>Innovators RoadPe</em>: built a webpage in a blind frontend competition without live browser preview.
             </p>
@@ -557,7 +563,7 @@
               <span class="credential-date">Jun 2026</span>
             </div>
             <h3 class="credential-title">What Is Generative AI?</h3>
-            <div class="credential-issuer">LinkedIn Learning · NASBA CPE Accredited</div>
+            <div class="credential-issuer">LinkedIn Learning Â· NASBA CPE Accredited</div>
             <p class="credential-desc">
               Accredited under the National Registry of CPE Sponsors (QAS). Covered generative AI architectures, foundational models, ethics, and enterprise implementation.
             </p>
@@ -677,7 +683,7 @@
                 </div>
                 <div class="channel-details">
                   <span class="channel-name">Location</span>
-                  <span class="channel-static">Malir 15, Karachi · Remote Worldwide (UTC+5)</span>
+                  <span class="channel-static">Malir 15, Karachi Â· Remote Worldwide (UTC+5)</span>
                 </div>
               </li>
             </ul>
