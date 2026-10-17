@@ -218,14 +218,12 @@ function initDesktopParallax() {
   if (!isFinePointer || isReducedMotion) return;
 
   const hero = document.getElementById('hero');
-  const stage = document.getElementById('portraitStage');
-  if (!hero || !stage) return;
+  const wrapper = document.getElementById('portraitWrapper');
+  if (!hero || !wrapper) return;
 
-  const wordBack = document.getElementById('parallaxWordBack');
   const offsetFrame = document.getElementById('parallaxOffsetFrame');
-  const shape = document.getElementById('parallaxShape');
+  const card = document.getElementById('parallaxCard');
   const image = document.getElementById('parallaxImage');
-  const wordFront = document.getElementById('parallaxWordFront');
 
   let rafId = null;
   let targetX = 0;
@@ -258,21 +256,15 @@ function initDesktopParallax() {
     currentX += (targetX - currentX) * 0.1;
     currentY += (targetY - currentY) * 0.1;
 
-    // Different depths between 4px and 10px
-    if (wordBack) {
-      wordBack.style.transform = `translate(calc(-50% + ${currentX * -10}px), ${currentY * -8}px)`;
-    }
+    // Card and offset frame move 4-5px; portrait image moves slightly more (7-8px)
     if (offsetFrame) {
-      offsetFrame.style.transform = `translate(calc(-50% + ${currentX * 6}px), ${currentY * 5}px)`;
+      offsetFrame.style.transform = `translate(${currentX * 4}px, ${currentY * 4}px)`;
     }
-    if (shape) {
-      shape.style.transform = `translate(calc(-50% + ${currentX * 4}px), ${currentY * 4}px)`;
+    if (card) {
+      card.style.transform = `translate(${currentX * 4}px, ${currentY * 4}px)`;
     }
     if (image) {
-      image.style.transform = `translate(${currentX * -5}px, ${currentY * -4}px)`;
-    }
-    if (wordFront) {
-      wordFront.style.transform = `translate(calc(-50% + ${currentX * 9}px), ${currentY * 7}px)`;
+      image.style.transform = `translate(calc(-50% + ${currentX * 8}px), ${currentY * 7}px)`;
     }
 
     if (Math.abs(targetX - currentX) > 0.001 || Math.abs(targetY - currentY) > 0.001) {
