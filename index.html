@@ -8,7 +8,7 @@
   <meta name="description"
     content="Portfolio of Muhammad Ubaid Raza: Software Developer specializing in Python, AI applications, systems programming, and algorithmic software. Bahria University Karachi.">
   <meta name="keywords"
-    content="Muhammad Ubaid Raza, Software Developer, Python Developer, AI Engineer, Whisper AI, C++, Java, Streamlit, Bahria University">
+    content="Muhammad Ubaid Raza, Software Developer, Python, AI Applications, C++, Java, Whisper AI, Streamlit, Bahria University Karachi, Karachi">
   <meta name="author" content="Muhammad Ubaid Raza">
 
   <!-- Open Graph / LinkedIn / Facebook -->
@@ -46,6 +46,11 @@
     "image": "https://ubaidraza-jpg.github.io/portfolio/assets/ubaid-headshot.webp",
     "email": "ubaid183d9@gmail.com",
     "telephone": "+92-327-2731053",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Karachi",
+      "addressCountry": "Pakistan"
+    },
     "alumniOf": {
       "@type": "EducationalOrganization",
       "name": "Bahria University Karachi"
@@ -80,10 +85,10 @@
   <!-- Typography: Inter Sans-serif Font Family -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <!-- Main Stylesheet -->
-  <link rel="stylesheet" href="css/style.css?v=8.0">
+  <link rel="stylesheet" href="css/style.css?v=9.0">
 </head>
 
 <body>
@@ -108,7 +113,7 @@
           <li><a href="#credentials" class="nav-link" id="navLinkCredentials">Credentials</a></li>
           <li><a href="#contact" class="nav-link" id="navLinkContact">Contact</a></li>
           <li>
-            <a href="assets/resume.pdf" target="_blank" rel="noopener" class="btn btn-nav" id="navBtnResume">
+            <a href="assets/resume.pdf?v=4.0" target="_blank" rel="noopener" class="btn btn-nav" id="navBtnResume">
               Download CV
             </a>
           </li>
@@ -601,151 +606,106 @@
           <span class="section-kicker">Get In Touch</span>
           <h2 class="section-title">Contact</h2>
           <p class="section-description">
-            Available for software engineering opportunities, internships, and technical collaboration. Send a direct message or connect across platforms.
+            Available for software engineering opportunities, internships, and technical collaboration.
           </p>
         </div>
 
         <div class="contact-grid">
-          <!-- Left: Direct Channels -->
-          <div class="contact-channels-card card">
-            <h3 class="contact-card-title">Direct Channels</h3>
-            <p class="contact-card-subtitle">
-              Reach out via email or phone for direct inquiries.
+          <!-- Left Card: Let's work together -->
+          <div class="contact-card contact-card-left card" id="contactCardLeft">
+            <h3 class="contact-card-title">Let's work together</h3>
+            <p class="contact-card-intro">
+              Open to software and AI internships and junior roles.
             </p>
 
-            <ul class="channel-list">
-              <li class="channel-item">
-                <div class="channel-icon-wrapper" aria-hidden="true">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="2" y="4" width="20" height="16" rx="2"></rect>
-                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-                  </svg>
-                </div>
-                <div class="channel-details">
-                  <span class="channel-name">Email</span>
-                  <a href="mailto:ubaid183d9@gmail.com" class="channel-link" id="contactEmailLink">
-                    ubaid183d9@gmail.com
-                  </a>
-                </div>
-              </li>
+            <div class="contact-button-row">
+              <a href="mailto:ubaid183d9@gmail.com" class="btn btn-primary" id="btnContactEmail">
+                <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                </svg>
+                Email me
+              </a>
 
-              <li class="channel-item">
-                <div class="channel-icon-wrapper" aria-hidden="true">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                  </svg>
-                </div>
-                <div class="channel-details">
-                  <span class="channel-name">Phone / WhatsApp</span>
-                  <a href="tel:03272731053" class="channel-link" id="contactPhoneLink">
-                    0327-2731053
-                  </a>
-                </div>
-              </li>
+              <a href="https://linkedin.com/in/muhammad-ubaid-raza-9b2912297" target="_blank" rel="noopener" class="btn btn-secondary" id="btnContactLinkedIn">
+                <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                  <rect x="2" y="9" width="4" height="12"></rect>
+                  <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+                LinkedIn
+              </a>
 
-              <li class="channel-item">
-                <div class="channel-icon-wrapper" aria-hidden="true">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                    <rect x="2" y="9" width="4" height="12"></rect>
-                    <circle cx="4" cy="4" r="2"></circle>
-                  </svg>
-                </div>
-                <div class="channel-details">
-                  <span class="channel-name">LinkedIn</span>
-                  <a href="https://linkedin.com/in/muhammad-ubaid-raza-9b2912297" target="_blank" rel="noopener" class="channel-link" id="contactLinkedinLink">
-                    linkedin.com/in/muhammad-ubaid-raza
-                  </a>
-                </div>
-              </li>
+              <a href="https://github.com/UbaidRaza-jpg" target="_blank" rel="noopener" class="btn btn-secondary" id="btnContactGitHub">
+                <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+                GitHub
+              </a>
 
-              <li class="channel-item">
-                <div class="channel-icon-wrapper" aria-hidden="true">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                  </svg>
-                </div>
-                <div class="channel-details">
-                  <span class="channel-name">GitHub</span>
-                  <a href="https://github.com/UbaidRaza-jpg" target="_blank" rel="noopener" class="channel-link" id="contactGithubLink">
-                    github.com/UbaidRaza-jpg
-                  </a>
-                </div>
-              </li>
-
-              <li class="channel-item">
-                <div class="channel-icon-wrapper" aria-hidden="true">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path>
-                    <circle cx="12" cy="10" r="3"></circle>
-                  </svg>
-                </div>
-                <div class="channel-details">
-                  <span class="channel-name">Location</span>
-                  <span class="channel-static">Malir 15, Karachi Â· Remote Worldwide (UTC+5)</span>
-                </div>
-              </li>
-            </ul>
-          </div>
-
-          <!-- Right: Contact Card (Form or Direct Email/LinkedIn Fallback) -->
-          <div class="contact-form-card card" id="contactFormContainer">
-            <h3 class="contact-card-title">Send a Message</h3>
-            <p class="contact-card-subtitle" id="contactCardSubtitle">
-              Inquiries regarding engineering roles, projects, or collaborations.
-            </p>
-
-            <!-- Direct Contact Fallback (Visible when FORM_ENDPOINT is empty) -->
-            <div id="contactDirectFallback" class="contact-direct-fallback" style="display: none;">
-              <p class="direct-fallback-desc">
-                Feel free to send an inquiry directly via email or connect professionally on LinkedIn:
-              </p>
-              <div class="direct-fallback-actions">
-                <a href="mailto:ubaid183d9@gmail.com" class="btn btn-primary" id="btnDirectEmail">
-                  Email Muhammad Ubaid Raza
-                </a>
-                <a href="https://linkedin.com/in/muhammad-ubaid-raza-9b2912297" target="_blank" rel="noopener" class="btn btn-secondary" id="btnDirectLinkedIn">
-                  Connect on LinkedIn
-                </a>
-              </div>
+              <a href="assets/resume.pdf?v=4.0" target="_blank" rel="noopener" class="btn btn-secondary" id="btnContactCV">
+                <svg class="btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                  <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                Download CV
+              </a>
             </div>
 
-            <!-- Asynchronous Contact Form (Visible when FORM_ENDPOINT is set) -->
-            <form id="transferInquiryForm" method="POST" novalidate>
-              <input type="hidden" name="_subject" value="New Portfolio Message - Muhammad Ubaid Raza">
+            <div class="contact-details-box">
+              <div class="detail-row">
+                <span class="detail-label">Email:</span>
+                <span class="detail-value">ubaid183d9@gmail.com</span>
+              </div>
+              <div class="detail-row">
+                <span class="detail-label">Phone:</span>
+                <a href="tel:03272731053" class="detail-value detail-link" id="contactTelLink">0327-2731053</a>
+              </div>
+              <div class="detail-row">
+                <span class="detail-label">Location:</span>
+                <span class="detail-value">Karachi, Pakistan - open to remote (UTC+5)</span>
+              </div>
+            </div>
+          </div>
 
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="form-label" for="senderName">Your Name</label>
-                  <input type="text" name="name" id="senderName" class="form-control" required>
-                </div>
+          <!-- Right Card: Send a quick note -->
+          <div class="contact-card contact-card-right card" id="contactCardRight">
+            <h3 class="contact-card-title">Send a quick note</h3>
 
-                <div class="form-group">
-                  <label class="form-label" for="senderOrg">Company / Organization</label>
-                  <input type="text" name="organization" id="senderOrg" class="form-control" required>
-                </div>
+            <form id="contactQuickForm" method="POST" novalidate>
+              <!-- Hidden honeypot field -->
+              <input type="text" name="_honey" class="honeypot-field" style="display:none" tabindex="-1" autocomplete="off">
+
+              <!-- FormSubmit config parameters -->
+              <input type="hidden" name="_subject" value="Portfolio message">
+              <input type="hidden" name="_template" value="table">
+              <input type="hidden" name="_captcha" value="false">
+
+              <div class="form-group">
+                <label class="form-label" for="quickName">Name</label>
+                <input type="text" name="name" id="quickName" class="form-control" required>
               </div>
 
               <div class="form-group">
-                <label class="form-label" for="senderEmail">Your Email</label>
-                <input type="email" name="email" id="senderEmail" class="form-control" required>
+                <label class="form-label" for="quickEmail">Email</label>
+                <input type="email" name="email" id="quickEmail" class="form-control" required>
               </div>
 
               <div class="form-group">
-                <label class="form-label" for="senderSubject">Subject</label>
-                <input type="text" name="subject" id="senderSubject" class="form-control" required>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label" for="senderMessage">Message</label>
-                <textarea name="message" id="senderMessage" class="form-control form-textarea" rows="4" required></textarea>
+                <label class="form-label" for="quickMessage">Message</label>
+                <textarea name="message" id="quickMessage" class="form-control form-textarea" rows="4" required></textarea>
               </div>
 
               <button type="submit" class="btn btn-primary btn-block" id="contactSubmitBtn">
-                Send Message
+                Send Note
               </button>
 
               <div id="formStatusMessage" class="form-status" role="alert" aria-live="polite"></div>
+
+              <p class="form-subnote">Prefer email? Use the buttons on the left.</p>
             </form>
           </div>
         </div>
@@ -772,7 +732,9 @@
           <a href="#hero" class="footer-link">Back to top &uarr;</a>
           <a href="https://github.com/UbaidRaza-jpg" target="_blank" rel="noopener" class="footer-link">GitHub</a>
           <a href="https://linkedin.com/in/muhammad-ubaid-raza-9b2912297" target="_blank" rel="noopener" class="footer-link">LinkedIn</a>
-          <a href="assets/resume.pdf" target="_blank" rel="noopener" class="footer-link">Resume PDF</a>
+          <a href="assets/resume.pdf?v=4.0" target="_blank" rel="noopener" class="footer-link">Resume PDF</a>
+          <a href="privacy.html" class="footer-link">Privacy Policy</a>
+          <a href="terms.html" class="footer-link">Terms &amp; Conditions</a>
         </div>
       </div>
     </div>
@@ -783,7 +745,7 @@
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
   <!-- Application Logic -->
-  <script defer src="js/app.js?v=8.0"></script>
+  <script defer src="js/app.js?v=9.0"></script>
 </body>
 
 </html>
