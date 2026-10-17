@@ -14,3 +14,5 @@ Thumbs.db
 # Local environment
 *.log
 *.tmp
+readme-drafts/
+review-screenshots/
